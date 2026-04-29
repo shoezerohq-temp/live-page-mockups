@@ -1,0 +1,77 @@
+/* ══════════════════════════════════════════════════════════════════
+   Shoe Zero — Design Tokens (Single Source of Truth)
+   Source: ../everything-shopify/docs/design-brand-guidelines.md
+   Updated: 2026-04-19
+
+   ALL mockup files <link> this file instead of declaring :root inline.
+   To change a token, edit HERE — it propagates to all 80+ mockups.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* --- Colors --- */
+  --sz-accent: #00704a;
+  --sz-accent-hover: #005c3d;
+  --sz-accent-light: #e6f2ed;
+  --sz-text: #1a1a1a;
+  --sz-muted: #777777;
+  --sz-border: #e5e5e5;
+  --sz-bg-warm: #f7f7f5;
+  --sz-bg-cool: #f0f0f0;
+  --sz-white: #ffffff;
+  --sz-black: #1a1a1a;
+
+  /* --- Dark section (on --sz-black bg) --- */
+  --sz-dark-text: #ffffff;
+  --sz-dark-muted: rgba(255,255,255,0.55);
+  --sz-dark-border: rgba(255,255,255,0.08);
+  --sz-dark-card: rgba(255,255,255,0.06);
+  --sz-dark-card-hover: rgba(255,255,255,0.10);
+
+  /* --- Accent section (on --sz-accent bg) --- */
+  --sz-accent-text: #ffffff;
+  --sz-accent-muted: rgba(255,255,255,0.80);
+
+  /* --- Radius --- */
+  --sz-radius-btn: 8px;
+  --sz-radius-img: 8px;
+  --sz-radius-card: 12px;
+  --sz-radius-hero: 16px;
+  --sz-radius-full: 9999px;
+
+  /* --- Shadows (volumetric 3-layer) --- */
+  --sz-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.04);
+  --sz-shadow-hover: 0 2px 4px rgba(0,0,0,0.06), 0 8px 20px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.06);
+  --sz-shadow-glass: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+
+  /* --- Animation --- */
+  --sz-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sz-ease-entrance: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --sz-duration-fast: 400ms;
+  --sz-duration-base: 600ms;
+  --sz-stagger: 80ms;
+
+  /* --- Legacy aliases (old files use these — DO NOT add new references) --- */
+  --green: var(--sz-accent);
+  --green-hover: var(--sz-accent-hover);
+  --green-light: var(--sz-accent-light);
+  --dark: var(--sz-text);
+  --muted: var(--sz-muted);
+  --border: var(--sz-border);
+  --warm: var(--sz-bg-warm);
+  --cool: var(--sz-bg-cool);
+  --radius-sm: var(--sz-radius-btn);
+  --radius-md: var(--sz-radius-card);
+  --radius-full: var(--sz-radius-full);
+  --ease: var(--sz-ease);
+  --ease-entrance: var(--sz-ease-entrance);
+  --shadow-card: var(--sz-shadow);
+  --shadow-card-hover: var(--sz-shadow-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sz-duration-fast: 0ms;
+    --sz-duration-base: 0ms;
+    --sz-stagger: 0ms;
+  }
+}
