@@ -139,7 +139,7 @@
     .hp2-hero {
       margin-top: 44px;
       position: relative;
-      height: 72vh; min-height: 486px; max-height: 684px;
+      height: 65vh; min-height: 437px; max-height: 616px;
       overflow: hidden;
       background: #000;
     }
@@ -432,11 +432,20 @@
        ================================================================ */
     .oC-wrap{padding:40px 0;background:var(--sz-bg-cool)}
     .oC-c{max-width:1280px;margin:0 auto;padding:0 24px}
-    .oC-top{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin-bottom:20px;align-items:stretch}
+    .oC-top{display:grid;grid-template-columns:1fr 0.98fr;gap:12px;margin-bottom:20px;align-items:stretch}
     .oC-feature{position:relative;border-radius:14px;overflow:hidden;height:420px;background:#1a1a1a}
-    .oC-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78}
+    .oC-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:oCFeatRot 30s infinite}
+    .oC-feature img:nth-child(1){animation-delay:0s}
+    .oC-feature img:nth-child(2){animation-delay:6s}
+    .oC-feature img:nth-child(3){animation-delay:12s}
+    .oC-feature img:nth-child(4){animation-delay:18s}
+    .oC-feature img:nth-child(5){animation-delay:24s}
+    @keyframes oCFeatRot{0%{opacity:0}1.5%{opacity:.78}18.5%{opacity:.78}20%{opacity:0}100%{opacity:0}}
+    @media (prefers-reduced-motion:reduce){.oC-feature img{animation:none;opacity:.78}.oC-feature img:not(:first-child){display:none}}
     .oC-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.2) 50%,transparent 100%)}
-    .oC-feature__inner{position:relative;z-index:2;padding:32px 32px;height:100%;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+    .oC-feature__inner{position:relative;z-index:2;padding:32px 32px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:0;color:#fff}
+    .oC-feature__h{margin:0 auto 14px}
+    .oC-feature__bottom{margin-top:0 !important;justify-content:center !important}
     .oC-feature__eye{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7dd3a8;margin-bottom:12px}
     .oC-feature__h{font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin-bottom:12px;max-width:420px}
     .oC-feature__p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.82);max-width:400px}
@@ -519,15 +528,24 @@
       font-size: 16px; color: #555; line-height: 1.55;
     }
 
-    /* Layout: steps left | video right */
+    /* Layout: steps left | video right — video aligns center to STEPS only (button is in a separate row below) */
     .hp2-htc__layout {
       display: grid;
       grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
       gap: 48px;
       align-items: center;
       max-width: 1280px;
-      margin: 0 auto 44px;
+      margin: 0 auto;
     }
+    /* CTA row sits below the layout, aligned under the steps column — preserves the steps:video centering reference */
+    .hp2-htc__cta-row {
+      max-width: 1280px;
+      margin: 16px auto 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+      gap: 48px;
+    }
+    .hp2-htc__cta-row > .hp2-htc__cta { grid-column: 1; }
 
     /* Video preview with 3D/2D toggle */
     .hp2-htc__preview {
@@ -579,7 +597,7 @@
       border-top: 1px solid #d8d4ca;
     }
     .hp2-htc-step:first-child { border-top: none; padding-top: 0; }
-    .hp2-htc-step:last-child { padding-bottom: 0; }
+    .hp2-htc-step:last-of-type { padding-bottom: 0; }
     .hp2-htc-step__num {
       font-size: 44px; font-weight: 900;
       color: var(--sz-accent);
@@ -609,7 +627,7 @@
       line-height: 1.55;
       margin-top: 6px;
     }
-    .hp2-htc__cta { text-align: center; margin-top: 32px; }
+    .hp2-htc__cta { text-align: center; margin: 0; }
 
     /* ================================================================
        S6: CUSTOMER GALLERY
@@ -1069,7 +1087,7 @@
 
   <!-- ===== S1: HERO — Full-bleed video + refined warm wash (V3) ===== -->
   <section class="hp2-hero">
-    <h1>Shoe Zero</h1>
+    <h1 class="hp2-hero__brand-sr">Shoe Zero</h1>
 
     <div class="hp2-hero__vid">
       <video autoplay muted loop playsinline poster="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop-poster.webp?v=98690032460295840781775819493">
@@ -1208,11 +1226,14 @@
     <div class="oC-c">
       <div class="oC-top">
         <div class="oC-feature">
-          <img src="./assets/wcyd/b2b-sun-hydraulics-team.png" alt="Sun Hydraulics team in custom branded shoes at trade show booth">
+          <img src="./assets/wcyd/b2b-big-sing-thing.png" alt="BIG SING THING duo on stage in custom branded high-top sneakers">
+          <img src="./assets/wcyd/b2b-job-record.jpg" alt="Job Record team member in custom yellow and navy branded sneakers" style="object-fit:contain;background:#1a1a1a;">
+          <img src="./assets/wcyd/b2b-relex-conference.jpeg" alt="RELEX Solutions sales conference attendees with custom branded shoes">
+          <img src="./assets/wcyd/b2b-fairfield-call.jpg" alt="Fairfield team showing off custom F-pattern branded sneakers on Teams call" style="object-position:50% 25%;">
+          <img src="./assets/wcyd/b2b-sun-hydraulics.jpg" alt="Sun Hydraulics team in matching custom red and white branded sneakers at booth">
           <div class="oC-feature__inner">
             <div>
               <h2 class="oC-feature__h">Your brand, on a shoe people actually wear.</h2>
-              <p class="oC-feature__p">From onboarding kits to conference activations, we've made branded shoes for Fortune 500s, tech unicorns, and 10-person startups. Print logos, patterns, or full artwork on every surface.</p>
             </div>
             <div class="oC-feature__bottom">
               <a href="#" class="oC-feature__cta">Book a call
@@ -1223,19 +1244,19 @@
         </div>
         <div class="oC-side">
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-south-dakota-events.png" alt="">
+            <img src="./assets/wcyd/b2b-south-dakota-events.png" alt="University of South Dakota event team in custom branded sneakers">
             <span class="oC-stile__tag oC-stile__tag--biz">Events</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-fairfield-team-uniforms.jpg" alt="" style="object-position: 50% 35%;">
+            <img src="./assets/wcyd/b2b-team-uniforms-sig-events.jpg" alt="SIG Events activation team uniform custom low-top sneakers" style="object-position: 50% 15%;">
             <span class="oC-stile__tag oC-stile__tag--biz">Team Uniforms</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/gallery-candidates/B2B-Pink-Pill__pink-pill-29.jpg" alt="">
-            <span class="oC-stile__tag oC-stile__tag--biz">Gifts</span>
+            <img src="./assets/wcyd/b2b-brand-activation-b-hex.jpeg" alt="B-monogram custom branded sneakers at a beachside bar activation">
+            <span class="oC-stile__tag oC-stile__tag--biz">Brand Activations</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/gallery-candidates/B2B-Carousel__dl-evans-bank.jpg" alt="">
+            <img src="./assets/wcyd/b2b-dl-evans-bank-shoe.jpeg" alt="D.L. Evans Bank custom branded white sneakers with navy logo">
             <span class="oC-stile__tag oC-stile__tag--biz">Corporate Programs</span>
           </div>
         </div>
@@ -1342,12 +1363,6 @@
               <p class="hp2-htc-step__desc">We print after you approve the proof, then ship to your door.</p>
             </div>
           </div>
-
-          <div class="hp2-htc__cta" data-reveal>
-            <a href="/collections/custom-shoes" class="hp2-btn hp2-btn--primary">Start Designing
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
         </div>
 
         <div class="hp2-htc__preview" data-scale>
@@ -1358,6 +1373,14 @@
             <button class="hp2-htc__view-btn hp2-view-active" onclick="hp2SwitchView('3d', this)">3D</button>
             <button class="hp2-htc__view-btn" onclick="hp2SwitchView('2d', this)">2D</button>
           </div>
+        </div>
+      </div>
+
+      <div class="hp2-htc__cta-row">
+        <div class="hp2-htc__cta" data-reveal>
+          <a href="/collections/custom-shoes" class="hp2-btn hp2-btn--primary">Start Designing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1372,11 +1395,11 @@
           <span>120,000+ pairs shipped since 2021</span>
         </div>
         <div class="oC-brow">
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt=""></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer__mdc-5.jpg" alt=""></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer__vision-14.jpg" alt=""></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer__sz-nyc-teacher-15.jpg" alt=""></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt=""></div>
+          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt="Customer wearing custom Wednesday-themed printed sneakers"></div>
+          <div class="oC-bitem"><img src="./assets/customer-wall/cw-sma-splatter.jpeg" alt="Custom SMA monogram low-tops with paint splatter design"></div>
+          <div class="oC-bitem"><img src="./assets/customer-wall/cw-asrm-2023.jpeg" alt="ASRM 2023 New Orleans custom patterned high-top sneakers in display case"></div>
+          <div class="oC-bitem"><img src="./assets/customer-wall/cw-oscar-mayer.png" alt="Oscar Mayer branded custom low-top sneakers"></div>
+          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt="Happy customer with personalized custom shoes"></div>
         </div>
       </div>
     </div>
@@ -1490,7 +1513,6 @@
     <div class="hp2-c">
       <div class="hp2-binq__header" data-reveal>
         <h2>Get Branded Shoes For Your Business</h2>
-        <p class="hp2-binq__lead">Work with our business team to design, produce, and deliver custom branded shoes at scale — for brand launches, marketing campaigns, and organization-wide programs.</p>
       </div>
 
       <div class="hp2-binq__grid">
