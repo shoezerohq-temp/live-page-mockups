@@ -1360,8 +1360,10 @@
         </div>
 
         <div class="hp2-htc__preview" data-scale>
-          <video autoplay muted loop playsinline poster="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop-poster.webp?v=98690032460295840781775819493">
-            <source src="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop.mp4?v=114742411458932646431774277700" type="video/mp4">
+          <video id="hp2HtcVideo" autoplay muted loop playsinline
+            data-src-3d="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/how-to-tutorial.mp4?v=1773848786"
+            data-src-2d="https://shoezero.com/cdn/shop/videos/c/vp/9d8aa4d9fe1946129f2bf61bcb9f287d/9d8aa4d9fe1946129f2bf61bcb9f287d.HD-1080p-3.3Mbps-23286597.mp4?v=0">
+            <source src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/how-to-tutorial.mp4?v=1773848786" type="video/mp4">
           </video>
           <div class="hp2-htc__view-toggle">
             <button class="hp2-htc__view-btn hp2-view-active" onclick="hp2SwitchView('3d', this)">3D</button>
@@ -1732,6 +1734,15 @@
   function hp2SwitchView(mode, btn) {
     document.querySelectorAll('.hp2-htc__view-btn').forEach(function(b) { b.classList.remove('hp2-view-active'); });
     btn.classList.add('hp2-view-active');
+    var v = document.getElementById('hp2HtcVideo');
+    if (!v) return;
+    var next = mode === '2d' ? v.getAttribute('data-src-2d') : v.getAttribute('data-src-3d');
+    var src = v.querySelector('source');
+    if (src && next && src.getAttribute('src') !== next) {
+      src.setAttribute('src', next);
+      v.load();
+      v.play().catch(function(){});
+    }
   }
 
   // ── FAQ toggle ──
