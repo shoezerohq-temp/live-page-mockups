@@ -99,108 +99,54 @@
  .nav__cta:hover { background: var(--sz-accent-hover); }
 
  /* ================================================================
- S1: HERO, Warm cream, asymmetric, typographic statement
+ S1: HERO, Cool bg, left-anchored text-only (Option 2)
  ================================================================ */
  .hero {
  background: var(--sz-bg-warm);
- padding: 96px 0 0;
+ padding: 80px 0 40px;
  overflow: hidden;
  }
  .hero__inner {
- display: grid;
- grid-template-columns: 1fr 520px;
- gap: 64px;
- align-items: center;
- max-width: 1240px;
+ max-width: 1100px;
  margin: 0 auto;
  padding: 0 48px;
- }
- .hero__text { padding-bottom: 80px; }
- .hero__kicker {
- display: flex; align-items: center; gap: 14px;
- margin-bottom: 32px;
- }
- .hero__kicker-line {
- width: 40px; height: 2px; background: var(--sz-accent); flex-shrink: 0;
- }
- .hero__kicker-text {
- font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
- text-transform: uppercase; color: var(--sz-accent);
+ text-align: center;
  }
  .hero__h1 {
- font-size: clamp(52px, 5.5vw, 80px);
- font-weight: 800;
- line-height: 1.03;
+ font-size: clamp(40px, 4.5vw, 64px);
+ font-weight: 900;
+ line-height: 1.05;
  letter-spacing: -0.04em;
  color: var(--sz-black);
- margin-bottom: 28px;
+ max-width: 880px;
+ margin: 0 auto 22px;
  }
  .hero__h1 em {
  font-style: normal;
  color: var(--sz-accent);
  }
  .hero__sub {
- font-size: 18px; font-weight: 400; color: var(--sz-muted);
- max-width: 480px; line-height: 1.65; margin-bottom: 44px;
+ font-size: 17px; font-weight: 400; color: var(--sz-muted);
+ max-width: 560px; line-height: 1.55; margin: 0 auto 32px;
  }
- .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
- .btn {
- display: inline-flex; align-items: center; gap: 8px;
- padding: 14px 28px; font-size: 15px; font-weight: 600;
- border-radius: var(--sz-radius-btn); border: none; cursor: pointer;
+ .hero__actions { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; justify-content: center; }
+ .btn--primary {
+ display: inline-flex; align-items: center; gap: 10px;
+ padding: 16px 28px; border-radius: 8px;
+ background: var(--sz-accent); color: #fff;
+ font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+ border: none; cursor: pointer; font-style: normal;
  transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease), background 200ms var(--sz-ease);
- font-style: normal;
  }
- .btn:hover { transform: translateY(-2px); box-shadow: var(--sz-shadow-hover); }
- .btn--primary { background: var(--sz-accent); color: #fff; }
- .btn--primary:hover { background: var(--sz-accent-hover); }
- .btn--outline {
- background: transparent; color: var(--sz-text);
- border: 1.5px solid var(--sz-border);
+ .btn--primary:hover { transform: translateY(-2px); box-shadow: var(--sz-shadow); background: var(--sz-accent-hover); }
+ .btn--text {
+ display: inline-flex; align-items: center; gap: 4px;
+ font-size: 16px; font-weight: 500; color: var(--sz-black);
+ text-decoration: underline; text-underline-offset: 4px;
+ background: none; border: none; cursor: pointer; font-style: normal;
+ transition: opacity 200ms ease;
  }
- .btn--outline:hover { border-color: var(--sz-text); }
-
- .hero__image-wrap {
- position: relative;
- height: 580px;
- align-self: stretch;
- }
- .hero__img-main {
- width: 100%;
- height: 480px;
- object-fit: cover;
- border-radius: 16px;
- display: block;
- }
- .hero__img-accent {
- position: absolute;
- bottom: 0;
- left: -48px;
- width: 200px;
- height: 200px;
- object-fit: cover;
- border-radius: 12px;
- border: 6px solid var(--sz-bg-warm);
- box-shadow: var(--sz-shadow);
- }
- .hero__count-tag {
- position: absolute;
- top: 28px;
- left: -24px;
- background: var(--sz-white);
- border-radius: 10px;
- padding: 12px 18px;
- box-shadow: var(--sz-shadow);
- display: flex; flex-direction: column; gap: 2px;
- }
- .hero__count-num {
- font-size: 28px; font-weight: 800; letter-spacing: -0.04em; color: var(--sz-black);
- line-height: 1;
- }
- .hero__count-label {
- font-size: 11px; font-weight: 600; color: var(--sz-muted);
- letter-spacing: 0.06em; text-transform: uppercase;
- }
+ .btn--text:hover { opacity: 0.7; }
 
  /* ================================================================
  S2: INDUSTRY FILTER ROW, White bg, typographic tabs
@@ -267,7 +213,7 @@
  S3: MOSAIC GRID, Cool bg, mixed card sizes
  ================================================================ */
  .mosaic-section {
- background: var(--sz-bg-cool);
+ background: var(--sz-black);
  padding: 72px 0 96px;
  }
  .mosaic-header {
@@ -281,14 +227,14 @@
  font-weight: 700;
  letter-spacing: 0.1em;
  text-transform: uppercase;
- color: var(--sz-muted);
+ color: rgba(255,255,255,0.55);
  margin-bottom: 8px;
  }
  .mosaic-header__count {
  font-size: 36px;
  font-weight: 800;
  letter-spacing: -0.03em;
- color: var(--sz-black);
+ color: #fff;
  }
  .mosaic-header__count span { color: var(--sz-accent); }
 
@@ -322,37 +268,50 @@
 
  /* --- SIZE VARIANTS ---
  First two cards = highlight (span 3 of 6 = side-by-side larger feature row)
- All others = uniform (span 2 of 6 = 3 per row) */
+ All others = uniform 3-up (span 2 of 6 = 3 per row, identical card shape) */
  .cs-card--featured,
  .cs-card--tall {
  grid-column: span 3;
  }
- .cs-card--wide,
- .cs-card--std,
- .cs-card--narrow,
- .cs-card--mid,
- .cs-card--mid-wide {
+ .cs-card--std {
  grid-column: span 2;
  }
 
- /* Card image, fixed aspect so all cards proportional */
- .cs-card__img {
+ /* Featured/tall cards: photographic aspect ratio with overlay */
+ .cs-card--featured .cs-card__img,
+ .cs-card--tall .cs-card__img {
  flex: 0 0 auto;
- aspect-ratio: 16 / 10;
+ aspect-ratio: 16 / 9;
  overflow: hidden;
  position: relative;
  }
- .cs-card--featured .cs-card__img,
- .cs-card--tall .cs-card__img {
- aspect-ratio: 16 / 9;
- }
- .cs-card__img img {
+ .cs-card--featured .cs-card__img img,
+ .cs-card--tall .cs-card__img img {
  width: 100%; height: 100%;
- object-fit: cover;
- display: block;
+ object-fit: cover; display: block;
  transition: transform 400ms var(--sz-ease);
  }
- .cs-card:hover .cs-card__img img { transform: scale(1.03); }
+ .cs-card--featured:hover .cs-card__img img,
+ .cs-card--tall:hover .cs-card__img img { transform: scale(1.03); }
+
+ /* Standard cards: fixed-height frame, image scaled up to fill (crops built-in whitespace) */
+ .cs-card--std .cs-card__img {
+ flex: 0 0 auto;
+ height: 200px;
+ background: var(--sz-white);
+ overflow: hidden;
+ position: relative;
+ }
+ .cs-card--std .cs-card__img img {
+ width: 140%;
+ height: 140%;
+ object-fit: contain;
+ position: absolute;
+ top: 50%; left: 50%;
+ transform: translate(-50%, -50%);
+ transition: transform 400ms var(--sz-ease);
+ }
+ .cs-card--std:hover .cs-card__img img { transform: translate(-50%, -50%) scale(1.04); }
 
  /* Card overlay for featured/tall, gradient at bottom */
  .cs-card--featured .cs-card__img::after,
@@ -371,16 +330,14 @@
  color: #fff;
  }
 
- /* Card body for standard cards (below image) */
+ /* Card body */
  .cs-card__body {
- padding: 18px 20px 20px;
+ padding: 18px 22px 20px;
  }
- .cs-card--wide .cs-card__body,
- .cs-card--std .cs-card__body,
- .cs-card--narrow .cs-card__body,
- .cs-card--mid .cs-card__body,
- .cs-card--mid-wide .cs-card__body {
- flex-shrink: 0;
+ .cs-card--std .cs-card__body {
+ flex: 1 1 auto;
+ display: flex;
+ flex-direction: column;
  }
 
  .cs-card__industry {
@@ -395,25 +352,19 @@
  color: rgba(255,255,255,0.7);
  }
  .cs-card__name {
- font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
- color: var(--sz-black); line-height: 1.15; margin-bottom: 8px;
+ font-size: 18px; font-weight: 800; letter-spacing: -0.03em;
+ color: var(--sz-black); line-height: 1.2; margin-bottom: 6px;
  }
  .cs-card--featured .cs-card__name { font-size: 32px; color: #fff; }
  .cs-card--tall .cs-card__name { font-size: 24px; color: #fff; }
- .cs-card--wide .cs-card__name { font-size: 20px; }
- .cs-card--std .cs-card__name { font-size: 16px; }
- .cs-card--narrow .cs-card__name { font-size: 15px; }
- .cs-card--mid .cs-card__name { font-size: 17px; }
- .cs-card--mid-wide .cs-card__name { font-size: 19px; }
 
  .cs-card__tagline {
- font-size: 14px; font-weight: 400; color: var(--sz-muted);
+ font-size: 13px; font-weight: 400; color: var(--sz-muted);
  line-height: 1.5; margin-bottom: 16px;
  }
  .cs-card--featured .cs-card__tagline { font-size: 16px; color: rgba(255,255,255,0.8); }
  .cs-card--tall .cs-card__tagline { font-size: 14px; color: rgba(255,255,255,0.75); }
- .cs-card--narrow .cs-card__tagline,
- .cs-card--std .cs-card__tagline { font-size: 12px; }
+ .cs-card--std .cs-card__meta { margin-top: auto; }
 
  .cs-card__meta {
  display: flex; align-items: center; gap: 16px;
@@ -447,12 +398,6 @@
  .cs-card--featured .cs-card__body { z-index: 2; }
  .cs-card--tall .cs-card__body { z-index: 2; }
 
- /* For flat (non-overlay) cards, image height is constrained */
- .cs-card--wide .cs-card__img { height: 140px; flex: none; }
- .cs-card--std .cs-card__img { height: 120px; flex: none; }
- .cs-card--narrow .cs-card__img { height: 110px; flex: none; }
- .cs-card--mid .cs-card__img { height: 130px; flex: none; }
- .cs-card--mid-wide .cs-card__img { height: 140px; flex: none; }
 
  /* ================================================================
  S4: BY THE NUMBERS, Warm cream, editorial paragraph
@@ -575,19 +520,11 @@
  .nav__inner { padding: 0 20px; }
 
  /* Hero */
- .hero { padding: 56px 0 0; }
- .hero__inner {
- grid-template-columns: 1fr;
- gap: 32px;
- padding: 0 20px;
- }
- .hero__text { padding-bottom: 0; }
- .hero__h1 { font-size: 40px; }
- .hero__sub { font-size: 16px; }
- .hero__image-wrap { height: 300px; }
- .hero__img-main { height: 300px; border-radius: 12px; }
- .hero__img-accent { display: none; }
- .hero__count-tag { left: 12px; top: 12px; }
+ .hero { padding: 64px 0 56px; }
+ .hero__inner { padding: 0 20px; }
+ .hero__h1 { font-size: 40px; line-height: 1.05; margin-bottom: 18px; }
+ .hero__sub { font-size: 16px; margin-bottom: 28px; }
+ .hero__actions { gap: 20px; }
 
  /* Filter */
  .filter-row { top: 60px; }
@@ -682,31 +619,16 @@
  S1: HERO, Warm cream, asymmetric
  ================================================================ -->
  <section class="hero">
- <div class="hero__inner">
-
- <!-- LEFT: Text -->
- <div class="hero__text" data-reveal>
- <h1 class="hero__h1">Real brands.<br><em>Real shoes.</em><br>Real results.</h1>
- <p class="hero__sub">From a single trade show run to a national retail launch, see how businesses across every industry used Shoe Zero to make custom footwear work.</p>
+ <div class="hero__inner" data-reveal>
+ <h1 class="hero__h1">Real brands. <em>Real shoes.</em> Real results.</h1>
+ <p class="hero__sub">Eleven custom shoe runs across stages, conferences, and team launches. Each one designed their own way. Read the full story.</p>
  <div class="hero__actions">
- <button class="btn btn--primary">
- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ <a class="btn--primary" href="/pages/business-inquiry">
  Start an inquiry
- </button>
- <button class="btn btn--outline">Browse all stories</button>
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </a>
+ <a class="btn--text" href="#stories">Browse all stories ›</a>
  </div>
- </div>
-
- <!-- RIGHT: Business inquiry hero video -->
- <div class="hero__image-wrap" data-reveal>
- <video
- class="hero__img-main"
- autoplay muted loop playsinline preload="metadata"
- aria-label="Shoe Zero custom shoes for business teams">
- <source src="https://shoezero.com/cdn/shop/videos/c/vp/752378dd6ddd4e28b6f5f9c1711a9b22/752378dd6ddd4e28b6f5f9c1711a9b22.HD-1080p-4.8Mbps-26030753.mp4?v=0" type="video/mp4">
- </video>
- </div>
-
  </div>
  </section>
 
@@ -767,7 +689,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--wide" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/veritas-technologies.html" aria-label="Veritas Technologies case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-veritas.jpg" alt="Veritas Technologies custom Shoe Zero shoes" loading="lazy">
@@ -786,7 +708,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--wide" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/relex-solutions.html" aria-label="RELEX Solutions case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-relex.jpg" alt="RELEX Solutions custom Shoe Zero shoes" loading="lazy">
@@ -824,7 +746,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--mid" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/big-sing-thing.html" aria-label="The Big Sing Thing case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-big-sing-thing.jpg" alt="The Big Sing Thing custom Shoe Zero shoes" loading="lazy">
@@ -843,7 +765,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--narrow" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/relec-electronics.html" aria-label="Relec Electronics case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-relec.jpg" alt="Relec Electronics custom Shoe Zero shoes" loading="lazy">
@@ -862,7 +784,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--mid-wide" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/verder-liquids.html" aria-label="Verder Liquids case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-verder.jpg" alt="Verder Liquids custom Shoe Zero shoes" loading="lazy">
@@ -881,7 +803,7 @@
  </a>
  </article>
 
- <article class="cs-card cs-card--mid" data-category="b2b" data-reveal>
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/university-of-south-dakota.html" aria-label="South Dakota Coyotes case study">
  <div class="cs-card__img">
  <img src="images/quote-block/cs-quote-south-dakota.jpg" alt="South Dakota Coyotes custom Shoe Zero shoes" loading="lazy">
