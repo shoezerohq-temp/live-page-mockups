@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Case Studies INDEX V2, Shoe Zero | Magazine Mosaic</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="tokens.css">
+ <style>
+ /* ================================================================
+ TOOLBAR
+ ================================================================ */
+ .toolbar {
+ position: fixed; top: 0; left: 0; right: 0; height: 44px;
+ background: var(--sz-black); display: flex; align-items: center;
+ justify-content: space-between; padding: 0 20px; z-index: 9000;
+ font-family: 'Inter', sans-serif;
+ }
+ .toolbar__label {
+ font-size: 11px; font-weight: 700; color: #888;
+ letter-spacing: 0.1em; text-transform: uppercase;
+ }
+ .toolbar__copy-btn {
+ padding: 7px 14px; font-size: 11px; font-weight: 700;
+ font-family: 'Inter', sans-serif; background: var(--sz-accent);
+ color: #fff; border: none; border-radius: 6px; cursor: pointer;
+ transition: background 200ms var(--sz-ease);
+ }
+ .toolbar__copy-btn:hover { background: var(--sz-accent-hover); }
+ .toolbar__toast {
+ position: fixed; bottom: 80px; right: 24px;
+ background: var(--sz-black); color: #fff;
+ padding: 10px 18px; border-radius: 8px;
+ font-size: 13px; font-weight: 500;
+ opacity: 0; transform: translateY(8px);
+ transition: opacity 250ms ease, transform 250ms ease;
+ pointer-events: none; z-index: 9001;
+ }
+ .toolbar__toast.is-visible { opacity: 1; transform: translateY(0); }
+
+ /* ================================================================
+ BASE RESET
+ ================================================================ */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ color: var(--sz-text); background: var(--sz-white);
+ line-height: 1.6; -webkit-font-smoothing: antialiased;
+ padding-top: 44px;
+ }
+ img { max-width: 100%; display: block; }
+ a { color: inherit; text-decoration: none; }
+ button { font-family: inherit; cursor: pointer; }
+ p, li, span, div { font-style: normal; }
+
+ /* ================================================================
+ LAYOUT UTILS
+ ================================================================ */
+ .c { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+ .c--wide { max-width: 1360px; margin: 0 auto; padding: 0 48px; }
+
+ /* ================================================================
+ SCROLL REVEAL
+ ================================================================ */
+ [data-reveal] {
+ opacity: 0; transform: translateY(20px);
+ transition: opacity 600ms var(--sz-ease), transform 600ms var(--sz-ease);
+ }
+ [data-reveal].is-visible { opacity: 1; transform: none; }
+
+ /* ================================================================
+ SITE NAV
+ ================================================================ */
+ .nav {
+ position: sticky; top: 44px; z-index: 800;
+ background: var(--sz-bg-warm); border-bottom: 1px solid var(--sz-border);
+ }
+ .nav__inner {
+ display: flex; align-items: center; justify-content: space-between;
+ height: 60px; max-width: 1240px; margin: 0 auto; padding: 0 48px;
+ }
+ .nav__logo {
+ font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--sz-black);
+ }
+ .nav__logo span { color: var(--sz-accent); }
+ .nav__links { display: flex; gap: 32px; }
+ .nav__links a {
+ font-size: 14px; font-weight: 500; color: var(--sz-muted);
+ transition: color 180ms ease;
+ }
+ .nav__links a:hover { color: var(--sz-text); }
+ .nav__cta {
+ padding: 9px 20px; font-size: 13px; font-weight: 600;
+ background: var(--sz-accent); color: #fff;
+ border-radius: var(--sz-radius-btn); border: none; cursor: pointer;
+ transition: background 180ms ease;
+ }
+ .nav__cta:hover { background: var(--sz-accent-hover); }
+
+ /* ================================================================
+ S1: HERO, Warm cream, asymmetric, typographic statement
+ ================================================================ */
+ .hero {
+ background: var(--sz-bg-warm);
+ padding: 96px 0 0;
+ overflow: hidden;
+ }
+ .hero__inner {
+ display: grid;
+ grid-template-columns: 1fr 520px;
+ gap: 64px;
+ align-items: center;
+ max-width: 1240px;
+ margin: 0 auto;
+ padding: 0 48px;
+ }
+ .hero__text { padding-bottom: 80px; }
+ .hero__kicker {
+ display: flex; align-items: center; gap: 14px;
+ margin-bottom: 32px;
+ }
+ .hero__kicker-line {
+ width: 40px; height: 2px; background: var(--sz-accent); flex-shrink: 0;
+ }
+ .hero__kicker-text {
+ font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+ text-transform: uppercase; color: var(--sz-accent);
+ }
+ .hero__h1 {
+ font-size: clamp(52px, 5.5vw, 80px);
+ font-weight: 800;
+ line-height: 1.03;
+ letter-spacing: -0.04em;
+ color: var(--sz-black);
+ margin-bottom: 28px;
+ }
+ .hero__h1 em {
+ font-style: normal;
+ color: var(--sz-accent);
+ }
+ .hero__sub {
+ font-size: 18px; font-weight: 400; color: var(--sz-muted);
+ max-width: 480px; line-height: 1.65; margin-bottom: 44px;
+ }
+ .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+ .btn {
+ display: inline-flex; align-items: center; gap: 8px;
+ padding: 14px 28px; font-size: 15px; font-weight: 600;
+ border-radius: var(--sz-radius-btn); border: none; cursor: pointer;
+ transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease), background 200ms var(--sz-ease);
+ font-style: normal;
+ }
+ .btn:hover { transform: translateY(-2px); box-shadow: var(--sz-shadow-hover); }
+ .btn--primary { background: var(--sz-accent); color: #fff; }
+ .btn--primary:hover { background: var(--sz-accent-hover); }
+ .btn--outline {
+ background: transparent; color: var(--sz-text);
+ border: 1.5px solid var(--sz-border);
+ }
+ .btn--outline:hover { border-color: var(--sz-text); }
+
+ .hero__image-wrap {
+ position: relative;
+ height: 580px;
+ align-self: stretch;
+ }
+ .hero__img-main {
+ width: 100%;
+ height: 480px;
+ object-fit: cover;
+ border-radius: 16px;
+ display: block;
+ }
+ .hero__img-accent {
+ position: absolute;
+ bottom: 0;
+ left: -48px;
+ width: 200px;
+ height: 200px;
+ object-fit: cover;
+ border-radius: 12px;
+ border: 6px solid var(--sz-bg-warm);
+ box-shadow: var(--sz-shadow);
+ }
+ .hero__count-tag {
+ position: absolute;
+ top: 28px;
+ left: -24px;
+ background: var(--sz-white);
+ border-radius: 10px;
+ padding: 12px 18px;
+ box-shadow: var(--sz-shadow);
+ display: flex; flex-direction: column; gap: 2px;
+ }
+ .hero__count-num {
+ font-size: 28px; font-weight: 800; letter-spacing: -0.04em; color: var(--sz-black);
+ line-height: 1;
+ }
+ .hero__count-label {
+ font-size: 11px; font-weight: 600; color: var(--sz-muted);
+ letter-spacing: 0.06em; text-transform: uppercase;
+ }
+
+ /* ================================================================
+ S2: INDUSTRY FILTER ROW, White bg, typographic tabs
+ ================================================================ */
+ .filter-row {
+ background: var(--sz-white);
+ border-bottom: 1px solid var(--sz-border);
+ padding: 0;
+ position: sticky;
+ top: 44px;
+ z-index: 700;
+ }
+ .filter-row__inner {
+ max-width: 1240px;
+ margin: 0 auto;
+ padding: 0 48px;
+ display: flex;
+ align-items: center;
+ gap: 0;
+ overflow-x: auto;
+ scrollbar-width: none;
+ }
+ .filter-row__inner::-webkit-scrollbar { display: none; }
+ .filter-tab {
+ flex-shrink: 0;
+ padding: 18px 24px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--sz-muted);
+ letter-spacing: 0.02em;
+ cursor: pointer;
+ border-bottom: 2px solid transparent;
+ transition: color 150ms ease, border-color 150ms ease;
+ background: none; border-top: none; border-left: none; border-right: none;
+ position: relative;
+ white-space: nowrap;
+ }
+ .filter-tab::after {
+ content: '·';
+ position: absolute;
+ right: 0;
+ color: var(--sz-border);
+ font-size: 16px;
+ }
+ .filter-tab:last-child::after { display: none; }
+ .filter-tab:hover { color: var(--sz-text); }
+ .filter-tab.active {
+ color: var(--sz-accent);
+ border-bottom-color: var(--sz-accent);
+ }
+ .filter-count {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 18px; height: 18px;
+ font-size: 10px; font-weight: 700;
+ background: var(--sz-accent-light);
+ color: var(--sz-accent);
+ border-radius: 50%;
+ margin-left: 6px;
+ }
+
+ /* ================================================================
+ S3: MOSAIC GRID, Cool bg, mixed card sizes
+ ================================================================ */
+ .mosaic-section {
+ background: var(--sz-bg-cool);
+ padding: 72px 0 96px;
+ }
+ .mosaic-header {
+ max-width: 1240px;
+ margin: 0 auto;
+ padding: 0 48px;
+ margin-bottom: 48px;
+ }
+ .mosaic-header__h2 {
+ font-size: 14px;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--sz-muted);
+ margin-bottom: 8px;
+ }
+ .mosaic-header__count {
+ font-size: 36px;
+ font-weight: 800;
+ letter-spacing: -0.03em;
+ color: var(--sz-black);
+ }
+ .mosaic-header__count span { color: var(--sz-accent); }
+
+ /* THE MOSAIC GRID */
+ .mosaic {
+ max-width: 1240px;
+ margin: 0 auto;
+ padding: 0 48px;
+ display: grid;
+ grid-template-columns: repeat(6, 1fr);
+ grid-auto-rows: auto;
+ gap: 28px;
+ }
+
+ /* Card base */
+ .cs-card {
+ background: var(--sz-white);
+ border-radius: var(--sz-radius-card);
+ box-shadow: var(--sz-shadow);
+ overflow: hidden;
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ cursor: pointer;
+ transition: transform 220ms var(--sz-ease), box-shadow 220ms var(--sz-ease);
+ }
+ .cs-card:hover {
+ transform: translateY(-2px);
+ box-shadow: var(--sz-shadow-hover);
+ }
+
+ /* --- SIZE VARIANTS ---
+ First two cards = highlight (span 3 of 6 = side-by-side larger feature row)
+ All others = uniform (span 2 of 6 = 3 per row) */
+ .cs-card--featured,
+ .cs-card--tall {
+ grid-column: span 3;
+ }
+ .cs-card--wide,
+ .cs-card--std,
+ .cs-card--narrow,
+ .cs-card--mid,
+ .cs-card--mid-wide {
+ grid-column: span 2;
+ }
+
+ /* Card image, fixed aspect so all cards proportional */
+ .cs-card__img {
+ flex: 0 0 auto;
+ aspect-ratio: 16 / 10;
+ overflow: hidden;
+ position: relative;
+ }
+ .cs-card--featured .cs-card__img,
+ .cs-card--tall .cs-card__img {
+ aspect-ratio: 16 / 9;
+ }
+ .cs-card__img img {
+ width: 100%; height: 100%;
+ object-fit: cover;
+ display: block;
+ transition: transform 400ms var(--sz-ease);
+ }
+ .cs-card:hover .cs-card__img img { transform: scale(1.03); }
+
+ /* Card overlay for featured/tall, gradient at bottom */
+ .cs-card--featured .cs-card__img::after,
+ .cs-card--tall .cs-card__img::after {
+ content: '';
+ position: absolute;
+ inset: 0;
+ background: linear-gradient(to top, rgba(26,26,26,0.72) 0%, transparent 55%);
+ }
+ /* On featured, body text overlays the image */
+ .cs-card--featured .cs-card__body,
+ .cs-card--tall .cs-card__body {
+ position: absolute;
+ bottom: 0; left: 0; right: 0;
+ padding: 28px 32px;
+ color: #fff;
+ }
+
+ /* Card body for standard cards (below image) */
+ .cs-card__body {
+ padding: 18px 20px 20px;
+ }
+ .cs-card--wide .cs-card__body,
+ .cs-card--std .cs-card__body,
+ .cs-card--narrow .cs-card__body,
+ .cs-card--mid .cs-card__body,
+ .cs-card--mid-wide .cs-card__body {
+ flex-shrink: 0;
+ }
+
+ .cs-card__industry {
+ font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--sz-accent);
+ margin-bottom: 6px;
+ display: flex; align-items: center; gap: 8px;
+ }
+ .cs-card--featured .cs-card__industry,
+ .cs-card--tall .cs-card__industry {
+ color: rgba(255,255,255,0.7);
+ }
+ .cs-card__name {
+ font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+ color: var(--sz-black); line-height: 1.15; margin-bottom: 8px;
+ }
+ .cs-card--featured .cs-card__name { font-size: 32px; color: #fff; }
+ .cs-card--tall .cs-card__name { font-size: 24px; color: #fff; }
+ .cs-card--wide .cs-card__name { font-size: 20px; }
+ .cs-card--std .cs-card__name { font-size: 16px; }
+ .cs-card--narrow .cs-card__name { font-size: 15px; }
+ .cs-card--mid .cs-card__name { font-size: 17px; }
+ .cs-card--mid-wide .cs-card__name { font-size: 19px; }
+
+ .cs-card__tagline {
+ font-size: 14px; font-weight: 400; color: var(--sz-muted);
+ line-height: 1.5; margin-bottom: 16px;
+ }
+ .cs-card--featured .cs-card__tagline { font-size: 16px; color: rgba(255,255,255,0.8); }
+ .cs-card--tall .cs-card__tagline { font-size: 14px; color: rgba(255,255,255,0.75); }
+ .cs-card--narrow .cs-card__tagline,
+ .cs-card--std .cs-card__tagline { font-size: 12px; }
+
+ .cs-card__meta {
+ display: flex; align-items: center; gap: 16px;
+ }
+ .cs-card__pairs {
+ font-size: 13px; font-weight: 700; color: var(--sz-accent);
+ }
+ .cs-card--featured .cs-card__pairs,
+ .cs-card--tall .cs-card__pairs {
+ color: #fff;
+ }
+ .cs-card__arrow {
+ margin-left: auto;
+ display: flex; align-items: center; justify-content: center;
+ width: 32px; height: 32px;
+ border-radius: 50%;
+ background: var(--sz-accent-light);
+ color: var(--sz-accent);
+ transition: background 180ms ease, color 180ms ease;
+ }
+ .cs-card--featured .cs-card__arrow,
+ .cs-card--tall .cs-card__arrow {
+ background: rgba(255,255,255,0.15);
+ color: #fff;
+ }
+ .cs-card:hover .cs-card__arrow {
+ background: var(--sz-accent);
+ color: #fff;
+ }
+ /* For overlay cards, meta row needs relative z-index above overlay */
+ .cs-card--featured .cs-card__body { z-index: 2; }
+ .cs-card--tall .cs-card__body { z-index: 2; }
+
+ /* For flat (non-overlay) cards, image height is constrained */
+ .cs-card--wide .cs-card__img { height: 140px; flex: none; }
+ .cs-card--std .cs-card__img { height: 120px; flex: none; }
+ .cs-card--narrow .cs-card__img { height: 110px; flex: none; }
+ .cs-card--mid .cs-card__img { height: 130px; flex: none; }
+ .cs-card--mid-wide .cs-card__img { height: 140px; flex: none; }
+
+ /* ================================================================
+ S4: BY THE NUMBERS, Warm cream, editorial paragraph
+ ================================================================ */
+ .numbers-section {
+ background: var(--sz-bg-warm);
+ padding: 96px 0;
+ }
+ .numbers-inner {
+ max-width: 1240px;
+ margin: 0 auto;
+ padding: 0 48px;
+ display: grid;
+ grid-template-columns: 1fr 380px;
+ gap: 80px;
+ align-items: start;
+ }
+ .numbers__text {}
+ .numbers__rule {
+ width: 40px; height: 3px; background: var(--sz-accent);
+ margin-bottom: 28px;
+ }
+ .numbers__h2 {
+ font-size: 40px; font-weight: 800; letter-spacing: -0.03em;
+ color: var(--sz-black); line-height: 1.1; margin-bottom: 28px;
+ }
+ .numbers__prose {
+ font-size: 18px; font-weight: 400; color: var(--sz-text);
+ line-height: 1.8; max-width: 580px;
+ }
+ .numbers__prose strong {
+ font-weight: 700; color: var(--sz-accent); font-style: normal;
+ }
+
+ /* Logo wall */
+ .logo-wall {}
+ .logo-wall__label {
+ font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+ text-transform: uppercase; color: var(--sz-muted); margin-bottom: 20px;
+ }
+ .logo-wall__grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 12px;
+ }
+ .logo-tile {
+ background: var(--sz-white);
+ border-radius: 10px;
+ border: 1px solid var(--sz-border);
+ padding: 16px 12px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ min-height: 60px;
+ }
+ .logo-tile__name {
+ font-size: 12px; font-weight: 700; letter-spacing: -0.01em;
+ color: var(--sz-text); text-align: center;
+ }
+
+ /* ================================================================
+ S5: INQUIRY CTA, White bg
+ ================================================================ */
+ .cta-section {
+ background: var(--sz-white);
+ padding: 56px 0 64px;
+ border-top: 1px solid var(--sz-border);
+ }
+ .cta-inner {
+ max-width: 760px;
+ margin: 0 auto;
+ padding: 0 48px;
+ text-align: center;
+ }
+ .cta__icon {
+ width: 40px; height: 40px;
+ background: var(--sz-accent-light);
+ border-radius: 12px;
+ display: flex; align-items: center; justify-content: center;
+ margin: 0 auto 18px;
+ color: var(--sz-accent);
+ }
+ .cta__icon svg { width: 18px; height: 18px; }
+ .cta__h2 {
+ font-size: 28px; font-weight: 800; letter-spacing: -0.025em;
+ color: var(--sz-black); line-height: 1.15; margin-bottom: 10px;
+ }
+ .cta__sub {
+ font-size: 15px; font-weight: 400; color: var(--sz-muted);
+ line-height: 1.55; margin-bottom: 24px;
+ }
+ .cta__actions {
+ display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+ }
+
+ /* ================================================================
+ FOOTER STRIP
+ ================================================================ */
+ .footer-strip {
+ background: var(--sz-black);
+ padding: 28px 48px;
+ display: flex; align-items: center; justify-content: space-between;
+ max-width: 100%;
+ }
+ .footer-strip__logo {
+ font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #fff;
+ }
+ .footer-strip__logo span { color: var(--sz-accent); }
+ .footer-strip__copy {
+ font-size: 13px; color: rgba(255,255,255,0.4);
+ }
+
+ /* ================================================================
+ MOBILE RESPONSIVE
+ ================================================================ */
+ @media (max-width: 768px) {
+ .c, .c--wide { padding: 0 20px; }
+
+ .nav__links { display: none; }
+ .nav__inner { padding: 0 20px; }
+
+ /* Hero */
+ .hero { padding: 56px 0 0; }
+ .hero__inner {
+ grid-template-columns: 1fr;
+ gap: 32px;
+ padding: 0 20px;
+ }
+ .hero__text { padding-bottom: 0; }
+ .hero__h1 { font-size: 40px; }
+ .hero__sub { font-size: 16px; }
+ .hero__image-wrap { height: 300px; }
+ .hero__img-main { height: 300px; border-radius: 12px; }
+ .hero__img-accent { display: none; }
+ .hero__count-tag { left: 12px; top: 12px; }
+
+ /* Filter */
+ .filter-row { top: 60px; }
+ .filter-row__inner { padding: 0 20px; gap: 0; }
+ .filter-tab { padding: 14px 16px; font-size: 12px; }
+
+ /* Mosaic */
+ .mosaic-section { padding: 48px 0 64px; }
+ .mosaic-header { padding: 0 20px; margin-bottom: 32px; }
+ .mosaic {
+ grid-template-columns: 1fr;
+ grid-auto-rows: auto;
+ padding: 0 20px;
+ gap: 12px;
+ }
+ /* All cards collapse to single column */
+ .cs-card--featured,
+ .cs-card--tall,
+ .cs-card--wide,
+ .cs-card--std,
+ .cs-card--narrow,
+ .cs-card--mid,
+ .cs-card--mid-wide {
+ grid-column: 1 / -1;
+ grid-row: auto;
+ }
+ /* Restore flat layout for all on mobile */
+ .cs-card--featured .cs-card__img,
+ .cs-card--tall .cs-card__img {
+ height: 220px; flex: none; position: relative;
+ }
+ .cs-card--featured .cs-card__body,
+ .cs-card--tall .cs-card__body {
+ position: static;
+ color: var(--sz-text);
+ padding: 18px 20px 20px;
+ }
+ .cs-card--featured .cs-card__name,
+ .cs-card--tall .cs-card__name { color: var(--sz-black); font-size: 20px; }
+ .cs-card--featured .cs-card__tagline,
+ .cs-card--tall .cs-card__tagline { color: var(--sz-muted); }
+ .cs-card--featured .cs-card__pairs,
+ .cs-card--tall .cs-card__pairs { color: var(--sz-accent); }
+ .cs-card--featured .cs-card__industry,
+ .cs-card--tall .cs-card__industry { color: var(--sz-accent); }
+ .cs-card--featured .cs-card__arrow,
+ .cs-card--tall .cs-card__arrow {
+ background: var(--sz-accent-light); color: var(--sz-accent);
+ }
+ .cs-card--featured .cs-card__img::after,
+ .cs-card--tall .cs-card__img::after { display: none; }
+
+ /* Flat card images on mobile */
+ .cs-card--wide .cs-card__img,
+ .cs-card--std .cs-card__img,
+ .cs-card--narrow .cs-card__img,
+ .cs-card--mid .cs-card__img,
+ .cs-card--mid-wide .cs-card__img { height: 180px; }
+
+ /* Numbers */
+ .numbers-section { padding: 64px 0; }
+ .numbers-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 20px; }
+ .numbers__h2 { font-size: 28px; }
+ .numbers__prose { font-size: 16px; }
+ .logo-wall__grid { grid-template-columns: repeat(2, 1fr); }
+
+ /* CTA */
+ .cta-section { padding: 64px 0 80px; }
+ .cta-inner { padding: 0 20px; }
+ .cta__h2 { font-size: 28px; }
+ .cta__sub { font-size: 15px; }
+ .cta__actions { flex-direction: column; align-items: stretch; }
+ .cta__actions .btn { justify-content: center; }
+
+ .footer-strip { flex-direction: column; gap: 12px; padding: 24px 20px; text-align: center; }
+ }
+ 
+ .cs-card__link { display: block; height: 100%; color: inherit; text-decoration: none; }
+ .cs-card__link:hover { text-decoration: none; }
+</style>
+</head>
+<body>
+
+ <!-- TOOLBAR -->
+ <div class="toolbar" id="toolbar">
+ <span class="toolbar__label">Case Studies INDEX V2, Magazine Mosaic</span>
+ <button class="toolbar__copy-btn" onclick="copyCode()">Copy Code</button>
+ </div>
+ <div class="toolbar__toast" id="toast">Code copied to clipboard</div>
+
+ <!-- ================================================================
+ S1: HERO, Warm cream, asymmetric
+ ================================================================ -->
+ <section class="hero">
+ <div class="hero__inner">
+
+ <!-- LEFT: Text -->
+ <div class="hero__text" data-reveal>
+ <h1 class="hero__h1">Real brands.<br><em>Real shoes.</em><br>Real results.</h1>
+ <p class="hero__sub">From a single trade show run to a national retail launch, see how businesses across every industry used Shoe Zero to make custom footwear work.</p>
+ <div class="hero__actions">
+ <button class="btn btn--primary">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ Start an inquiry
+ </button>
+ <button class="btn btn--outline">Browse all stories</button>
+ </div>
+ </div>
+
+ <!-- RIGHT: Business inquiry hero video -->
+ <div class="hero__image-wrap" data-reveal>
+ <video
+ class="hero__img-main"
+ autoplay muted loop playsinline preload="metadata"
+ aria-label="Shoe Zero custom shoes for business teams">
+ <source src="https://shoezero.com/cdn/shop/videos/c/vp/752378dd6ddd4e28b6f5f9c1711a9b22/752378dd6ddd4e28b6f5f9c1711a9b22.HD-1080p-4.8Mbps-26030753.mp4?v=0" type="video/mp4">
+ </video>
+ </div>
+
+ </div>
+ </section>
+
+ <!-- ================================================================
+ S3: MOSAIC GRID, Cool bg, 12 brands, mixed sizes
+ ================================================================ -->
+ <section class="mosaic-section">
+ <div class="mosaic-header" data-reveal>
+ <p class="mosaic-header__h2">12 brands &amp; counting</p>
+ <div class="mosaic-header__count">Explore every story <span>&#8594;</span></div>
+ </div>
+
+ <!-- MOSAIC LAYOUT:
+ Row 1–2: CHP (8col × 2row featured) + ABB (4col × 2row tall)
+ Row 3: BuzzBallz (6col wide) + AAC 360 (6col wide)
+ Row 4: Bitchin Sauce (4col std) + Alta Sneakers (5col mid) + Alaska (3col narrow)
+ Row 5: Admiral (7col mid-wide) + Cliffco (5col mid)
+ Row 6: A+ Garage Doors (4col std) + Wednesday Foods (4col std) + Verder (4col std)
+ -->
+ <div class="mosaic" id="mosaic">
+
+
+ <article class="cs-card cs-card--featured" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/foxen.html" aria-label="Foxen case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-foxen.jpg" alt="Foxen custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Foxen</h2>
+ <p class="cs-card__tagline">Foxen needed shoes for leadership kickoff</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">26 pairs</span>
+ <span style="color:rgba(255,255,255,0.4);font-size:12px;">6 weeks</span>
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--tall" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/capgemini.html" aria-label="Capgemini case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-capgemini.jpg" alt="Capgemini custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Capgemini</h2>
+ <p class="cs-card__tagline">Capgemini&#x27;s team filmed themselves in the shoes</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">20 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--wide" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/veritas-technologies.html" aria-label="Veritas Technologies case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-veritas.jpg" alt="Veritas Technologies custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Veritas Technologies</h2>
+ <p class="cs-card__tagline">Veritas turned sales events into design kiosks</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">~150 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--wide" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/relex-solutions.html" aria-label="RELEX Solutions case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-relex.jpg" alt="RELEX Solutions custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">RELEX Solutions</h2>
+ <p class="cs-card__tagline">RELEX got 50 PMS-matched pairs to the booth</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">50 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/fairfield-residential.html" aria-label="Fairfield Residential case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-fairfield.jpg" alt="Fairfield Residential custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Fairfield Residential</h2>
+ <p class="cs-card__tagline">Fairfield&#x27;s 8 pairs sparked company-wide demand</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">8 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--mid" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/big-sing-thing.html" aria-label="The Big Sing Thing case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-big-sing-thing.jpg" alt="The Big Sing Thing custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">The Big Sing Thing</h2>
+ <p class="cs-card__tagline">Big Sing Thing made shoes the audience wanted</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">Concert run</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--narrow" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/relec-electronics.html" aria-label="Relec Electronics case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-relec.jpg" alt="Relec Electronics custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Relec Electronics</h2>
+ <p class="cs-card__tagline">Relec turned a UK delivery into marketing content</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">UK order</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--mid-wide" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/verder-liquids.html" aria-label="Verder Liquids case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-verder.jpg" alt="Verder Liquids custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Verder Liquids</h2>
+ <p class="cs-card__tagline">Verder Liquids spread the order to Spain</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">NL → Spain</span>
+ <span style="color:rgba(255,255,255,0.4);font-size:12px;">5★ Google + Trustpilot</span>
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--mid" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/university-of-south-dakota.html" aria-label="South Dakota Coyotes case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-south-dakota.jpg" alt="South Dakota Coyotes custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">South Dakota Coyotes</h2>
+ <p class="cs-card__tagline">South Dakota Coyotes built a shoe tradition</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">25 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/sma-inc.html" aria-label="SMA, Inc. case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-sma.jpg" alt="SMA, Inc. custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">SMA, Inc.</h2>
+ <p class="cs-card__tagline">SMA walked the conference floor in paint splatter</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">24 pairs</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
+ <a class="cs-card__link" href="detail/kitazato.html" aria-label="Kitazato case study">
+ <div class="cs-card__img">
+ <img src="images/quote-block/cs-quote-kitazato.jpg" alt="Kitazato custom Shoe Zero shoes" loading="lazy">
+ </div>
+ <div class="cs-card__body">
+ <h2 class="cs-card__name">Kitazato</h2>
+ <p class="cs-card__tagline">Kitazato put their shoes in the booth display</p>
+ <div class="cs-card__meta">
+ <span class="cs-card__pairs">Trade show kit</span>
+ 
+ <div class="cs-card__arrow">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ </div>
+ </div>
+ </div>
+ </a>
+ </article>
+
+ 
+
+ 
+
+ </div>
+ </section>
+
+
+ <!-- ================================================================
+ S5: INQUIRY CTA, White bg
+ ================================================================ -->
+ <section class="cta-section">
+ <div class="cta-inner" data-reveal>
+ <h2 class="cta__h2">Want your story here next?</h2>
+ <p class="cta__sub">
+ Every brand on this page started with a single conversation. Tell us what you're building and we'll show you exactly how custom shoes fit in.
+ </p>
+ <div class="cta__actions">
+ <a href="/pages/business-inquiry" class="btn btn--primary">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+ Start an inquiry
+ </a>
+ </div>
+ </div>
+ </section>
+
+
+ <!-- ================================================================
+ JS: Scroll reveal + filter tabs + copy code
+ ================================================================ -->
+ <script>
+ // Scroll reveal
+ const revealEls = document.querySelectorAll('[data-reveal]');
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(e => {
+ if (e.isIntersecting) {
+ e.target.classList.add('is-visible');
+ observer.unobserve(e.target);
+ }
+ });
+ }, { threshold: 0.08 });
+ revealEls.forEach(el => observer.observe(el));
+
+ // Filter tabs
+ const tabs = document.querySelectorAll('.filter-tab');
+ const cards = document.querySelectorAll('.cs-card');
+ tabs.forEach(tab => {
+ tab.addEventListener('click', () => {
+ tabs.forEach(t => t.classList.remove('active'));
+ tab.classList.add('active');
+ const filter = tab.dataset.filter;
+ cards.forEach(card => {
+ if (filter === 'all' || card.dataset.category === filter) {
+ card.style.display = '';
+ } else {
+ card.style.display = 'none';
+ }
+ });
+ });
+ });
+
+ // Copy code
+ function copyCode() {
+ const clone = document.documentElement.cloneNode(true);
+ // Remove toolbar from copied code
+ const tb = clone.querySelector('#toolbar');
+ const toast = clone.querySelector('#toast');
+ if (tb) tb.remove();
+ if (toast) toast.remove();
+ const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+ navigator.clipboard.writeText(html).then(() => {
+ const t = document.getElementById('toast');
+ t.classList.add('is-visible');
+ setTimeout(() => t.classList.remove('is-visible'), 2200);
+ });
+ }
+ </script>
+
+</body>
+</html>

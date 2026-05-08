@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relec UK Unboxing Video Case Study | Shoe Zero</title>
+<meta name="description" content="Relec Electronics&#x27; UK marketing team unboxed their custom shoes on video and posted 5-star Google and Trustpilot reviews the same week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+ /* ================================================================
+ TOOLBAR
+ ================================================================ */
+ .sz-toolbar {
+ position: fixed; top: 0; left: 0; right: 0; height: 44px;
+ background: var(--sz-black); display: flex; align-items: center;
+ justify-content: space-between; padding: 0 20px; z-index: 9000;
+ font-family: 'Inter', sans-serif;
+ }
+ .sz-toolbar__label {
+ font-size: 11px; font-weight: 700; color: #888;
+ letter-spacing: 0.1em; text-transform: uppercase;
+ }
+ .sz-copy-btn {
+ padding: 7px 14px; font-size: 11px; font-weight: 700;
+ font-family: 'Inter', sans-serif; background: var(--sz-accent);
+ color: #fff; border: none; border-radius: 6px; cursor: pointer;
+ transition: background 200ms var(--sz-ease);
+ }
+ .sz-copy-btn:hover { background: var(--sz-accent-hover); }
+ .sz-toast {
+ position: fixed; bottom: 80px; right: 24px;
+ background: var(--sz-black); color: #fff;
+ padding: 10px 18px; border-radius: 8px;
+ font-size: 13px; font-weight: 500;
+ opacity: 0; transform: translateY(8px);
+ transition: opacity 250ms ease, transform 250ms ease;
+ pointer-events: none; z-index: 9001;
+ }
+ .sz-toast.sz-visible { opacity: 1; transform: translateY(0); }
+
+ /* ================================================================
+ BASE RESET
+ ================================================================ */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+ line-height: 1.5; color: var(--sz-text); background: var(--sz-white);
+ padding-top: 44px; -webkit-font-smoothing: antialiased;
+ font-style: normal;
+ }
+ p, li, span, div, a, blockquote { font-style: normal; }
+
+ /* ================================================================
+ S1: WARM CREAM HERO, --sz-bg-warm, magazine cover treatment
+ ================================================================ */
+ /* HERO, Option B: H1 + video on top, intro + meta strip below */
+ .hero-section { background: var(--sz-bg-warm); padding: 0; }
+ .hero-inner {
+ max-width: 1180px;
+ margin: 0 auto;
+ padding: 56px 56px 18px;
+ }
+ .hero-top {
+ display: grid;
+ grid-template-columns: 1.05fr 0.95fr;
+ gap: 48px;
+ align-items: start;
+ margin-bottom: 0;
+ }
+ .hero-left {
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+ }
+ .hero-right {
+ align-self: center;
+ }
+ .hero-h1 {
+ font-size: clamp(36px, 4vw, 54px);
+ font-weight: 900;
+ letter-spacing: -0.04em;
+ line-height: 1.05;
+ color: var(--sz-black);
+ margin-bottom: 0;
+ }
+ .hero-video {
+ width: 100%;
+ max-height: clamp(320px, 56vh, 560px);
+ background: var(--sz-black);
+ border-radius: var(--sz-radius-card);
+ box-shadow: var(--sz-shadow);
+ overflow: hidden;
+ display: block;
+ object-fit: contain;
+ }
+ .hero-caption {
+ font-size: 13px;
+ color: var(--sz-muted);
+ margin-top: 10px;
+ text-align: center;
+ line-height: 1.5;
+ }
+
+ .hero-strip {
+ border-top: 1px solid var(--sz-border);
+ padding-top: 27px;
+ display: grid;
+ grid-template-columns: 1.4fr 1fr;
+ gap: 42px;
+ align-items: center;
+ }
+ .hero-intro {
+ font-size: 15px;
+ color: #3a3a3a;
+ line-height: 1.6;
+ font-weight: 400;
+ }
+ .hero-intro a {
+ color: var(--sz-accent);
+ text-decoration: underline;
+ text-underline-offset: 3px;
+ text-decoration-thickness: 1px;
+ }
+ .hero-intro a:hover { text-decoration-thickness: 2px; }
+ .hero-pills { display: flex; flex-direction: column; gap: 0; }
+ .hero-logo {
+ width: 100%; height: 40px; background: #ddd;
+ border-radius: 4px; margin-bottom: 14px;
+ display: flex; align-items: center; justify-content: center;
+ color: #888; font-size: 11px;
+ }
+ .hero-pill {
+ display: grid;
+ grid-template-columns: 120px 1fr;
+ align-items: baseline; gap: 12px;
+ padding: 7px 0; border-bottom: 1px solid var(--sz-border);
+ }
+ .hero-pill:last-child { border-bottom: none; }
+ .hero-pill-label {
+ font-size: 10px; font-weight: 700; text-transform: uppercase;
+ letter-spacing: 0.06em; color: var(--sz-muted);
+ white-space: nowrap;
+ }
+ .hero-pill-value { font-size: 12px; color: var(--sz-text); font-weight: 400; }
+
+ /* Hero intro paragraph (under H1, in left column) */
+ .hero-intro {
+ font-size: 16px;
+ color: #2a2a2a;
+ line-height: 1.6;
+ font-weight: 400;
+ max-width: 540px;
+ }
+ .hero-intro a { color: var(--sz-accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+ .hero-intro a:hover { text-decoration-thickness: 2px; }
+
+ /* Compact in-hero info card (under intro, in left column) */
+ .info-card {
+ background: var(--sz-white);
+ border-radius: var(--sz-radius-card);
+ box-shadow: var(--sz-shadow);
+ overflow: hidden;
+ max-width: 480px;
+ margin-top: 4px;
+ }
+ .info-card .hero-pills { display: flex; flex-direction: column; gap: 0; padding: 0; margin: 0; }
+ .info-card .hero-logo {
+ width: 100%; height: 80px; background: #fff;
+ border-radius: 0; margin: 0;
+ display: flex; align-items: center; justify-content: flex-start;
+ padding: 14px 22px;
+ border-bottom: 1px solid var(--sz-border);
+ color: #888; font-size: 11px;
+ }
+ .info-card .hero-logo img { max-height: 100%; max-width: 80%; width: auto; height: auto; object-fit: contain; }
+ .info-card .hero-logo[data-dark="1"] img { max-height: 110%; max-width: 90%; }
+ .info-card .hero-logo[data-dark="1"] { background: var(--sz-black); }
+ .info-card .hero-logo--mono { background: var(--sz-accent); color: #fff; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; justify-content: center; padding: 0; }
+ .info-card .hero-pill {
+ display: grid;
+ grid-template-columns: 0.85fr 1.15fr;
+ align-items: center; gap: 14px;
+ padding: 12px 20px;
+ border-bottom: 1px solid var(--sz-border);
+ }
+ .info-card .hero-pill:last-child { border-bottom: none; }
+ .info-card .hero-pill-label {
+ font-size: 10px; font-weight: 700; text-transform: uppercase;
+ letter-spacing: 0.08em; color: var(--sz-muted);
+ white-space: nowrap;
+ }
+ .info-card .hero-pill-value {
+ font-size: 13px; color: var(--sz-text); font-weight: 500; line-height: 1.4;
+ }
+
+ /* ================================================================
+ S3: BODY ARTICLE, --sz-bg-warm, 2-col body+sidebar grid
+ ================================================================ */
+ .article-section {
+ background: var(--sz-bg-warm);
+ padding: 0;
+ }
+ .article-inner {
+ max-width: 1180px;
+ margin: 0 auto;
+ padding: 0 56px 24px;
+ }
+
+ /* ── Sticky chapter pill-nav ── */
+ .chapter-nav {
+ position: sticky;
+ top: 44px;
+ z-index: 800;
+ background: var(--sz-bg-warm);
+ border-bottom: 1px solid var(--sz-border);
+ padding: 0;
+ line-height: 1;
+ }
+ .chapter-nav__inner {
+ max-width: 1180px;
+ margin: 0 auto;
+ padding: 0 56px;
+ display: flex;
+ gap: 0;
+ align-items: stretch;
+ height: 48px;
+ }
+ .chapter-nav__pill {
+ display: inline-flex;
+ align-items: center;
+ padding: 0 22px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--sz-muted);
+ background: none;
+ border: none;
+ border-bottom: 2px solid transparent;
+ cursor: pointer;
+ font-family: 'Inter', sans-serif;
+ transition: color 180ms ease, border-color 180ms ease;
+ white-space: nowrap;
+ height: 100%;
+ margin-bottom: -1px; /* sit on top of section border */
+ }
+ .chapter-nav__pill.is-active {
+ color: var(--sz-accent);
+ border-bottom-color: var(--sz-accent);
+ }
+ .chapter-nav__pill:hover:not(.is-active) {
+ color: var(--sz-text);
+ }
+
+ /* Article body + sidebar layout */
+ .article-body-grid {
+ display: grid;
+ grid-template-columns: 2fr 1fr;
+ gap: 96px;
+ padding-top: 14px;
+ border-top: 1px solid var(--sz-border);
+ }
+
+ /* Sidebar */
+ .body-sidebar {
+ position: sticky;
+ top: 60px; /* toolbar 44 + small buffer */
+ align-self: start;
+ }
+ .stats-card {
+ background: var(--sz-bg-cool);
+ border-radius: var(--sz-radius-card);
+ padding: 32px 28px;
+ box-shadow: var(--sz-shadow);
+ margin-bottom: 24px;
+ }
+ .stats-list {
+ display: flex;
+ flex-direction: column;
+ gap: 26px;
+ }
+ .stat {
+ padding-left: 18px;
+ border-left: 4px solid var(--sz-accent);
+ }
+ .stat .num {
+ font-size: 36px; font-weight: 800; letter-spacing: -0.025em;
+ line-height: 1; margin-bottom: 8px; color: var(--sz-text);
+ }
+ .stat .label {
+ font-size: 13px; color: #555; line-height: 1.45;
+ }
+ .sidebar-cta h4 {
+ font-size: 17px; font-weight: 700; margin-bottom: 14px; line-height: 1.3;
+ }
+ .sidebar-cta a {
+ display: inline-block; padding: 11px 22px;
+ background: var(--sz-accent); color: white;
+ border-radius: var(--sz-radius-btn); text-decoration: none;
+ font-weight: 600; font-size: 14px;
+ transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease), background 200ms var(--sz-ease);
+ }
+ .sidebar-cta a:hover {
+ background: var(--sz-accent-hover); transform: translateY(-2px);
+ box-shadow: var(--sz-shadow-hover);
+ }
+
+ /* Body content */
+ .body-content { min-width: 0; }
+
+ /* Customer tag line */
+ .customer-tag {
+ font-size: 12px; color: var(--sz-muted); font-weight: 600;
+ letter-spacing: 0.08em; text-transform: uppercase;
+ margin-bottom: 12px;
+ }
+
+ /* Body sections */
+ .body-section {
+ padding: 14px 0;
+ scroll-margin-top: 92px; /* toolbar + chapter nav */
+ }
+ .body-section:first-of-type { padding-top: 0; }
+ .body-section + .body-section { border-top: 1px solid var(--sz-border); }
+
+ .body-section h2 {
+ font-size: 36px; font-weight: 800; margin-bottom: 20px;
+ letter-spacing: -0.025em; line-height: 1.15;
+ }
+ .body-section p {
+ font-size: 18px; color: #2a2a2a; margin-bottom: 20px; line-height: 1.78;
+ font-weight: 400;
+ }
+ .body-section p:last-child { margin-bottom: 0; }
+ .body-section a {
+ color: var(--sz-accent); text-decoration: underline;
+ text-underline-offset: 3px; text-decoration-thickness: 1px;
+ }
+ .body-section a:hover { text-decoration-thickness: 2px; }
+
+
+ /* Asymmetric image grid, 3fr / 2fr split */
+ .asym-grid {
+ display: grid;
+ grid-template-columns: 3fr 2fr;
+ grid-template-rows: auto auto;
+ gap: 12px;
+ margin: 52px 0 0;
+ }
+ .asym-grid__main {
+ grid-row: 1 / 3;
+ border-radius: var(--sz-radius-card);
+ overflow: hidden;
+ box-shadow: var(--sz-shadow);
+ }
+ .asym-grid__main img {
+ width: 100%; height: 100%;
+ object-fit: cover;
+ aspect-ratio: 4/3;
+ display: block;
+ }
+ .asym-grid__side {
+ border-radius: var(--sz-radius-card);
+ overflow: hidden;
+ box-shadow: var(--sz-shadow);
+ }
+ .asym-grid__side img {
+ width: 100%; height: 100%;
+ object-fit: cover;
+ aspect-ratio: 1/1;
+ display: block;
+ }
+ .asym-grid__caption {
+ grid-column: 1 / 3;
+ font-size: 13px;
+ color: var(--sz-muted);
+ line-height: 1.5;
+ padding-top: 4px;
+ }
+
+ /* Results sub-sections */
+ .results-sub { margin-top: 40px; }
+ .results-sub h3 {
+ font-size: 22px; font-weight: 700; margin-bottom: 14px;
+ color: var(--sz-text); letter-spacing: -0.015em;
+ }
+
+ /* ================================================================
+ PULL QUOTE: inline green card, integrated into article body
+ ================================================================ */
+ .quote-card {
+ background: var(--sz-accent);
+ border-radius: var(--sz-radius-card);
+ overflow: hidden;
+ display: grid;
+ grid-template-columns: 1.4fr 1fr;
+ min-height: 220px;
+ margin: 28px 0 8px;
+ box-shadow: var(--sz-shadow);
+ }
+ .quote-card__body {
+ padding: 28px 32px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ color: #fff;
+ }
+ .quote-card__text {
+ font-size: 17px;
+ font-weight: 600;
+ line-height: 1.45;
+ letter-spacing: -0.005em;
+ color: #fff;
+ margin-bottom: 16px;
+ font-style: normal;
+ }
+ .quote-card__attr {
+ font-size: 13px;
+ color: rgba(255, 255, 255, 0.85);
+ font-weight: 400;
+ margin-bottom: 18px;
+ line-height: 1.5;
+ }
+ .quote-card__attr strong { font-weight: 700; color: #fff; }
+ .quote-card__btn {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: transparent;
+ color: #fff;
+ padding: 0;
+ border-radius: 0;
+ text-decoration: underline;
+ text-underline-offset: 4px;
+ text-decoration-thickness: 1px;
+ font-weight: 700;
+ font-size: 13px;
+ width: fit-content;
+ transition: gap 200ms var(--sz-ease), text-decoration-thickness 200ms ease;
+ }
+ .quote-card__btn:hover {
+ gap: 12px;
+ text-decoration-thickness: 2px;
+ }
+ .quote-card__btn svg {
+ width: 14px; height: 14px;
+ }
+ .quote-card__image {
+ background-image: url('../images/quote-block/cs-quote-relec.jpg');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-color: #fff;
+ position: relative;
+ }
+ /* Override .body-section p that wins specificity now that the card is inside Results */
+ .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+ .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+ .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
+ .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
+
+ 
+ /* Solo quote card (no hero image), full-bleed typography */
+ .quote-card--solo { grid-template-columns: 1fr; min-height: auto; padding: 36px 44px; }
+ .quote-card--solo .quote-card__body { padding: 0; }
+ @media (max-width: 768px) {
+  .quote-card--solo { padding: 24px 22px; }
+  .quote-card--solo .quote-card__text { font-size: 17px !important; }
+ }
+
+ /* Hero video orientation variants */
+ .hero-video--portrait {
+   max-height: clamp(300px, 52vh, 480px);
+   width: auto;
+   max-width: 280px;
+   margin-left: auto;
+   margin-right: auto;
+   aspect-ratio: 9/16;
+   object-fit: cover;
+ }
+ .hero-video--landscape {
+   width: 100%;
+   max-height: clamp(280px, 50vh, 480px);
+   aspect-ratio: 16/9;
+   object-fit: cover;
+ }
+ .hero-video--photo {
+   width: 100%;
+   max-height: clamp(320px, 56vh, 520px);
+   aspect-ratio: 4/3;
+   object-fit: cover;
+ }
+ @media (max-width: 768px) {
+   .hero-video--portrait { max-width: 220px; }
+ }
+
+ /* ================================================================
+ S4: RELATED STORIES, --sz-white, row-list NOT cards
+ ================================================================ */
+ .related-section {
+ background: var(--sz-white);
+ padding: 36px 0;
+ }
+ .related-inner {
+ max-width: 1180px;
+ margin: 0 auto;
+ padding: 0 56px;
+ }
+ .related-inner h3 {
+ font-size: 28px; font-weight: 800; margin-bottom: 36px;
+ letter-spacing: -0.025em;
+ }
+ .stories-list { list-style: none; }
+ .story-row {
+ display: grid;
+ grid-template-columns: 180px 1fr auto;
+ gap: 28px;
+ align-items: center;
+ padding: 24px 16px;
+ border-bottom: 1px solid var(--sz-border);
+ text-decoration: none;
+ color: inherit;
+ transition: background 180ms ease, border-radius 180ms ease;
+ margin: 0 -16px;
+ border-radius: 0;
+ }
+ .story-row:first-child { border-top: 1px solid var(--sz-border); }
+ .story-row:hover {
+ background: var(--sz-bg-warm);
+ border-radius: var(--sz-radius-card);
+ border-color: transparent;
+ }
+ .story-row:hover + .story-row { border-top-color: transparent; }
+ .story-thumb {
+ border-radius: var(--sz-radius-card);
+ overflow: hidden;
+ box-shadow: var(--sz-shadow);
+ flex-shrink: 0;
+ }
+ .story-thumb img {
+ width: 180px; height: 120px;
+ object-fit: cover; display: block;
+ }
+ .story-meta .story-brand {
+ font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+ text-transform: uppercase; color: var(--sz-accent);
+ margin-bottom: 6px;
+ }
+ .story-meta .story-outcome {
+ font-size: 15px; color: #2a2a2a; font-weight: 500; line-height: 1.4;
+ }
+ .story-arrow {
+ flex-shrink: 0;
+ width: 36px; height: 36px;
+ border: 1.5px solid var(--sz-border);
+ border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ color: var(--sz-muted);
+ transition: border-color 180ms ease, color 180ms ease, transform 200ms var(--sz-ease);
+ }
+ .story-row:hover .story-arrow {
+ border-color: var(--sz-accent);
+ color: var(--sz-accent);
+ transform: translateX(4px);
+ }
+
+ /* ================================================================
+ S5: BOTTOM CTA, --sz-bg-cool
+ ================================================================ */
+ .bottom-cta-section {
+ background: var(--sz-bg-cool);
+ padding: 36px 0 40px;
+ }
+ .bottom-cta-inner {
+ max-width: 1180px;
+ margin: 0 auto;
+ padding: 0 56px;
+ display: grid;
+ grid-template-columns: 1.4fr 1fr;
+ gap: 72px;
+ align-items: stretch;
+ }
+ .cta-col { display: flex; flex-direction: column; }
+ .cta-col > *:last-child { margin-top: auto; }
+ .cta-col h3 {
+ font-size: 26px; font-weight: 800; margin-bottom: 16px;
+ line-height: 1.25; letter-spacing: -0.02em;
+ }
+ .cta-col p {
+ font-size: 16px; color: #555; margin-bottom: 28px;
+ line-height: 1.6; max-width: 360px;
+ }
+ .cta-col-secondary {
+ border-left: 3px solid var(--sz-accent); padding-left: 28px;
+ }
+ .cta-buttons {
+ display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+ }
+ .btn-primary {
+ display: inline-block; padding: 11px 24px;
+ background: var(--sz-accent); color: white;
+ border-radius: var(--sz-radius-btn); text-decoration: none;
+ font-weight: 600; font-size: 14px;
+ transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease), background 200ms var(--sz-ease);
+ }
+ .btn-primary:hover {
+ background: var(--sz-accent-hover); transform: translateY(-2px);
+ box-shadow: var(--sz-shadow-hover);
+ }
+ .btn-secondary {
+ color: var(--sz-accent); text-decoration: none;
+ font-weight: 600; font-size: 14px;
+ }
+ .btn-secondary::after { content: " \203A"; }
+ .btn-secondary:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+ /* ================================================================
+ MOBILE, max-width: 768px
+ ================================================================ */
+ @media (max-width: 768px) {
+ .hero-inner { padding: 48px 24px 24px; }
+ .hero-top { grid-template-columns: 1fr; gap: 28px; margin-bottom: 0; }
+ .hero-left { gap: 20px; }
+ .hero-h1 { font-size: clamp(36px, 10vw, 52px); }
+ .hero-intro { font-size: 15px; }
+ .info-card { max-width: 100%; }
+
+ .article-inner { padding: 0 24px 64px; }
+
+ /* Chapter nav becomes horizontal scroll-pills on mobile */
+ .chapter-nav__inner {
+ padding: 0 16px;
+ overflow-x: auto;
+ -webkit-overflow-scrolling: touch;
+ scrollbar-width: none;
+ gap: 4px;
+ height: 44px;
+ }
+ .chapter-nav__inner::-webkit-scrollbar { display: none; }
+ .chapter-nav__pill {
+ padding: 6px 16px;
+ border: 1.5px solid var(--sz-border);
+ border-bottom: 1.5px solid var(--sz-border);
+ border-radius: 999px;
+ font-size: 12px;
+ white-space: nowrap;
+ flex-shrink: 0;
+ height: auto;
+ margin-bottom: 0;
+ }
+ .chapter-nav__pill.is-active {
+ background: var(--sz-accent-light);
+ border-color: var(--sz-accent);
+ }
+
+ .article-body-grid {
+ grid-template-columns: 1fr;
+ gap: 48px;
+ padding-top: 48px;
+ }
+ .body-sidebar { position: static; }
+ .body-section { padding: 14px 0; }
+ .body-section h2 { font-size: 26px; }
+ .body-section p { font-size: 17px; }
+
+ .asym-grid {
+ grid-template-columns: 1fr;
+ grid-template-rows: auto;
+ }
+ .asym-grid__main { grid-row: auto; }
+ .asym-grid__main img { aspect-ratio: 4/3; }
+ .asym-grid__caption { grid-column: 1; }
+
+ .quote-card {
+ grid-template-columns: 1fr;
+ min-height: auto;
+ margin: 20px 0 4px;
+ }
+ .quote-card__body { padding: 22px 22px; }
+ .quote-card__text { font-size: 16px; margin-bottom: 12px; }
+ .quote-card__image {
+ min-height: 180px;
+ order: -1;
+ }
+
+ .related-inner { padding: 0 24px; }
+ .story-row {
+ grid-template-columns: 100px 1fr auto;
+ gap: 16px;
+ margin: 0 -8px;
+ padding: 20px 8px;
+ }
+ .story-thumb img { width: 100px; height: 66px; }
+
+ .bottom-cta-inner {
+ grid-template-columns: 1fr;
+ gap: 40px;
+ padding: 0 24px;
+ }
+ .cta-col-secondary {
+ border-left: none; padding-left: 0;
+ border-top: 3px solid var(--sz-accent); padding-top: 28px;
+ }
+ }
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="sz-toolbar">
+ <span class="sz-toolbar__label">Case Study DETAIL V3, Relec Electronics</span>
+ <button class="sz-copy-btn" onclick="szCopyCode()">Copy Code</button>
+</div>
+<div class="sz-toast" id="szToast">Copied!</div>
+
+<!-- ================================================================
+ S1: WARM CREAM HERO, sz-bg-warm
+ Magazine cover treatment: massive H1, context line, meta card right
+ ================================================================ -->
+<section class="hero-section">
+ <div class="hero-inner">
+
+ <div class="hero-top">
+ <div class="hero-left">
+ <h1 class="hero-h1">Relec turned a UK delivery into marketing content</h1>
+ <p class="hero-intro">Relec Electronics is a UK-based provider of power supplies, displays, and switching components for industrial applications. Founded in 1981 and headquartered in Wareham, Dorset, the company has spent more than 40 years building specialized expertise across the European industrial electronics market. The marketing team's order from Shoe Zero was straightforward. What came after was not.</p>
+ <aside class="info-card">
+ <div class="hero-pills">
+ <div class="hero-logo"><img src="../images/logos/cs-logo-relec-electronics.png" alt="relec electronics logo"></div><div class="hero-logo hero-logo--mono" id="mono-relec-electronics" style="display:none;">R</div>
+        <div class="hero-pill">
+         <span class="hero-pill-label">Products used</span>
+         <span class="hero-pill-value">Classic Zero</span>
+        </div>
+        <div class="hero-pill">
+         <span class="hero-pill-label">Country</span>
+         <span class="hero-pill-value">United Kingdom</span>
+        </div>
+        <div class="hero-pill">
+         <span class="hero-pill-label">Industry</span>
+         <span class="hero-pill-value">Industrial Electronics</span>
+        </div>
+ </div>
+ </aside>
+ </div>
+ <div class="hero-right">
+ <video class="hero-video hero-video--portrait" preload="metadata" controls playsinline aria-label="Lauren Grice video review">
+      <source src="https://cdn.shopify.com/videos/c/vp/55a65c1cedaf441f94d5fd445c6edb0b/55a65c1cedaf441f94d5fd445c6edb0b.HD-1080p-7.2Mbps-83694706.mp4" type="video/mp4">
+     </video>
+ </div>
+ </div>
+
+ </div>
+</section>
+
+<!-- ================================================================
+ S3: BODY ARTICLE, sz-bg-warm
+ ================================================================ -->
+<section class="article-section">
+ <div class="article-inner">
+
+ <div class="article-body-grid">
+
+ <!-- LEFT: body content -->
+ <div class="body-content">
+
+ <p class="customer-tag">Relec Electronics | Industrial Electronics | Wareham, Dorset, United Kingdom</p>
+
+ <!-- CHALLENGE -->
+       <section class="body-section" id="ch-challenge">
+        <h2>Challenge</h2>
+        <p>Most industrial electronics companies treat branded merchandise as an afterthought. The customer base is technical, the sales cycle is relationship-driven, and the brand sits in a category where marketing rarely earns the spotlight. Logoed pens at trade shows. Polos at the company picnic. The kind of swag that gets ordered once and forgotten until the next quarterly print run. <a href="https://www.relec.co.uk/" rel="noopener" target="_blank">Relec Electronics</a> is in the same category. The marketing team did not behave like it.</p>
+        <p>Marketing-led B2B buyers do not order swag for its own sake. They order assets. The Relec marketing team wanted to <a href="/collections/custom-shoes">design custom sneakers</a> for the team that they could mark a moment with, share internally, and create content around. The shoes had to look exactly right, feel like they belonged on a marketing-team member's feet, and arrive in a condition that did not need explaining. Anything less and the post-sale moment would not work.</p>
+        <p><a href="https://www.linkedin.com/in/callum-croucher/" rel="noopener" target="_blank">Callum Croucher</a>, Marketing Executive at Relec, found Shoe Zero online and reached out. The conversation moved fast. Callum opted for the design service to lock in brand alignment up front, and the order moved through to production with the polish the marketing team wanted. The handoff to <a href="https://www.linkedin.com/in/lauren-grice-062b41313/" rel="noopener" target="_blank">Lauren Grice</a>, also Marketing Executive at Relec, came as the order entered production.</p>
+        <p>Six weeks of production and shipping was the squeeze. The order moved from the US to the UK, with four weeks of production followed by two weeks of shipping to Wareham. Anything off-spec on arrival, bent in transit, or that didn't match the brief, and the post-sale moment Relec was building would land on a different week. The marketing team had a content calendar. The shoes had to land with it.</p>
+       </section>
+
+       <section class="body-section" id="ch-solution">
+        <h2>Solution</h2>
+        <p>Callum picked the Classic Zero and paid up front for the design service to lock in brand polish. He handed off to Lauren as the order entered production. Brand alignment, logo placement, and finish were all signed off before production began. Lauren took ownership of the post-delivery side.</p>
+        <p>Once production wrapped and the shoes arrived at the Relec office in Wareham, Lauren's team filmed an unboxing video, with multiple angles, real reactions, and a branded backdrop. The kind of edit that does not get done unless the marketing team has already decided the shoes are worth filming. Most B2B suppliers never see a customer-produced video at all. Lauren's team built one in-house, on Relec's timeline and set. Lauren sent the video back to Shoe Zero the same week as a marketing asset. They did not stop there.</p>
+        <p>Within days of receiving the shoes, Lauren posted 5-star reviews on both Google and Trustpilot. Lauren also committed to publishing the unboxing video on Relec's social channels at the end of May. The marketing team had built the asset. The next move was getting it in front of Relec's audience.</p>
+       </section>
+
+       <section class="body-section" id="ch-results">
+        <h2>Results</h2>
+        <div class="results-sub">
+<h3>An unboxing video that became a marketing asset</h3>
+<p>Most B2B custom merchandise sits in a closet or gets a single Slack mention. Relec's team built a full unboxing video around their shoes. Multi-angle, polished, ready for social. For a small business on the supplier side, an unprompted customer-produced video is the most valuable post-sale signal possible. Relec is not a Capgemini-scale customer. The video they made carries proof that does not depend on company size. The marketing team filmed something they wanted to share, then shared it back.</p>
+</div>
+        <div class="results-sub">
+<h3>5-star reviews on Google and Trustpilot</h3>
+<p>After receiving the shoes and sending the video, Lauren followed up with 5-star reviews on both Google and Trustpilot. They went up within the same week as delivery. For a custom shoe company that depends on review proof to earn trust with new buyers, that kind of dual-platform endorsement carries weight that paid marketing cannot replicate. The reviews showed up before Conrad asked for them and stayed up after.</p>
+</div>
+        <div class="results-sub">
+<h3>End-of-May social rollout that extends the case</h3>
+<p>Lauren has committed to posting the unboxing video on Relec's social channels at the end of May. LinkedIn and Instagram. The <a href="/products/classic-zero">Classic Zero</a> design is the product on screen. That extends the case study beyond the delivery moment. The shoes do not just live in the Relec office. They become content the marketing team is using to engage their own audience, with Shoe Zero benefiting from organic reach in a UK industrial-electronics network. These audiences are technical, B2B, and skeptical of consumer-style brand content. A real customer-produced unboxing video carries weight in that network that a vendor-produced ad never could. The case study was already complete on the day the shoes arrived. The social rollout makes it compound.</p>
+</div>
+
+       <div class="quote-card">
+        <div class="quote-card__body">
+         <p class="quote-card__text">"We wanted the shoes to look exactly right, and they did. The team filmed an unboxing video the same day they arrived."</p>
+         <p class="quote-card__attr">Lauren Grice, Marketing Executive, Relec Electronics</p>
+         <a href="#" class="quote-card__btn">
+          Read story
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+         </a>
+        </div>
+        <div class="quote-card__image" style="background-image:url('../images/quote-block/cs-quote-relec.jpg');" aria-hidden="true"></div>
+       </div>
+      </section>
+
+      </div>
+
+      <!-- RIGHT: sticky stat sidebar, Vincent-preserved -->
+ <aside class="body-sidebar">
+ <div class="stats-card">
+ <div class="stats-list">
+ <div class="stat"><div class="num">International</div><div class="label">shipped from the US to the UK, marketing-led order</div></div>
+          <div class="stat"><div class="num">1 unboxing video</div><div class="label">produced by Relec&#x27;s marketing team for social</div></div>
+          <div class="stat"><div class="num">5-star reviews</div><div class="label">posted on Google and Trustpilot the same week</div></div>
+ </div>
+ </div>
+ <div class="sidebar-cta">
+ <h4>Ready to plan your team&#x27;s pair?</h4>
+ <a href="/pages/business-inquiry">Talk to Shoe Zero</a>
+ </div>
+ </aside>
+
+ </div>
+
+ </div>
+</section>
+
+<!-- ================================================================
+ S4: RELATED STORIES, sz-white, row-list
+ ================================================================ -->
+<section class="related-section">
+ <div class="related-inner">
+ <h3>Read more customer stories</h3>
+ <ul class="stories-list">
+       <li>
+        <a class="story-row" href="foxen.html">
+         <div class="story-thumb">
+          <img src="https://picsum.photos/seed/foxen/360/240" alt="Foxen case study" width="180" height="120">
+         </div>
+         <div class="story-meta">
+          <p class="story-brand">Foxen</p>
+          <p class="story-outcome">These shoes are exactly what we wanted — premium, on-brand, and our team genuinely loves w...</p>
+         </div>
+         <div class="story-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </div>
+        </a>
+       </li>
+
+       <li>
+        <a class="story-row" href="fairfield-residential.html">
+         <div class="story-thumb">
+          <img src="https://picsum.photos/seed/fairfield-residential/360/240" alt="Fairfield Residential case study" width="180" height="120">
+         </div>
+         <div class="story-meta">
+          <p class="story-brand">Fairfield Residential</p>
+          <p class="story-outcome">Our team genuinely loves these shoes. People who didn&#x27;t get a pair are now asking how to g...</p>
+         </div>
+         <div class="story-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </div>
+        </a>
+       </li>
+   </ul>
+ </div>
+</section>
+
+<!-- ================================================================
+ S5: BOTTOM CTA, sz-bg-cool
+ 2-column: Plan your team's pair / More B2B case studies
+ ================================================================ -->
+<section class="bottom-cta-section">
+ <div class="bottom-cta-inner">
+ <div class="cta-col">
+ <h3>Plan your team's pair</h3>
+ <p>Custom shoes for your team, event, or launch. Designed in your brand, sized to each person, shipped ready to wear.</p>
+ <div class="cta-buttons">
+ <a href="/pages/business-inquiry" class="btn-primary">Get started</a>
+ <a href="/collections/custom-shoes" class="btn-secondary">Browse styles</a>
+ </div>
+ </div>
+ <div class="cta-col cta-col-secondary">
+ <h3>More B2B case studies</h3>
+ <p>See the brands Shoe Zero has worked with. Logos and project notes on the case studies page.</p>
+ <a href="/pages/case-studies" class="btn-secondary">All case studies</a>
+ </div>
+ </div>
+</section>
+
+<script>
+ /* ── Copy Code ── */
+ function szCopyCode() {
+ const html = document.documentElement.outerHTML;
+ const toast = document.getElementById('szToast');
+ const showToast = (msg) => {
+ toast.textContent = msg;
+ toast.classList.add('sz-visible');
+ setTimeout(() => toast.classList.remove('sz-visible'), 1800);
+ };
+ if (navigator.clipboard && window.isSecureContext) {
+ navigator.clipboard.writeText(html).then(
+ () => showToast('Copied!'),
+ () => showToast('Copy failed')
+ );
+ } else {
+ const ta = document.createElement('textarea');
+ ta.value = html;
+ ta.style.position = 'fixed'; ta.style.opacity = '0';
+ document.body.appendChild(ta);
+ ta.select();
+ try { document.execCommand('copy'); showToast('Copied!'); }
+ catch (e) { showToast('Copy failed'); }
+ document.body.removeChild(ta);
+ }
+ }
+
+ /* ── Chapter scroll-spy with IntersectionObserver ── */
+ const chapters = document.querySelectorAll('.body-section[id]');
+ const pills = document.querySelectorAll('.chapter-nav__pill');
+
+ function setActivePill(targetId) {
+ pills.forEach(pill => {
+ pill.classList.toggle('is-active', pill.dataset.target === targetId);
+ });
+ }
+
+ const spyObserver = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ setActivePill(entry.target.id);
+ }
+ });
+ }, {
+ root: null,
+ rootMargin: '-20% 0px -70% 0px',
+ threshold: 0
+ });
+
+ chapters.forEach(ch => spyObserver.observe(ch));
+
+ /* ── Smooth scroll on pill click ── */
+ pills.forEach(pill => {
+ pill.addEventListener('click', () => {
+ const target = document.getElementById(pill.dataset.target);
+ if (target) {
+ target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }
+ });
+ });
+</script>
+</body>
+</html>
