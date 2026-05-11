@@ -386,76 +386,76 @@
  /* ================================================================
  PULL QUOTE: inline green card, integrated into article body
  ================================================================ */
- .quote-card {
- background: var(--sz-accent);
- border-radius: var(--sz-radius-card);
- overflow: hidden;
- display: grid;
- grid-template-columns: 1fr;
- min-height: 220px;
- margin: 28px 0 8px;
- box-shadow: var(--sz-shadow);
- }
- .quote-card__body {
- padding: 28px 32px;
- display: flex;
- flex-direction: column;
- justify-content: center;
- color: #fff;
- }
- .quote-card__text {
- font-size: 17px;
- font-weight: 600;
- line-height: 1.45;
- letter-spacing: -0.005em;
- color: #fff;
- margin-bottom: 16px;
- font-style: normal;
- }
- .quote-card__attr {
- font-size: 13px;
- color: rgba(255, 255, 255, 0.85);
- font-weight: 400;
- margin-bottom: 18px;
- line-height: 1.5;
- }
- .quote-card__attr strong { font-weight: 700; color: #fff; }
- .quote-card__btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- background: transparent;
- color: #fff;
- padding: 0;
- border-radius: 0;
- text-decoration: underline;
- text-underline-offset: 4px;
- text-decoration-thickness: 1px;
- font-weight: 700;
- font-size: 13px;
- width: fit-content;
- transition: gap 200ms var(--sz-ease), text-decoration-thickness 200ms ease;
- }
- .quote-card__btn:hover {
- gap: 12px;
- text-decoration-thickness: 2px;
- }
- .quote-card__btn svg {
- width: 14px; height: 14px;
- }
- .quote-card__image { display: none; display: none;
- background-image: url('../quote-block-images/foxen.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- background-color: #fff;
- position: relative;
- }
- /* Override .body-section p that wins specificity now that the card is inside Results */
- .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
- .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
- .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
- .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
+  .quote-card {
+   background: var(--sz-accent);
+   border-radius: var(--sz-radius-card);
+   overflow: hidden;
+   display: grid;
+   grid-template-columns: 1.35fr 1fr;
+   min-height: 260px;
+   margin: 28px 0 8px;
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__body {
+   padding: 32px 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   color: #fff;
+  }
+  .quote-card__text {
+   font-size: 17px;
+   font-weight: 600;
+   line-height: 1.45;
+   letter-spacing: -0.005em;
+   color: #fff;
+   margin-bottom: 16px;
+   font-style: normal;
+  }
+  .quote-card__attr {
+   font-size: 13px;
+   color: rgba(255, 255, 255, 0.85);
+   font-weight: 400;
+   margin-bottom: 18px;
+   line-height: 1.5;
+  }
+  .quote-card__attr strong { font-weight: 700; color: #fff; }
+  .quote-card__btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   background: #fff;
+   color: var(--sz-accent);
+   padding: 10px 20px;
+   border-radius: var(--sz-radius-btn);
+   text-decoration: none;
+   font-weight: 700;
+   font-size: 13px;
+   width: fit-content;
+   transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease);
+  }
+  .quote-card__btn:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__btn svg { width: 14px; height: 14px; }
+  .quote-card__image {
+   position: relative;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+  }
+  .quote-card__image::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(to right, var(--sz-accent) 0%, rgba(0, 112, 74, 0.65) 35%, rgba(0, 112, 74, 0.15) 100%);
+  }
+  /* Override .body-section p that wins specificity when card is inside Results */
+  .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+  .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+  .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
+  .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
 
  
  /* Solo quote card (no hero image), full-bleed typography */
@@ -662,18 +662,19 @@
  .asym-grid__main { grid-row: auto; }
  .asym-grid__main img { aspect-ratio: 4/3; }
  .asym-grid__caption { grid-column: 1; }
-
- .quote-card {
- grid-template-columns: 1fr;
- min-height: auto;
- margin: 20px 0 4px;
- }
- .quote-card__body { padding: 22px 22px; }
- .quote-card__text { font-size: 16px; margin-bottom: 12px; }
- .quote-card__image { display: none; display: none;
- min-height: 180px;
- order: -1;
- }
+  .quote-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 180px;
+   }
+   .quote-card__body { padding: 22px 22px; }
+   .quote-card__text { font-size: 16px; margin-bottom: 12px; }
+   .quote-card__image {
+    min-height: 180px;
+    order: 2;
+   }
+   .quote-card__image::before {
+    background: linear-gradient(to bottom, var(--sz-accent) 0%, rgba(0, 112, 74, 0.4) 40%, rgba(0, 112, 74, 0.1) 100%);
+   }
 
  .related-inner { padding: 0 24px; }
  .related-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -768,6 +769,19 @@
 
        <section class="body-section" id="ch-results">
         <h2>Results</h2><div class="results-sub"><h3>Employees made the case for the shoes themselves</h3><p>Capgemini's team produced a multi-person video showing real employees wearing the shoes. Not a curated marketing asset. Not a vendor-produced testimonial. Team members themselves making the content, voluntarily, sent over unprompted. Inside a global consulting firm where employees see endless branded merchandise, that level of organic enthusiasm is rare. It is the strongest signal possible that the shoes landed. Most B2B custom merchandise lands as a logo on a thing. The video showed it landing as a thing employees liked. The signal came from the people who actually wore them, not from a vendor pitch.</p></div><div class="results-sub"><h3>A small-team order opened internal demand</h3><p>Once the original order landed and the video circulated, more Capgemini employees started asking how they could get their own. A Capgemini-named code let them grab the same <a href="/products/base-zero">Base Zero</a> at 10% off. The pilot turned into an internal merchandise channel for the broader team, with no marketing campaign behind it and no procurement process in front of it. Demand was inbound. The code answered it.</p></div><div class="results-sub"><h3>Custom shoes work at the largest enterprises</h3><p>Capgemini is the largest enterprise customer in Shoe Zero's case study lineup. The decision to <a href="/collections/custom-shoes">create custom shoes</a> for 20 employees earned organic enthusiasm inside that scale. The format held its own as employee-grade merchandise at the largest enterprises in the world, not just for small teams or single events. The proof is on Capgemini's video.</p></div>
+
+ <div class="quote-card">
+  <div class="quote-card__body">
+   <p class="quote-card__text">"Our team got so excited about the shoes that they put together a video showing them off. We weren't expecting that kind of reaction to branded merchandise."</p>
+   <p class="quote-card__attr"><strong>Capgemini</strong></p>
+   <a href="#" class="quote-card__btn">
+    Watch the video
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+   </a>
+  </div>
+  <div class="quote-card__image" style="background-image: url('../images/card-photos/cs-card-capgemini.jpg')" aria-hidden="true"></div>
+ </div>
+
         
         
         

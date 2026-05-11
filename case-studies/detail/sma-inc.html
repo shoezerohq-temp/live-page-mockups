@@ -386,76 +386,76 @@
  /* ================================================================
  PULL QUOTE: inline green card, integrated into article body
  ================================================================ */
- .quote-card {
- background: var(--sz-accent);
- border-radius: var(--sz-radius-card);
- overflow: hidden;
- display: grid;
- grid-template-columns: 1fr;
- min-height: 220px;
- margin: 28px 0 8px;
- box-shadow: var(--sz-shadow);
- }
- .quote-card__body {
- padding: 28px 32px;
- display: flex;
- flex-direction: column;
- justify-content: center;
- color: #fff;
- }
- .quote-card__text {
- font-size: 17px;
- font-weight: 600;
- line-height: 1.45;
- letter-spacing: -0.005em;
- color: #fff;
- margin-bottom: 16px;
- font-style: normal;
- }
- .quote-card__attr {
- font-size: 13px;
- color: rgba(255, 255, 255, 0.85);
- font-weight: 400;
- margin-bottom: 18px;
- line-height: 1.5;
- }
- .quote-card__attr strong { font-weight: 700; color: #fff; }
- .quote-card__btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- background: transparent;
- color: #fff;
- padding: 0;
- border-radius: 0;
- text-decoration: underline;
- text-underline-offset: 4px;
- text-decoration-thickness: 1px;
- font-weight: 700;
- font-size: 13px;
- width: fit-content;
- transition: gap 200ms var(--sz-ease), text-decoration-thickness 200ms ease;
- }
- .quote-card__btn:hover {
- gap: 12px;
- text-decoration-thickness: 2px;
- }
- .quote-card__btn svg {
- width: 14px; height: 14px;
- }
- .quote-card__image { display: none; display: none;
- background-image: url('../quote-block-images/foxen.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- background-color: #fff;
- position: relative;
- }
- /* Override .body-section p that wins specificity now that the card is inside Results */
- .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
- .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
- .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
- .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
+  .quote-card {
+   background: var(--sz-accent);
+   border-radius: var(--sz-radius-card);
+   overflow: hidden;
+   display: grid;
+   grid-template-columns: 1.35fr 1fr;
+   min-height: 260px;
+   margin: 28px 0 8px;
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__body {
+   padding: 32px 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   color: #fff;
+  }
+  .quote-card__text {
+   font-size: 17px;
+   font-weight: 600;
+   line-height: 1.45;
+   letter-spacing: -0.005em;
+   color: #fff;
+   margin-bottom: 16px;
+   font-style: normal;
+  }
+  .quote-card__attr {
+   font-size: 13px;
+   color: rgba(255, 255, 255, 0.85);
+   font-weight: 400;
+   margin-bottom: 18px;
+   line-height: 1.5;
+  }
+  .quote-card__attr strong { font-weight: 700; color: #fff; }
+  .quote-card__btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   background: #fff;
+   color: var(--sz-accent);
+   padding: 10px 20px;
+   border-radius: var(--sz-radius-btn);
+   text-decoration: none;
+   font-weight: 700;
+   font-size: 13px;
+   width: fit-content;
+   transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease);
+  }
+  .quote-card__btn:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__btn svg { width: 14px; height: 14px; }
+  .quote-card__image {
+   position: relative;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+  }
+  .quote-card__image::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(to right, var(--sz-accent) 0%, rgba(0, 112, 74, 0.65) 35%, rgba(0, 112, 74, 0.15) 100%);
+  }
+  /* Override .body-section p that wins specificity when card is inside Results */
+  .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+  .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+  .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
+  .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
 
  
  /* Solo quote card (no hero image), full-bleed typography */
@@ -662,18 +662,19 @@
  .asym-grid__main { grid-row: auto; }
  .asym-grid__main img { aspect-ratio: 4/3; }
  .asym-grid__caption { grid-column: 1; }
-
- .quote-card {
- grid-template-columns: 1fr;
- min-height: auto;
- margin: 20px 0 4px;
- }
- .quote-card__body { padding: 22px 22px; }
- .quote-card__text { font-size: 16px; margin-bottom: 12px; }
- .quote-card__image { display: none; display: none;
- min-height: 180px;
- order: -1;
- }
+  .quote-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 180px;
+   }
+   .quote-card__body { padding: 22px 22px; }
+   .quote-card__text { font-size: 16px; margin-bottom: 12px; }
+   .quote-card__image {
+    min-height: 180px;
+    order: 2;
+   }
+   .quote-card__image::before {
+    background: linear-gradient(to bottom, var(--sz-accent) 0%, rgba(0, 112, 74, 0.4) 40%, rgba(0, 112, 74, 0.1) 100%);
+   }
 
  .related-inner { padding: 0 24px; }
  .related-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -767,6 +768,19 @@
 
        <section class="body-section" id="ch-results">
         <h2>Results</h2><div class="results-sub"><h3>The team showed up as a unit</h3><p>SMA's team arrived in Orlando with custom-branded shoes for everyone. Stacked, boxed, distributed at the start of the trip, then on every team member's feet across the conference week. The team walked into the conference looking like a team, not a collection of credentials with matching ID badges. The dual-branded shoes meant the team's affiliation with both SMA and APMP read across the room at once. A coordinated rollout instead of a scramble, a unit instead of a roster.</p></div><div class="results-sub"><h3>Comfort that held up across the conference</h3><p><a href="https://www.linkedin.com/in/richardeassom/" target="_blank" rel="noopener">Dick Eassom</a>, Vice President of Corporate Support at SMA and an APMP Fellow, was on the team in Orlando. Conference floors are not easy on shoes, with long sessions, networking events, and walking between rooms for hours. The Classic Zero held up. "We were very pleased with the SMA/APMP shoes for our Orlando event. They were really comfortable all day on my feet," Dick wrote in an email to Shoe Zero after the conference closed. The comfort claim came from the inside of the shoe, with no marketing voice between Dick and the page.</p></div><div class="results-sub"><h3>The paint splatter cut through the room</h3><p>Most conference apparel disappears into the background of the room. The paint splatter did not. Across the conference floor, the SMA team carried a recognizable visual signal that read at a distance, between sessions, on the elevator, in line for coffee. Branding does not work if it has to be explained. The shoes did the work without one.</p></div>
+
+ <div class="quote-card">
+  <div class="quote-card__body">
+   <p class="quote-card__text">"We were very pleased with the SMA/APMP shoes for our Orlando event. They were really comfortable all day on my feet."</p>
+   <p class="quote-card__attr"><strong>Dick Eassom</strong>, CF APMP Fellow, Vice President, Corporate Support, SMA, Inc.</p>
+   <a href="#" class="quote-card__btn">
+    Watch the video
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+   </a>
+  </div>
+  <div class="quote-card__image" style="background-image: url('../images/card-photos/cs-card-sma-inc.jpg')" aria-hidden="true"></div>
+ </div>
+
         
         
         

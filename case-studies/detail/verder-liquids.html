@@ -386,76 +386,76 @@
  /* ================================================================
  PULL QUOTE: inline green card, integrated into article body
  ================================================================ */
- .quote-card {
- background: var(--sz-accent);
- border-radius: var(--sz-radius-card);
- overflow: hidden;
- display: grid;
- grid-template-columns: 1fr;
- min-height: 220px;
- margin: 28px 0 8px;
- box-shadow: var(--sz-shadow);
- }
- .quote-card__body {
- padding: 28px 32px;
- display: flex;
- flex-direction: column;
- justify-content: center;
- color: #fff;
- }
- .quote-card__text {
- font-size: 17px;
- font-weight: 600;
- line-height: 1.45;
- letter-spacing: -0.005em;
- color: #fff;
- margin-bottom: 16px;
- font-style: normal;
- }
- .quote-card__attr {
- font-size: 13px;
- color: rgba(255, 255, 255, 0.85);
- font-weight: 400;
- margin-bottom: 18px;
- line-height: 1.5;
- }
- .quote-card__attr strong { font-weight: 700; color: #fff; }
- .quote-card__btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- background: transparent;
- color: #fff;
- padding: 0;
- border-radius: 0;
- text-decoration: underline;
- text-underline-offset: 4px;
- text-decoration-thickness: 1px;
- font-weight: 700;
- font-size: 13px;
- width: fit-content;
- transition: gap 200ms var(--sz-ease), text-decoration-thickness 200ms ease;
- }
- .quote-card__btn:hover {
- gap: 12px;
- text-decoration-thickness: 2px;
- }
- .quote-card__btn svg {
- width: 14px; height: 14px;
- }
- .quote-card__image { display: none; display: none;
- background-image: url('../quote-block-images/foxen.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- background-color: #fff;
- position: relative;
- }
- /* Override .body-section p that wins specificity now that the card is inside Results */
- .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
- .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
- .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
- .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
+  .quote-card {
+   background: var(--sz-accent);
+   border-radius: var(--sz-radius-card);
+   overflow: hidden;
+   display: grid;
+   grid-template-columns: 1.35fr 1fr;
+   min-height: 260px;
+   margin: 28px 0 8px;
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__body {
+   padding: 32px 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   color: #fff;
+  }
+  .quote-card__text {
+   font-size: 17px;
+   font-weight: 600;
+   line-height: 1.45;
+   letter-spacing: -0.005em;
+   color: #fff;
+   margin-bottom: 16px;
+   font-style: normal;
+  }
+  .quote-card__attr {
+   font-size: 13px;
+   color: rgba(255, 255, 255, 0.85);
+   font-weight: 400;
+   margin-bottom: 18px;
+   line-height: 1.5;
+  }
+  .quote-card__attr strong { font-weight: 700; color: #fff; }
+  .quote-card__btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   background: #fff;
+   color: var(--sz-accent);
+   padding: 10px 20px;
+   border-radius: var(--sz-radius-btn);
+   text-decoration: none;
+   font-weight: 700;
+   font-size: 13px;
+   width: fit-content;
+   transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease);
+  }
+  .quote-card__btn:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__btn svg { width: 14px; height: 14px; }
+  .quote-card__image {
+   position: relative;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+  }
+  .quote-card__image::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(to right, var(--sz-accent) 0%, rgba(0, 112, 74, 0.65) 35%, rgba(0, 112, 74, 0.15) 100%);
+  }
+  /* Override .body-section p that wins specificity when card is inside Results */
+  .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+  .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+  .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
+  .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
 
  
  /* Solo quote card (no hero image), full-bleed typography */
@@ -662,18 +662,19 @@
  .asym-grid__main { grid-row: auto; }
  .asym-grid__main img { aspect-ratio: 4/3; }
  .asym-grid__caption { grid-column: 1; }
-
- .quote-card {
- grid-template-columns: 1fr;
- min-height: auto;
- margin: 20px 0 4px;
- }
- .quote-card__body { padding: 22px 22px; }
- .quote-card__text { font-size: 16px; margin-bottom: 12px; }
- .quote-card__image { display: none; display: none;
- min-height: 180px;
- order: -1;
- }
+  .quote-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 180px;
+   }
+   .quote-card__body { padding: 22px 22px; }
+   .quote-card__text { font-size: 16px; margin-bottom: 12px; }
+   .quote-card__image {
+    min-height: 180px;
+    order: 2;
+   }
+   .quote-card__image::before {
+    background: linear-gradient(to bottom, var(--sz-accent) 0%, rgba(0, 112, 74, 0.4) 40%, rgba(0, 112, 74, 0.1) 100%);
+   }
 
  .related-inner { padding: 0 24px; }
  .related-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -767,6 +768,19 @@
 
        <section class="body-section" id="ch-results">
         <h2>Results</h2><div class="results-sub"><h3>The Netherlands team wore them at trade shows</h3><p>Verder Liquids' Netherlands team showed up at trade shows with the custom shoes as part of the booth experience. The team came together for a group photo, with a unified look from booth banner down to the shoes on their feet. Ellis followed up with 5-star reviews on Google and Trustpilot. She posted them on the public record after the event closed, without waiting for a vendor to ask. The reviews were live before the booth was packed away. Verder's brand discipline, polished over decades, was the bar the shoes had to meet.</p></div><div class="results-sub"><h3>Spain ordered next from the same file</h3><p>After Ellis introduced Oriol at Verder Spain, the Barcelona office placed their own order for an upcoming June trade fair. What started in the Netherlands had spread to a second office across the border. Same brand and product, different country. The first rollout had become the reference point, and Oriol's order built on that design file rather than starting a new design process from scratch.</p></div><div class="results-sub"><h3>30 offices in the rollout runway</h3><p>With dozens of Verder offices worldwide, the company has runway to roll the same custom-shoe program out to more teams, events, and countries. The Netherlands order set the design, and the Spain order proved the playbook. Each office that orders next picks up a finished design file, a verified brand-color match, and a tested logistics flow. One office at a time, the playbook compounds. What started at the Netherlands HQ becomes the standard every Verder office can pick up.</p></div>
+
+ <div class="quote-card">
+  <div class="quote-card__body">
+   <p class="quote-card__text">"Our team wore them at trade shows and the response was so good that our Spain office wanted them next. It's become part of how we show up at events."</p>
+   <p class="quote-card__attr"><strong>Ellis Smit</strong>, Content Marketeer, Verder Liquids</p>
+   <a href="#" class="quote-card__btn">
+    Watch the video
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+   </a>
+  </div>
+  <div class="quote-card__image" style="background-image: url('../images/card-photos/cs-card-verder-liquids.jpg')" aria-hidden="true"></div>
+ </div>
+
         
         
         

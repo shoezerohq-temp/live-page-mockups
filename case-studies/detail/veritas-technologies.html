@@ -386,76 +386,76 @@
  /* ================================================================
  PULL QUOTE: inline green card, integrated into article body
  ================================================================ */
- .quote-card {
- background: var(--sz-accent);
- border-radius: var(--sz-radius-card);
- overflow: hidden;
- display: grid;
- grid-template-columns: 1fr;
- min-height: 220px;
- margin: 28px 0 8px;
- box-shadow: var(--sz-shadow);
- }
- .quote-card__body {
- padding: 28px 32px;
- display: flex;
- flex-direction: column;
- justify-content: center;
- color: #fff;
- }
- .quote-card__text {
- font-size: 17px;
- font-weight: 600;
- line-height: 1.45;
- letter-spacing: -0.005em;
- color: #fff;
- margin-bottom: 16px;
- font-style: normal;
- }
- .quote-card__attr {
- font-size: 13px;
- color: rgba(255, 255, 255, 0.85);
- font-weight: 400;
- margin-bottom: 18px;
- line-height: 1.5;
- }
- .quote-card__attr strong { font-weight: 700; color: #fff; }
- .quote-card__btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- background: transparent;
- color: #fff;
- padding: 0;
- border-radius: 0;
- text-decoration: underline;
- text-underline-offset: 4px;
- text-decoration-thickness: 1px;
- font-weight: 700;
- font-size: 13px;
- width: fit-content;
- transition: gap 200ms var(--sz-ease), text-decoration-thickness 200ms ease;
- }
- .quote-card__btn:hover {
- gap: 12px;
- text-decoration-thickness: 2px;
- }
- .quote-card__btn svg {
- width: 14px; height: 14px;
- }
- .quote-card__image { display: none; display: none;
- background-image: url('../quote-block-images/foxen.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- background-color: #fff;
- position: relative;
- }
- /* Override .body-section p that wins specificity now that the card is inside Results */
- .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
- .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
- .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
- .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
+  .quote-card {
+   background: var(--sz-accent);
+   border-radius: var(--sz-radius-card);
+   overflow: hidden;
+   display: grid;
+   grid-template-columns: 1.35fr 1fr;
+   min-height: 260px;
+   margin: 28px 0 8px;
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__body {
+   padding: 32px 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   color: #fff;
+  }
+  .quote-card__text {
+   font-size: 17px;
+   font-weight: 600;
+   line-height: 1.45;
+   letter-spacing: -0.005em;
+   color: #fff;
+   margin-bottom: 16px;
+   font-style: normal;
+  }
+  .quote-card__attr {
+   font-size: 13px;
+   color: rgba(255, 255, 255, 0.85);
+   font-weight: 400;
+   margin-bottom: 18px;
+   line-height: 1.5;
+  }
+  .quote-card__attr strong { font-weight: 700; color: #fff; }
+  .quote-card__btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   background: #fff;
+   color: var(--sz-accent);
+   padding: 10px 20px;
+   border-radius: var(--sz-radius-btn);
+   text-decoration: none;
+   font-weight: 700;
+   font-size: 13px;
+   width: fit-content;
+   transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease);
+  }
+  .quote-card__btn:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--sz-shadow);
+  }
+  .quote-card__btn svg { width: 14px; height: 14px; }
+  .quote-card__image {
+   position: relative;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+  }
+  .quote-card__image::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(to right, var(--sz-accent) 0%, rgba(0, 112, 74, 0.65) 35%, rgba(0, 112, 74, 0.15) 100%);
+  }
+  /* Override .body-section p that wins specificity when card is inside Results */
+  .body-section .quote-card p { font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+  .body-section .quote-card .quote-card__text { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+  .body-section .quote-card .quote-card__attr { color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 18px; }
+  .body-section .quote-card .quote-card__attr strong { color: #fff; font-weight: 700; }
 
  
  /* Solo quote card (no hero image), full-bleed typography */
@@ -662,18 +662,19 @@
  .asym-grid__main { grid-row: auto; }
  .asym-grid__main img { aspect-ratio: 4/3; }
  .asym-grid__caption { grid-column: 1; }
-
- .quote-card {
- grid-template-columns: 1fr;
- min-height: auto;
- margin: 20px 0 4px;
- }
- .quote-card__body { padding: 22px 22px; }
- .quote-card__text { font-size: 16px; margin-bottom: 12px; }
- .quote-card__image { display: none; display: none;
- min-height: 180px;
- order: -1;
- }
+  .quote-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 180px;
+   }
+   .quote-card__body { padding: 22px 22px; }
+   .quote-card__text { font-size: 16px; margin-bottom: 12px; }
+   .quote-card__image {
+    min-height: 180px;
+    order: 2;
+   }
+   .quote-card__image::before {
+    background: linear-gradient(to bottom, var(--sz-accent) 0%, rgba(0, 112, 74, 0.4) 40%, rgba(0, 112, 74, 0.1) 100%);
+   }
 
  .related-inner { padding: 0 24px; }
  .related-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -767,6 +768,19 @@
 
        <section class="body-section" id="ch-results">
         <h2>Results</h2><div class="results-sub"><h3>The format worked across European cities</h3><p>What worked at the first sales event got rolled out across multiple cities. The kiosk format, the design flow, and the delivery process all repeated city to city. Veritas got a marketing format that scaled cleanly across European markets without rebuilding it for each event. The first event proved the mechanism. Each subsequent event was a smaller delta against an already-working baseline. The format traveled, brand and all. Onemotion's event team carried the kiosk from one country to the next, and the production followed each stop.</p></div><div class="results-sub"><h3>150 pairs from a single Sweden event</h3><p>A single Sweden event ran the day's attendees through the design flow and shipped a fully custom pair to each one. That is not a giveaway table. That is a marketing campaign with a deliverable for every attendee, built around a personal experience and a real product they took home. The kiosk handled the variation in logos, colors, and placement on every pair. That scale is different from what B2B event marketing usually clears.</p></div><div class="results-sub"><h3>Shoe Zero's marketing collab playbook</h3><p>Most B2B event marketing hands out merchandise at the door. Veritas turned the merchandise into the event itself. The <a href="/collections/custom-shoes">custom branded shoes</a> that attendees designed themselves doubled as company swag and as a memorable customer experience. Attendees designed their pair, talked about it during the event, and left with something they would actually wear. It was not a giveaway. Johanna Ylä-Kojola, Marketing at Veritas, summed it up in five words after the campaign. "This was a cool experience." Short. On the record.</p></div>
+
+ <div class="quote-card">
+  <div class="quote-card__body">
+   <p class="quote-card__text">"This was a cool experience."</p>
+   <p class="quote-card__attr"><strong>Johanna Ylä-Kojola</strong>, Marketing, Veritas Technologies</p>
+   <a href="#" class="quote-card__btn">
+    Watch the video
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+   </a>
+  </div>
+  <div class="quote-card__image" style="background-image: url('../images/card-photos/cs-card-veritas-technologies.jpg')" aria-hidden="true"></div>
+ </div>
+
         
         
         
