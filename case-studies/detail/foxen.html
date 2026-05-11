@@ -547,7 +547,8 @@
  display: grid;
  grid-template-columns: 1fr;
  gap: 0;
- align-items: stretch;
+ justify-items: center;
+ text-align: center;
  }
  .cta-col { display: flex; flex-direction: column; }
  .cta-col > *:last-child { margin-top: auto; }
@@ -557,13 +558,13 @@
  }
  .cta-col p {
  font-size: 16px; color: #555; margin-bottom: 28px;
- line-height: 1.6; max-width: 360px;
+ line-height: 1.6; max-width: 360px; margin-left: auto; margin-right: auto;
  }
  .cta-col-secondary {
  border-left: 3px solid var(--sz-accent); padding-left: 28px;
  }
  .cta-buttons {
- display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+ display: flex; gap: 18px; align-items: center; flex-wrap: wrap; justify-content: center;
  }
  .btn-primary {
  display: inline-block; padding: 11px 24px;
