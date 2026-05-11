@@ -99,37 +99,46 @@
  .nav__cta:hover { background: var(--sz-accent-hover); }
 
  /* ================================================================
- S1: HERO, Cool bg, left-anchored text-only (Option 2)
+ S1: HERO, Overlay editorial — full-bg photo + text on dark gradient
  ================================================================ */
  .hero {
- background: var(--sz-bg-warm);
- padding: 80px 0 88px;
- overflow: hidden;
+ position: relative; overflow: hidden;
+ min-height: 520px;
+ display: flex; align-items: center;
+ background: var(--sz-black);
+ }
+ .hero__bg { position: absolute; inset: 0; z-index: 0; }
+ .hero__bg img {
+ width: 100%; height: 100%; object-fit: cover; object-position: center 32%;
+ display: block;
+ }
+ .hero__bg::after {
+ content:''; position: absolute; inset: 0;
+ background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%);
  }
  .hero__inner {
- max-width: 1100px;
+ position: relative; z-index: 2;
+ max-width: 1280px; width: 100%;
  margin: 0 auto;
- padding: 0 48px;
- text-align: center;
+ padding: 64px 56px;
+ text-align: left;
+ display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
  }
  .hero__h1 {
- font-size: clamp(40px, 4.5vw, 64px);
+ font-size: clamp(44px, 5.4vw, 76px);
  font-weight: 900;
- line-height: 1.05;
- letter-spacing: -0.04em;
- color: var(--sz-black);
- max-width: 880px;
- margin: 0 auto 22px;
+ line-height: 1;
+ letter-spacing: -0.045em;
+ color: #fff;
+ margin: 0;
  }
- .hero__h1 em {
- font-style: normal;
- color: var(--sz-accent);
- }
+ .hero__h1 span { display: block; }
+ .hero__h1 span.is-accent { color: #6acca1; }
  .hero__sub {
- font-size: 17px; font-weight: 400; color: var(--sz-muted);
- max-width: 560px; line-height: 1.55; margin: 0 auto 32px;
+ font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.85);
+ max-width: 580px; line-height: 1.55; margin: 0;
  }
- .hero__actions { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; justify-content: center; }
+ .hero__actions { display: flex; align-items: center; justify-content: flex-start; margin-top: 4px; }
  .btn--primary {
  display: inline-flex; align-items: center; gap: 10px;
  padding: 16px 28px; border-radius: 8px;
@@ -210,54 +219,43 @@
  }
 
  /* ================================================================
- S2: LAYERED PILL — floats on the seam between hero (warm) and mosaic (cool)
+ S2: LOGO WALL — trust bar between hero and mosaic
  ================================================================ */
- .seam-card-wrap {
- position: relative;
- height: 0;
- max-width: 1240px;
- margin: 0 auto;
- padding: 0 48px;
- z-index: 5;
+ .logo-wall {
+ background: var(--sz-bg-warm);
+ padding: 28px 56px;
  }
- .seam-card {
- position: absolute;
- left: 50%;
- top: 0;
- transform: translate(-50%, -50%);
- background: var(--sz-white);
- border-radius: 999px;
- padding: 24px 56px;
- box-shadow: 0 30px 60px -20px rgba(0,0,0,0.18), 0 10px 24px -8px rgba(0,0,0,0.1);
- display: flex;
- align-items: center;
- gap: 48px;
- white-space: nowrap;
+ .logo-wall__inner {
+ max-width: 1280px; margin: 0 auto;
+ display: flex; align-items: center; gap: 28px;
  }
- .seam-item {
- display: flex; flex-direction: column; align-items: center; text-align: center;
- padding: 0 24px; position: relative;
+ .logo-wall__label {
+ font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+ text-transform: uppercase; color: var(--sz-muted);
+ white-space: nowrap; line-height: 1;
+ display: flex; align-items: center;
  }
- .seam-item + .seam-item::before {
- content: ''; position: absolute; left: -24px; top: 10%; bottom: 10%;
- width: 1px; background: rgba(0,0,0,0.1);
+ .logo-wall__divider {
+ width: 1px; height: 32px; background: rgba(0,0,0,0.18);
+ flex-shrink: 0;
  }
- .seam-num {
- font-size: 38px; font-weight: 800; letter-spacing: -0.025em;
- color: var(--sz-black); line-height: 1;
+ .logo-wall__row {
+ display: flex; align-items: center; gap: 32px;
+ flex: 1; justify-content: space-around; flex-wrap: nowrap; overflow: hidden;
  }
- .seam-num span { color: var(--sz-accent); }
- .seam-label {
- font-size: 12px; font-weight: 500; color: var(--sz-muted);
- letter-spacing: 0.02em; margin-top: 6px; line-height: 1.3;
+ .logo-wall__logo {
+ height: 32px; max-width: 120px; width: auto; object-fit: contain;
+ filter: grayscale(100%) brightness(0.4); opacity: 0.7;
+ transition: opacity 200ms var(--sz-ease), filter 200ms var(--sz-ease);
  }
+ .logo-wall__logo:hover { filter: grayscale(0%); opacity: 1; }
 
  /* ================================================================
  S3: MOSAIC GRID, Cool bg, mixed card sizes
  ================================================================ */
  .mosaic-section {
  background: var(--sz-bg-cool);
- padding: 88px 0 72px;
+ padding: 72px 0 72px;
  }
  .mosaic-header {
  max-width: 1240px;
@@ -546,36 +544,25 @@
  .nav__inner { padding: 0 20px; }
 
  /* Hero */
- .hero { padding: 64px 0 56px; }
- .hero__inner { padding: 0 20px; }
- .hero__h1 { font-size: 40px; line-height: 1.05; margin-bottom: 18px; }
- .hero__sub { font-size: 16px; margin-bottom: 28px; }
- .hero__actions { gap: 20px; }
+ .hero { min-height: 480px; }
+ .hero__inner { padding: 56px 20px; gap: 20px; }
+ .hero__h1 { font-size: 38px; line-height: 1; }
+ .hero__sub { font-size: 15px; }
 
  /* Filter */
  .filter-row { top: 60px; }
  .filter-row__inner { padding: 0 20px; gap: 0; }
  .filter-tab { padding: 14px 16px; font-size: 12px; }
 
- /* Seam pill */
- .seam-card-wrap { padding: 0 20px; }
- .seam-card {
- position: static; transform: none;
- flex-direction: column; gap: 16px;
- padding: 22px 28px; border-radius: 20px; white-space: normal;
- margin: -40px auto 24px;
- max-width: 360px;
- }
- .seam-item + .seam-item::before {
- left: 10%; right: 10%; top: -8px; bottom: auto;
- width: auto; height: 1px;
- }
- .seam-num { font-size: 30px; }
+ /* Logo wall */
+ .logo-wall { padding: 18px 20px; }
+ .logo-wall__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+ .logo-wall__row { gap: 24px; justify-content: flex-start; overflow-x: auto; width: 100%; padding-bottom: 4px; }
+ .logo-wall__logo { height: 24px; flex-shrink: 0; }
 
  /* Mosaic */
  .mosaic-section { padding: 0 0 64px; }
  .mosaic-header { padding: 0 20px; margin-bottom: 28px; }
- .hero { padding: 64px 0 56px; }
  .mosaic-header__h2 { font-size: 26px; }
  .mosaic-header__sub { font-size: 15px; }
  .mosaic {
@@ -659,9 +646,16 @@
  S1: HERO, Warm cream, asymmetric
  ================================================================ -->
  <section class="hero">
- <div class="hero__inner" data-reveal>
- <h1 class="hero__h1">Real brands. <em>Real shoes.</em> Real results.</h1>
- <p class="hero__sub">Eleven custom shoe runs across stages, conferences, and team launches. Each one designed their own way. Read the full story.</p>
+ <div class="hero__bg">
+ <img src="images/card-photos/cs-card-veritas-technologies.jpg" alt="veritas kiosk at sales event with attendees">
+ </div>
+ <div class="hero__inner">
+ <h1 class="hero__h1">
+ <span>Real brands</span>
+ <span class="is-accent">Real shoes</span>
+ <span>Real results</span>
+ </h1>
+ <p class="hero__sub">Custom shoe runs across stages, conferences, and team launches. Each one designed their own way. Read the full story.</p>
  <div class="hero__actions">
  <a class="btn--primary" href="/pages/business-inquiry">
  Start an inquiry
@@ -672,24 +666,27 @@
  </section>
 
  <!-- ================================================================
- S2: LAYERED PILL — straddles hero(warm) → mosaic(cool) seam
+ S2: LOGO WALL — trust bar between hero and mosaic
  ================================================================ -->
- <div class="seam-card-wrap">
- <div class="seam-card" data-reveal>
- <div class="seam-item">
- <div class="seam-num">11<span>+</span></div>
- <div class="seam-label">Featured brands</div>
+ <section class="logo-wall">
+ <div class="logo-wall__inner">
+ <div class="logo-wall__label">Brands featured</div>
+ <div class="logo-wall__divider"></div>
+ <div class="logo-wall__row">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-foxen.svg" alt="Foxen">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-capgemini.svg" alt="Capgemini">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-veritas-technologies.svg" alt="Veritas">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-relex-solutions.png" alt="RELEX">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-fairfield-residential.png" alt="Fairfield">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-verder-liquids.svg" alt="Verder">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-university-of-south-dakota.svg" alt="USD">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-sma-inc.svg" alt="SMA">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-kitazato.svg" alt="Kitazato">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-relec-electronics.png" alt="Relec">
+ <img class="logo-wall__logo" src="images/logos/cs-logo-big-sing-thing.png" alt="Big Sing Thing">
  </div>
- <div class="seam-item">
- <div class="seam-num">27<span>+</span></div>
- <div class="seam-label">Industries served</div>
  </div>
- <div class="seam-item">
- <div class="seam-num">190<span>+</span></div>
- <div class="seam-label">Countries delivered to</div>
- </div>
- </div>
- </div>
+ </section>
 
  <!-- ================================================================
  S3: MOSAIC GRID, Cool bg, 11 brands, mixed sizes
@@ -697,7 +694,7 @@
  <section class="mosaic-section">
  <div class="mosaic-header" data-reveal>
  <h2 class="mosaic-header__h2">How brands use Shoe Zero</h2>
- <p class="mosaic-header__sub">Eleven teams turning custom shoes into events, gifts, and statements customers actually remember.</p>
+ <p class="mosaic-header__sub">Teams turning custom shoes into events, gifts, and statements customers actually remember.</p>
  </div>
 
  <!-- MOSAIC LAYOUT:
@@ -737,7 +734,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/veritas-technologies.html" aria-label="Veritas Technologies case study">
  <div class="cs-card__img">
- <img src="images/card-photos/cs-card-veritas-technologies.jpg" alt="veritas alta shoes on cardboard shipping box" loading="lazy">
+ <img src="images/card-photos/cs-card-veritas-technologies.jpg" alt="veritas kiosk at sales event with attendees" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Veritas Technologies</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -833,7 +830,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/kitazato.html" aria-label="Kitazato case study">
  <div class="cs-card__img">
- <img src="images/card-photos/cs-card-kitazato.jpg" alt="four pairs of kitazato custom high tops around table" loading="lazy">
+ <img src="images/card-photos/cs-card-kitazato.jpg" alt="kitazato attendees with custom shoe at booth" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Kitazato</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>

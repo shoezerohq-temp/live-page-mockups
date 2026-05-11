@@ -6,7 +6,7 @@
   <title>Shoe Zero | Custom Printed Footwear | Made To Order</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/tokens.css">
+  <link rel="stylesheet" href="src/tokens.css">
   <style>
     /* ================================================================
        TOOLBAR
@@ -694,39 +694,55 @@
     @media (max-width: 900px) { .hp2-workshop__grid { grid-template-columns: 1fr; gap: 28px; } }
 
     /* ================================================================
-       S9: CUSTOMER REVIEWS
+       S9: CASE STUDIES (replaces customer reviews, image-card grid)
        ================================================================ */
-    .hp2-reviews { padding: 40px 0; background: var(--sz-white); }
-    .hp2-reviews__header { text-align: center; margin-bottom: 48px; }
-    .hp2-reviews__header h2 {
+    .hp2-cs { padding: 40px 0; background: var(--sz-white); }
+    .hp2-cs__header { margin-bottom: 36px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+    .hp2-cs__head-text { flex: 1 1 auto; max-width: 640px; }
+    .hp2-cs__header h2 {
       font-size: clamp(24px, 2.5vw, 36px);
-      font-weight: 700;
-      font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px;
+      font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.15; margin-bottom: 10px;
     }
-    .hp2-reviews__header p { font-size: 15px; color: var(--sz-muted); }
-    .hp2-reviews__grid {
+    .hp2-cs__header p { font-size: 15px; color: var(--sz-muted); line-height: 1.6; }
+    .hp2-cs__see-all {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--sz-accent); font-size: 14px; font-weight: 700;
+      flex-shrink: 0; transition: gap 180ms ease; text-decoration: none;
+    }
+    .hp2-cs__see-all:hover { gap: 10px; }
+    .hp2-cs__grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; margin-bottom: 36px;
+      gap: 24px;
     }
-    .hp2-review {
+    .hp2-cs-card {
       background: var(--sz-white);
       border: 1px solid var(--sz-border);
       border-radius: var(--sz-radius-card);
-      padding: 28px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
       transition: box-shadow 400ms var(--sz-ease), transform 400ms var(--sz-ease);
     }
-    .hp2-review:hover { box-shadow: var(--sz-shadow-hover); transform: translateY(-4px); }
-    .hp2-review__top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-    .hp2-review__avatar {
-      width: 56px; height: 56px; border-radius: 50%;
-      overflow: hidden; background: var(--sz-bg-cool); flex-shrink: 0;
+    .hp2-cs-card:hover { box-shadow: var(--sz-shadow-hover); transform: translateY(-4px); }
+    .hp2-cs-card__media {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--sz-bg-cool);
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      flex-shrink: 0; border-bottom: 1px solid var(--sz-border);
     }
-    .hp2-review__avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .hp2-review__meta { display: flex; flex-direction: column; gap: 6px; }
-    .hp2-review__stars { color: #f5a623; font-size: 14px; letter-spacing: 2px; line-height: 1; }
-    .hp2-review__name { font-size: 15px; font-weight: 700; line-height: 1.2; }
-    .hp2-review__text { font-size: 14px; line-height: 1.65; color: var(--sz-muted); margin: 0; }
-    .hp2-reviews__footer { text-align: center; }
+    .hp2-cs-card__body {
+      padding: 22px 26px 24px;
+      display: flex; flex-direction: column; flex: 1;
+    }
+    .hp2-cs-card__eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--sz-accent); margin-bottom: 10px;
+    }
+    .hp2-cs-card__title {
+      font-size: 18px; font-weight: 800; line-height: 1.3;
+      letter-spacing: -0.015em; color: var(--sz-text); margin: 0;
+    }
 
     /* ================================================================
        S9b: B2B INQUIRY
@@ -1047,7 +1063,8 @@
       .hp2-gallery__item:nth-child(1),
       .hp2-gallery__item:nth-child(4) { grid-row: span 1; }
       .hp2-gallery__header { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .hp2-reviews__grid { grid-template-columns: 1fr; gap: 16px; }
+      .hp2-cs__grid { grid-template-columns: 1fr; gap: 18px; }
+      .hp2-cs__header { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
       .hp2-binq { padding: 40px 0; }
       .hp2-binq__header { margin-bottom: 28px; }
       .hp2-binq__grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1061,7 +1078,7 @@
       .hp2-cta__inner { grid-template-columns: 1fr; gap: 32px; }
       .hp2-cta__divider { width: 100%; height: 1px; }
       .hp2-bestsellers, .hp2-whatwedo, .hp2-htc, .hp2-gallery,
-      .hp2-reviews, .hp2-faq { padding: 40px 0; }
+      .hp2-cs, .hp2-faq { padding: 40px 0; }
       .hp2-cta { padding: 40px 0; }
     }
   </style>
@@ -1216,11 +1233,11 @@
     <div class="oC-c">
       <div class="oC-top">
         <div class="oC-feature">
-          <img src="./assets/wcyd/b2b-big-sing-thing.png" alt="BIG SING THING duo on stage in custom branded high-top sneakers">
-          <img src="./assets/wcyd/b2b-sma-tower.jpeg" alt="SMA branded shoe-box tower display at corporate event">
-          <img src="./assets/wcyd/b2b-relex-conference.jpeg" alt="RELEX Solutions sales conference attendees with custom branded shoes">
-          <img src="./assets/wcyd/b2b-fairfield-call.jpg" alt="Fairfield team showing off custom F-pattern branded sneakers on Teams call" style="object-position:50% 25%;">
-          <img src="./assets/wcyd/b2b-sun-hydraulics.jpg" alt="Sun Hydraulics team in matching custom red and white branded sneakers at booth">
+          <img src="assets/wcyd/b2b-big-sing-thing.png" alt="BIG SING THING duo on stage in custom branded high-top sneakers">
+          <img src="assets/wcyd/b2b-sma-tower.jpeg" alt="SMA branded shoe-box tower display at corporate event">
+          <img src="assets/wcyd/b2b-relex-conference.jpeg" alt="RELEX Solutions sales conference attendees with custom branded shoes">
+          <img src="assets/wcyd/b2b-fairfield-call.jpg" alt="Fairfield team showing off custom F-pattern branded sneakers on Teams call" style="object-position:50% 25%;">
+          <img src="assets/wcyd/b2b-sun-hydraulics.jpg" alt="Sun Hydraulics team in matching custom red and white branded sneakers at booth">
           <div class="oC-feature__inner">
             <div>
               <h2 class="oC-feature__h">Your brand, on a shoe people actually wear.</h2>
@@ -1234,19 +1251,19 @@
         </div>
         <div class="oC-side">
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-south-dakota-events.png" alt="University of South Dakota event team in custom branded sneakers">
+            <img src="assets/wcyd/b2b-south-dakota-events.png" alt="University of South Dakota event team in custom branded sneakers">
             <span class="oC-stile__tag oC-stile__tag--biz">Events</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-team-uniforms-sig-events.jpg" alt="SIG Events activation team uniform custom low-top sneakers" style="object-position: 50% 15%;">
+            <img src="assets/wcyd/b2b-team-uniforms-sig-events.jpg" alt="SIG Events activation team uniform custom low-top sneakers" style="object-position: 50% 15%;">
             <span class="oC-stile__tag oC-stile__tag--biz">Team Uniforms</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-brand-activation-b-hex.jpeg" alt="B-monogram custom branded sneakers at a beachside bar activation">
+            <img src="assets/wcyd/b2b-brand-activation-b-hex.jpeg" alt="B-monogram custom branded sneakers at a beachside bar activation">
             <span class="oC-stile__tag oC-stile__tag--biz">Brand Activations</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-dl-evans-bank-shoe.jpeg" alt="D.L. Evans Bank custom branded white sneakers with navy logo">
+            <img src="assets/wcyd/b2b-dl-evans-bank-shoe.jpeg" alt="D.L. Evans Bank custom branded white sneakers with navy logo">
             <span class="oC-stile__tag oC-stile__tag--biz">Corporate Programs</span>
           </div>
         </div>
@@ -1386,11 +1403,11 @@
           <span>120,000+ pairs shipped since 2021</span>
         </div>
         <div class="oC-brow">
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt="Customer wearing custom Wednesday-themed printed sneakers"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-sma-splatter.jpeg" alt="Custom SMA monogram low-tops with paint splatter design"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-asrm-2023.jpeg" alt="ASRM 2023 New Orleans custom patterned high-top sneakers in display case"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-boiron.jpg" alt="Les Vergers Boiron custom branded white sneakers with burgundy accents"></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt="Happy customer with personalized custom shoes"></div>
+          <div class="oC-bitem"><img src="assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt="Customer wearing custom Wednesday-themed printed sneakers"></div>
+          <div class="oC-bitem"><img src="assets/customer-wall/cw-sma-splatter.jpeg" alt="Custom SMA monogram low-tops with paint splatter design"></div>
+          <div class="oC-bitem"><img src="assets/customer-wall/cw-asrm-2023.jpeg" alt="ASRM 2023 New Orleans custom patterned high-top sneakers in display case"></div>
+          <div class="oC-bitem"><img src="assets/customer-wall/cw-boiron.jpg" alt="Les Vergers Boiron custom branded white sneakers with burgundy accents"></div>
+          <div class="oC-bitem"><img src="assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt="Happy customer with personalized custom shoes"></div>
         </div>
       </div>
     </div>
@@ -1401,8 +1418,8 @@
     <div class="hp2-c">
       <div class="hp2-workshop__grid" data-reveal>
         <div class="hp2-workshop__video">
-          <video controls playsinline preload="metadata" poster="./assets/workshop/workshop-video-poster.jpg?v=0505-2" aria-label="Inside the Shoe Zero workshop">
-            <source src="./assets/workshop/workshop-video.mp4?v=0505-2" type="video/mp4">
+          <video controls playsinline preload="metadata" poster="assets/workshop/workshop-video-poster.jpg?v=0505-2" aria-label="Inside the Shoe Zero workshop">
+            <source src="assets/workshop/workshop-video.mp4?v=0505-2" type="video/mp4">
           </video>
         </div>
         <div>
@@ -1427,74 +1444,38 @@
     </div>
   </section>
 
-  <!-- ===== S9: CUSTOMER REVIEWS ===== -->
-  <section class="hp2-reviews">
+  <!-- ===== S9: CASE STUDIES (replaces customer reviews) ===== -->
+  <section class="hp2-cs">
     <div class="hp2-c">
-      <div class="hp2-reviews__header" data-reveal>
-        <h2>What Customers Say</h2>
-        <p>Real reviews from real customers worldwide</p>
+      <div class="hp2-cs__header" data-reveal>
+        <div class="hp2-cs__head-text">
+          <h2>Business Case Studies</h2>
+          <p>Real B2B teams, real outcomes. From 26-pair leadership kickoffs to 50-pair athletic team rollouts.</p>
+        </div>
+        <a class="hp2-cs__see-all" href="/pages/case-studies">See all 12 case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
-      <div class="hp2-reviews__grid" data-stagger>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Custom-Business-Branded-Shoes-Team-2348.webp?v=1688140127&width=112" alt="AeroBlade Team"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">AeroBlade Team</div>
-            </div>
+      <div class="hp2-cs__grid" data-stagger>
+        <a class="hp2-cs-card" href="/pages/case-study-foxen">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/quote-block-images/foxen.png');background-color:#f6f6f4;background-size:contain;"></div>
+          <div class="hp2-cs-card__body">
+            <div class="hp2-cs-card__eyebrow">Proptech &middot; Leadership Swag</div>
+            <h3 class="hp2-cs-card__title">Foxen put 26 custom pairs on 26 leadership doorsteps in 6 weeks</h3>
           </div>
-          <p class="hp2-review__text">We loved working with every member of the Shoe Zero team! The shoes with our company logo helped our team stand out at our conference and everyone loved them.</p>
-        </div>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Athlete-Customized-Shoe-Athletic-43834.webp?v=1688140127&width=112" alt="Chad - Gym Owner"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">Chad - Gym Owner</div>
-            </div>
+        </a>
+        <a class="hp2-cs-card" href="/pages/case-study-fairfield-residential">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/quote-block-images/fairfield.png');background-color:#f6f6f4;background-size:contain;"></div>
+          <div class="hp2-cs-card__body">
+            <div class="hp2-cs-card__eyebrow">Multifamily Real Estate &middot; EVP Rollout</div>
+            <h3 class="hp2-cs-card__title">Fairfield Residential's EVP team had reorder requests in 10 days</h3>
           </div>
-          <p class="hp2-review__text">Design Shoes to match your personality. ShoeZero was the perfect partner to create my own custom shoes to show off my personality.</p>
-        </div>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Customized-Shoe-Instagram-Influencer-34584.webp?v=1688140127&width=112" alt="Savanah - Fitness Influencer"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">Savanah - Fitness Influencer</div>
-            </div>
+        </a>
+        <a class="hp2-cs-card" href="/pages/case-study-verder-liquids">
+          <div class="hp2-cs-card__media" style="background-image:url('https://shoezero.com/cdn/shop/files/verder-v2-1.jpg?width=1200');background-color:#eef1f8;"></div>
+          <div class="hp2-cs-card__body">
+            <div class="hp2-cs-card__eyebrow">Industrial Mfg &middot; Trade Fair</div>
+            <h3 class="hp2-cs-card__title">Netherlands HQ ordered. Spain reordered for the next trade fair.</h3>
           </div>
-          <p class="hp2-review__text">My fitness followers loved the shoes! I am seriously obsessed with the creativity this custom shoe website allows.</p>
-        </div>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Customized-Dog-Shoe-Pet-Custom-Print-Picture-On-Shoe.webp?v=1688140126&width=112" alt="Kim + Jocko - Dog Lover"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">Kim + Jocko - Dog Lover</div>
-            </div>
-          </div>
-          <p class="hp2-review__text">Whoever says you can't buy love has never owned a puppy... or shoes with puppies on them! Getting custom shoes with your dogs is a must give gift!</p>
-        </div>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Customized-Shoe-Customer-4338.webp?v=1688140126&width=112" alt="Own - Former Shoe Zero Skeptic"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">Own - Former Shoe Zero Skeptic</div>
-            </div>
-          </div>
-          <p class="hp2-review__text">I was surprised. The quality was much higher than I expected! The best feeling is having people coming up to me in the street and asking where I got them.</p>
-        </div>
-        <div class="hp2-review">
-          <div class="hp2-review__top">
-            <div class="hp2-review__avatar"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Rapid_Hire_pro.webp?v=1695927473&width=112" alt="Rapid Hire Pro"></div>
-            <div class="hp2-review__meta">
-              <div class="hp2-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <div class="hp2-review__name">Rapid Hire Pro</div>
-            </div>
-          </div>
-          <p class="hp2-review__text">From all of us at Rapid Hire Pro. We wanted to say thank you so much for the amazing shoes. They're a huge hit at Pantheon '23. Thanks again for the quick TAT and amazing customer service.</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>

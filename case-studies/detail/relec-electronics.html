@@ -64,7 +64,7 @@
  }
  .hero-top {
  display: grid;
- grid-template-columns: 1.05fr 0.95fr;
+ grid-template-columns: 0.9fr 1.1fr;
  gap: 48px;
  align-items: start;
  margin-bottom: 0;
@@ -446,7 +446,7 @@
  width: 14px; height: 14px;
  }
  .quote-card__image {
- background-image: url('../images/quote-block/cs-quote-relec.jpg');
+ background-image: url('../images/quote-block/cs-quote-foxen.jpg');
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -470,9 +470,9 @@
 
  /* Hero video orientation variants */
  .hero-video--portrait {
-   max-height: clamp(300px, 52vh, 480px);
+   max-height: clamp(480px, 70vh, 720px);
    width: auto;
-   max-width: 280px;
+   max-width: 480px;
    margin-left: auto;
    margin-right: auto;
    aspect-ratio: 9/16;
@@ -480,7 +480,7 @@
  }
  .hero-video--landscape {
    width: 100%;
-   max-height: clamp(280px, 50vh, 480px);
+   max-height: clamp(420px, 65vh, 680px);
    aspect-ratio: 16/9;
    object-fit: cover;
  }
@@ -491,7 +491,7 @@
    object-fit: cover;
  }
  @media (max-width: 768px) {
-   .hero-video--portrait { max-width: 220px; }
+   .hero-video--portrait { max-width: 320px; }
  }
 
  /* ================================================================
@@ -726,7 +726,7 @@
  <p class="hero-intro">Relec Electronics is a UK-based provider of power supplies, displays, and switching components for industrial applications. Founded in 1981 and headquartered in Wareham, Dorset, the company has spent more than 40 years building specialized expertise across the European industrial electronics market. The marketing team's order from Shoe Zero was straightforward. What came after was not.</p>
  <aside class="info-card">
  <div class="hero-pills">
- <div class="hero-logo"><img src="../images/logos/cs-logo-relec-electronics.png" alt="relec electronics logo"></div><div class="hero-logo hero-logo--mono" id="mono-relec-electronics" style="display:none;">R</div>
+ <div class="hero-logo"><img src="https://www.relec.co.uk/wp-content/uploads/2025/10/relec-logo-footer.png" alt="Relec Electronics logo" onerror="this.onerror=null;this.onerror=function(){this.onerror=null;document.getElementById(&apos;mono-relec-electronics&apos;).style.display=&apos;flex&apos;;this.parentElement.style.display=&apos;none&apos;;};this.src=&apos;https://icons.duckduckgo.com/ip3/relec.co.uk.ico&apos;;"></div><div class="hero-logo hero-logo--mono" id="mono-relec-electronics" style="display:none;">R</div>
         <div class="hero-pill">
          <span class="hero-pill-label">Products used</span>
          <span class="hero-pill-value">Classic Zero</span>
@@ -744,7 +744,7 @@
  </div>
  <div class="hero-right">
  <video class="hero-video hero-video--portrait" preload="metadata" controls playsinline aria-label="Lauren Grice video review">
-      <source src="https://cdn.shopify.com/videos/c/vp/55a65c1cedaf441f94d5fd445c6edb0b/55a65c1cedaf441f94d5fd445c6edb0b.HD-1080p-7.2Mbps-83694706.mp4" type="video/mp4">
+      <source src="../images/hero-photos/cs-hero-relec-electronics.jpg" type="video/mp4">
      </video>
  </div>
  </div>
@@ -762,6 +762,9 @@
 
  <!-- LEFT: body content -->
  <div class="body-content">
+
+ <p class="customer-tag">Relec Electronics | Industrial Electronics | Wareham, Dorset, United Kingdom</p>
+
  <!-- CHALLENGE -->
        <section class="body-section" id="ch-challenge">
         <h2>Challenge</h2>
