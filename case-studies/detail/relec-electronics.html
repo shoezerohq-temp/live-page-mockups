@@ -508,6 +508,18 @@
  font-size: 28px; font-weight: 800; margin-bottom: 36px;
  letter-spacing: -0.025em;
  }
+   .related-header {
+   display: flex; align-items: baseline; justify-content: space-between;
+   gap: 24px; margin-bottom: 36px;
+  }
+  .related-header h3 { margin-bottom: 0; }
+  .related-header__link {
+   display: inline-flex; align-items: center; gap: 6px;
+   color: var(--sz-accent); font-size: 13px; font-weight: 700;
+   text-decoration: none; flex-shrink: 0; white-space: nowrap;
+   transition: gap 180ms ease;
+  }
+  .related-header__link:hover { gap: 10px; }
  .related-grid {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
@@ -568,8 +580,8 @@
  margin: 0 auto;
  padding: 0 56px;
  display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 72px;
+ grid-template-columns: 1fr;
+ gap: 0;
  align-items: stretch;
  }
  .cta-col { display: flex; flex-direction: column; }
@@ -813,7 +825,10 @@
  ================================================================ -->
 <section class="related-section">
  <div class="related-inner">
- <h3>Read more customer stories</h3>
+ <div class="related-header">
+   <h3>Read more customer stories</h3>
+   <a class="related-header__link" href="/pages/case-studies">See all case studies <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
  <div class="related-grid">
       <article class="cs-card">
        <a class="cs-card__link" href="relex-solutions.html" aria-label="RELEX Solutions case study">
@@ -867,11 +882,6 @@
  <a href="/pages/business-inquiry" class="btn-primary">Get started</a>
  <a href="/collections/custom-shoes" class="btn-secondary">Browse styles</a>
  </div>
- </div>
- <div class="cta-col cta-col-secondary">
- <h3>More B2B case studies</h3>
- <p>See the brands Shoe Zero has worked with. Logos and project notes on the case studies page.</p>
- <a href="/pages/case-studies" class="btn-secondary">All case studies</a>
  </div>
  </div>
 </section>
