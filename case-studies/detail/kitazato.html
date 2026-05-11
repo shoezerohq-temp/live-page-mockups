@@ -510,59 +510,53 @@
  font-size: 28px; font-weight: 800; margin-bottom: 36px;
  letter-spacing: -0.025em;
  }
- .stories-list { list-style: none; }
- .story-row {
- display: grid;
- grid-template-columns: 180px 1fr auto;
- gap: 28px;
- align-items: center;
- padding: 24px 16px;
- border-bottom: 1px solid var(--sz-border);
- text-decoration: none;
- color: inherit;
- transition: background 180ms ease, border-radius 180ms ease;
- margin: 0 -16px;
- border-radius: 0;
- }
- .story-row:first-child { border-top: 1px solid var(--sz-border); }
- .story-row:hover {
- background: var(--sz-bg-warm);
- border-radius: var(--sz-radius-card);
- border-color: transparent;
- }
- .story-row:hover + .story-row { border-top-color: transparent; }
- .story-thumb {
- border-radius: var(--sz-radius-card);
- overflow: hidden;
- box-shadow: var(--sz-shadow);
- flex-shrink: 0;
- }
- .story-thumb img {
- width: 180px; height: 120px;
- object-fit: cover; display: block;
- }
- .story-meta .story-brand {
- font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
- text-transform: uppercase; color: var(--sz-accent);
- margin-bottom: 6px;
- }
- .story-meta .story-outcome {
- font-size: 15px; color: #2a2a2a; font-weight: 500; line-height: 1.4;
- }
- .story-arrow {
- flex-shrink: 0;
- width: 36px; height: 36px;
- border: 1.5px solid var(--sz-border);
- border-radius: 50%;
- display: flex; align-items: center; justify-content: center;
- color: var(--sz-muted);
- transition: border-color 180ms ease, color 180ms ease, transform 200ms var(--sz-ease);
- }
- .story-row:hover .story-arrow {
- border-color: var(--sz-accent);
- color: var(--sz-accent);
- transform: translateX(4px);
- }
+ .related-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 24px;
+  }
+  .cs-card {
+   background: var(--sz-white);
+   border-radius: var(--sz-radius-card);
+   box-shadow: var(--sz-shadow);
+   overflow: hidden;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   transition: transform 220ms var(--sz-ease), box-shadow 220ms var(--sz-ease);
+  }
+  .cs-card:hover { transform: translateY(-2px); box-shadow: var(--sz-shadow-hover); }
+  .cs-card__link { display: flex; flex-direction: column; flex: 1; text-decoration: none; color: inherit; }
+  .cs-card__img {
+   flex: 0 0 auto;
+   height: 200px;
+   background: var(--sz-black);
+   overflow: hidden;
+   position: relative;
+  }
+  .cs-card__img img {
+   width: 100%; height: 100%;
+   object-fit: cover; object-position: center;
+   display: block;
+   transition: transform 600ms var(--sz-ease);
+  }
+  .cs-card:hover .cs-card__img img { transform: scale(1.04); }
+  .cs-card__body { padding: 18px 22px 20px; flex: 1 1 auto; display: flex; flex-direction: column; }
+  .cs-card__name {
+   font-size: 18px; font-weight: 800; letter-spacing: -0.03em;
+   color: var(--sz-black); line-height: 1.2; margin-bottom: 8px;
+   display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .cs-card__arrow {
+   flex-shrink: 0; color: var(--sz-accent);
+   transition: transform 200ms var(--sz-ease);
+   display: inline-flex; align-items: center;
+  }
+  .cs-card:hover .cs-card__arrow { transform: translateX(4px); }
+  .cs-card__tagline {
+   font-size: 14px; font-weight: 400; color: var(--sz-muted);
+   line-height: 1.55; margin-bottom: 0;
+  }
 
  /* ================================================================
  S5: BOTTOM CTA, --sz-bg-cool
@@ -684,13 +678,8 @@
  }
 
  .related-inner { padding: 0 24px; }
- .story-row {
- grid-template-columns: 100px 1fr auto;
- gap: 16px;
- margin: 0 -8px;
- padding: 20px 8px;
- }
- .story-thumb img { width: 100px; height: 66px; }
+ .related-inner { padding: 0 24px; }
+  .related-grid { grid-template-columns: 1fr; gap: 20px; }
 
  .bottom-cta-inner {
  grid-template-columns: 1fr;
@@ -835,37 +824,43 @@
 <section class="related-section">
  <div class="related-inner">
  <h3>Read more customer stories</h3>
- <ul class="stories-list">
-       <li>
-        <a class="story-row" href="foxen.html">
-         <div class="story-thumb">
-          <img src="https://picsum.photos/seed/foxen/360/240" alt="Foxen case study" width="180" height="120">
-         </div>
-         <div class="story-meta">
-          <p class="story-brand">Foxen</p>
-          <p class="story-outcome">These shoes are exactly what we wanted — premium, on-brand, and our team genuinely loves w...</p>
-         </div>
-         <div class="story-arrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </div>
-        </a>
-       </li>
+ <div class="related-grid">
+      <article class="cs-card">
+       <a class="cs-card__link" href="fairfield-residential.html" aria-label="Fairfield Residential case study">
+        <div class="cs-card__img">
+         <img src="../images/card-photos/cs-card-fairfield-residential.jpg" alt="Fairfield Residential branded shoes" loading="lazy">
+        </div>
+        <div class="cs-card__body">
+         <h2 class="cs-card__name"><span>Fairfield Residential</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
+         <p class="cs-card__tagline">Eight executive pairs at Fairfield’s leadership offsite triggered a company-wide reorder. Property managers across the portfolio lined up next.</p>
+        </div>
+       </a>
+      </article>
 
-       <li>
-        <a class="story-row" href="fairfield-residential.html">
-         <div class="story-thumb">
-          <img src="https://picsum.photos/seed/fairfield-residential/360/240" alt="Fairfield Residential case study" width="180" height="120">
-         </div>
-         <div class="story-meta">
-          <p class="story-brand">Fairfield Residential</p>
-          <p class="story-outcome">Our team genuinely loves these shoes. People who didn&#x27;t get a pair are now asking how to g...</p>
-         </div>
-         <div class="story-arrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </div>
-        </a>
-       </li>
-   </ul>
+      <article class="cs-card">
+       <a class="cs-card__link" href="foxen.html" aria-label="Foxen case study">
+        <div class="cs-card__img">
+         <img src="../images/card-photos/cs-card-foxen.jpg" alt="Foxen team wearing custom shoes" loading="lazy">
+        </div>
+        <div class="cs-card__body">
+         <h2 class="cs-card__name"><span>Foxen</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
+         <p class="cs-card__tagline">Foxen handed every leader a custom pair at their annual kickoff. The unboxing photos ran across internal Slack for a week, and a second batch shipped before the next quarter.</p>
+        </div>
+       </a>
+      </article>
+
+      <article class="cs-card">
+       <a class="cs-card__link" href="relec-electronics.html" aria-label="Relec Electronics case study">
+        <div class="cs-card__img">
+         <img src="../images/card-photos/cs-card-relec-electronics.jpg" alt="Relec Electronics custom shoes for UK team" loading="lazy">
+        </div>
+        <div class="cs-card__body">
+         <h2 class="cs-card__name"><span>Relec Electronics</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
+         <p class="cs-card__tagline">A single UK shipment to Relec became three weeks of LinkedIn content. The posts pulled more inbound interest than the trade show that prompted the order.</p>
+        </div>
+       </a>
+      </article>
+     </div>
  </div>
 </section>
 
