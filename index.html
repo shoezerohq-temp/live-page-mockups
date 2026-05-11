@@ -727,21 +727,22 @@
     }
     .hp2-cs-card:hover { box-shadow: var(--sz-shadow-hover); transform: translateY(-2px); }
     .hp2-cs-card__media {
-      width: 100%; height: 175px;
+      width: 100%; height: 240px;
       background: var(--sz-black);
-      background-size: cover; background-position: center; background-repeat: no-repeat;
+      background-size: cover; background-position: center 70%; background-repeat: no-repeat;
       flex-shrink: 0;
+      overflow: hidden;
       transition: transform 600ms var(--sz-ease);
     }
     .hp2-cs-card:hover .hp2-cs-card__media { transform: scale(1.04); }
     .hp2-cs-card__body {
-      padding: 16px 20px 18px;
+      padding: 18px 22px 20px;
       display: flex; flex-direction: column; flex: 1;
     }
     .hp2-cs-card__title {
-      font-size: 16px; font-weight: 800; line-height: 1.25;
-      letter-spacing: -0.02em; color: var(--sz-black); margin: 0;
-      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      font-size: 18px; font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.03em; color: var(--sz-black); margin: 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
     .hp2-cs-card__arrow {
       flex-shrink: 0; color: var(--sz-accent);
