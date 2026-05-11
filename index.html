@@ -713,36 +713,42 @@
     .hp2-cs__see-all:hover { gap: 10px; }
     .hp2-cs__grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
     .hp2-cs-card {
       background: var(--sz-white);
-      border: 1px solid var(--sz-border);
       border-radius: var(--sz-radius-card);
+      box-shadow: var(--sz-shadow);
       overflow: hidden;
       display: flex; flex-direction: column;
       text-decoration: none; color: inherit;
-      transition: box-shadow 400ms var(--sz-ease), transform 400ms var(--sz-ease);
+      cursor: pointer;
+      transition: transform 220ms var(--sz-ease), box-shadow 220ms var(--sz-ease);
     }
-    .hp2-cs-card:hover { box-shadow: var(--sz-shadow-hover); transform: translateY(-4px); }
+    .hp2-cs-card:hover { box-shadow: var(--sz-shadow-hover); transform: translateY(-2px); }
     .hp2-cs-card__media {
-      width: 100%; aspect-ratio: 4/3;
-      background: var(--sz-bg-cool);
+      width: 100%; height: 175px;
+      background: var(--sz-black);
       background-size: cover; background-position: center; background-repeat: no-repeat;
-      flex-shrink: 0; border-bottom: 1px solid var(--sz-border);
+      flex-shrink: 0;
+      transition: transform 600ms var(--sz-ease);
     }
+    .hp2-cs-card:hover .hp2-cs-card__media { transform: scale(1.04); }
     .hp2-cs-card__body {
-      padding: 22px 26px 24px;
+      padding: 16px 20px 18px;
       display: flex; flex-direction: column; flex: 1;
     }
-    .hp2-cs-card__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--sz-accent); margin-bottom: 10px;
-    }
     .hp2-cs-card__title {
-      font-size: 18px; font-weight: 800; line-height: 1.3;
-      letter-spacing: -0.015em; color: var(--sz-text); margin: 0;
+      font-size: 16px; font-weight: 800; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--sz-black); margin: 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
     }
+    .hp2-cs-card__arrow {
+      flex-shrink: 0; color: var(--sz-accent);
+      transition: transform 200ms var(--sz-ease);
+      display: inline-flex; align-items: center;
+    }
+    .hp2-cs-card:hover .hp2-cs-card__arrow { transform: translateX(4px); }
 
     /* ================================================================
        S9b: B2B INQUIRY
@@ -1452,25 +1458,43 @@
           <h2>Business Case Studies</h2>
           <p>Real B2B teams, real outcomes. From 26-pair leadership kickoffs to 50-pair athletic team rollouts.</p>
         </div>
-        <a class="hp2-cs__see-all" href="/pages/case-studies">See all 12 case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="hp2-cs__see-all" href="/pages/case-studies">See all case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
       <div class="hp2-cs__grid" data-stagger>
-        <a class="hp2-cs-card" href="/pages/case-study-foxen">
-          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/quote-block-images/foxen.png');background-color:#f6f6f4;background-size:contain;"></div>
+        <a class="hp2-cs-card" href="/pages/foxen-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-foxen.jpg')"></div>
           <div class="hp2-cs-card__body">
-            <h3 class="hp2-cs-card__title">Foxen put 26 custom pairs on 26 leadership doorsteps in 6 weeks</h3>
+            <h3 class="hp2-cs-card__title"><span>Foxen</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
           </div>
         </a>
-        <a class="hp2-cs-card" href="/pages/case-study-fairfield-residential">
-          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/quote-block-images/fairfield.png');background-color:#f6f6f4;background-size:contain;"></div>
+        <a class="hp2-cs-card" href="/pages/capgemini-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-capgemini.jpg')"></div>
           <div class="hp2-cs-card__body">
-            <h3 class="hp2-cs-card__title">Fairfield Residential's EVP team had reorder requests in 10 days</h3>
+            <h3 class="hp2-cs-card__title"><span>Capgemini</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
           </div>
         </a>
-        <a class="hp2-cs-card" href="/pages/case-study-verder-liquids">
-          <div class="hp2-cs-card__media" style="background-image:url('https://shoezero.com/cdn/shop/files/verder-v2-1.jpg?width=1200');background-color:#eef1f8;"></div>
+        <a class="hp2-cs-card" href="/pages/fairfield-residential-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-fairfield-residential.jpg')"></div>
           <div class="hp2-cs-card__body">
-            <h3 class="hp2-cs-card__title">Netherlands HQ ordered. Spain reordered for the next trade fair.</h3>
+            <h3 class="hp2-cs-card__title"><span>Fairfield Residential</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
+          </div>
+        </a>
+        <a class="hp2-cs-card" href="/pages/relex-solutions-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-relex-solutions.jpg')"></div>
+          <div class="hp2-cs-card__body">
+            <h3 class="hp2-cs-card__title"><span>RELEX Solutions</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
+          </div>
+        </a>
+        <a class="hp2-cs-card" href="/pages/sma-inc-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-sma-inc.jpg')"></div>
+          <div class="hp2-cs-card__body">
+            <h3 class="hp2-cs-card__title"><span>SMA, Inc.</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
+          </div>
+        </a>
+        <a class="hp2-cs-card" href="/pages/veritas-technologies-case-study">
+          <div class="hp2-cs-card__media" style="background-image:url('../case-studies/live-assets/card-photos/cs-card-veritas-technologies.jpg')"></div>
+          <div class="hp2-cs-card__body">
+            <h3 class="hp2-cs-card__title"><span>Veritas Technologies</span><span class="hp2-cs-card__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h3>
           </div>
         </a>
       </div>
