@@ -103,7 +103,7 @@
  ================================================================ */
  .hero {
  position: relative; overflow: hidden;
- min-height: 520px;
+ min-height: 620px;
  display: flex; align-items: center;
  background: var(--sz-black);
  }
@@ -118,35 +118,37 @@
  }
  .hero__inner {
  position: relative; z-index: 2;
- max-width: 1280px; width: 100%;
+ max-width: 1200px; width: 100%;
  margin: 0 auto;
- padding: 64px 56px;
+ padding: 112px 32px;
  text-align: left;
- display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
+ display: flex; flex-direction: column; align-items: flex-start;
  }
  .hero__h1 {
- font-size: clamp(44px, 5.4vw, 76px);
- font-weight: 900;
- line-height: 1;
- letter-spacing: -0.045em;
+ font-size: clamp(42px, 5vw, 68px);
+ font-weight: 600;
+ line-height: 1.05;
+ letter-spacing: -0.03em;
  color: #fff;
- margin: 0;
+ margin: 0 0 20px;
  }
  .hero__h1 span { display: block; }
- .hero__h1 span.is-accent { color: #6acca1; }
+ .hero__h1 span.is-accent { color: #fff; }
  .hero__sub {
- font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.85);
- max-width: 580px; line-height: 1.55; margin: 0;
+ font-size: 16px; font-weight: 400; line-height: 1.65;
+ color: rgba(255,255,255,0.85);
+ max-width: 380px; margin: 0 0 36px;
  }
- .hero__actions { display: flex; align-items: center; justify-content: flex-start; margin-top: 4px; }
+ .hero__actions { display: flex; align-items: center; justify-content: flex-start; }
  .btn--primary {
- display: inline-flex; align-items: center; gap: 10px;
- padding: 16px 28px; border-radius: 8px;
+ display: inline-flex; align-items: center; gap: 8px;
+ padding: 13px 24px; border-radius: var(--sz-radius-btn);
  background: var(--sz-accent); color: #fff;
- font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+ font-size: 14px; font-weight: 600;
  border: none; cursor: pointer; font-style: normal;
  transition: transform 200ms var(--sz-ease), box-shadow 200ms var(--sz-ease), background 200ms var(--sz-ease);
  }
+ .btn--primary svg { width: 14px; height: 14px; }
  .btn--primary:hover { transform: translateY(-2px); box-shadow: var(--sz-shadow); background: var(--sz-accent-hover); }
  .btn--text {
  display: inline-flex; align-items: center; gap: 4px;
@@ -647,7 +649,7 @@
  ================================================================ -->
  <section class="hero">
  <div class="hero__bg">
- <img src="images/card-photos/cs-card-veritas-technologies.jpg" alt="veritas kiosk at sales event with attendees">
+ <img src="images/hero-bg/cs-index-hero.jpg" alt="veritas kiosk customer interaction at sales event">
  </div>
  <div class="hero__inner">
  <h1 class="hero__h1">
