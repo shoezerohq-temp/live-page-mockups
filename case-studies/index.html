@@ -352,51 +352,31 @@
  .cs-card--tall .cs-card__industry {
  color: rgba(255,255,255,0.7);
  }
+ /* Title row: name left, simple green arrow right */
  .cs-card__name {
  font-size: 18px; font-weight: 800; letter-spacing: -0.03em;
- color: var(--sz-black); line-height: 1.2; margin-bottom: 6px;
+ color: var(--sz-black); line-height: 1.2; margin-bottom: 8px;
+ display: flex; align-items: center; justify-content: space-between; gap: 12px;
  }
- .cs-card--featured .cs-card__name { font-size: 32px; color: #fff; }
- .cs-card--tall .cs-card__name { font-size: 24px; color: #fff; }
+ .cs-card--featured .cs-card__name { font-size: 28px; color: #fff; }
+ .cs-card--tall .cs-card__name { font-size: 22px; color: #fff; }
+
+ .cs-card__arrow {
+ flex-shrink: 0;
+ color: var(--sz-accent);
+ transition: transform 200ms var(--sz-ease);
+ display: inline-flex; align-items: center;
+ }
+ .cs-card--featured .cs-card__arrow,
+ .cs-card--tall .cs-card__arrow { color: #fff; }
+ .cs-card:hover .cs-card__arrow { transform: translateX(4px); }
 
  .cs-card__tagline {
  font-size: 14px; font-weight: 400; color: var(--sz-muted);
- line-height: 1.55; margin-bottom: 18px;
+ line-height: 1.55; margin-bottom: 0;
  }
- .cs-card--featured .cs-card__tagline { font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.5; }
- .cs-card--tall .cs-card__tagline { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.5; }
- .cs-card--std .cs-card__meta { margin-top: auto; justify-content: flex-end; }
- .cs-card--featured .cs-card__meta,
- .cs-card--tall .cs-card__meta { justify-content: flex-end; }
-
- .cs-card__meta {
- display: flex; align-items: center; gap: 16px;
- }
- .cs-card__pairs {
- font-size: 13px; font-weight: 700; color: var(--sz-accent);
- }
- .cs-card--featured .cs-card__pairs,
- .cs-card--tall .cs-card__pairs {
- color: #fff;
- }
- .cs-card__arrow {
- margin-left: auto;
- display: flex; align-items: center; justify-content: center;
- width: 32px; height: 32px;
- border-radius: 50%;
- background: var(--sz-accent-light);
- color: var(--sz-accent);
- transition: background 180ms ease, color 180ms ease;
- }
- .cs-card--featured .cs-card__arrow,
- .cs-card--tall .cs-card__arrow {
- background: rgba(255,255,255,0.15);
- color: #fff;
- }
- .cs-card:hover .cs-card__arrow {
- background: var(--sz-accent);
- color: #fff;
- }
+ .cs-card--featured .cs-card__tagline { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+ .cs-card--tall .cs-card__tagline { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
  /* For overlay cards, meta row needs relative z-index above overlay */
  .cs-card--featured .cs-card__body { z-index: 2; }
  .cs-card--tall .cs-card__body { z-index: 2; }
@@ -573,10 +553,6 @@
  .cs-card--tall .cs-card__pairs { color: var(--sz-accent); }
  .cs-card--featured .cs-card__industry,
  .cs-card--tall .cs-card__industry { color: var(--sz-accent); }
- .cs-card--featured .cs-card__arrow,
- .cs-card--tall .cs-card__arrow {
- background: var(--sz-accent-light); color: var(--sz-accent);
- }
  .cs-card--featured .cs-card__img::after,
  .cs-card--tall .cs-card__img::after { display: none; }
 
@@ -658,13 +634,8 @@
  <img src="images/quote-block/cs-quote-foxen.jpg" alt="Foxen custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Foxen</h2>
+ <h2 class="cs-card__name"><span>Foxen</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Foxen handed every leader a custom pair at their annual kickoff. The unboxing photos ran across internal Slack for a week, and a second batch shipped before the next quarter.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -675,13 +646,8 @@
  <img src="images/quote-block/cs-quote-capgemini.jpg" alt="Capgemini custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Capgemini</h2>
+ <h2 class="cs-card__name"><span>Capgemini</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Twenty pairs landed at a 420,000-person consultancy. The team filmed their own unboxing without being asked, and the company opened an internal employee discount.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -692,13 +658,8 @@
  <img src="images/quote-block/cs-quote-veritas.jpg" alt="Veritas Technologies custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Veritas Technologies</h2>
+ <h2 class="cs-card__name"><span>Veritas Technologies</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Veritas brought a Shoe Zero design station to every sales event. Prospects designed their own pair on the booth screen and walked away with branded sneakers.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -709,13 +670,8 @@
  <img src="images/quote-block/cs-quote-relex.jpg" alt="RELEX Solutions custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">RELEX Solutions</h2>
+ <h2 class="cs-card__name"><span>RELEX Solutions</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Fifty pairs in PMS-matched RELEX blue arrived for a single supply chain conference. The booth ran out of giveaway pairs by day two of three.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -726,13 +682,8 @@
  <img src="images/quote-block/cs-quote-fairfield.jpg" alt="Fairfield Residential custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Fairfield Residential</h2>
+ <h2 class="cs-card__name"><span>Fairfield Residential</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Eight executive pairs at Fairfield's leadership offsite triggered a company-wide reorder. Property managers across the portfolio lined up next.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -743,13 +694,8 @@
  <img src="images/quote-block/cs-quote-big-sing-thing.jpg" alt="The Big Sing Thing custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">The Big Sing Thing</h2>
+ <h2 class="cs-card__name"><span>The Big Sing Thing</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Mark designed the high-tops himself on Shoe Zero's tool. The cast wore them on stage. The audience asked where to buy them.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -760,13 +706,8 @@
  <img src="images/quote-block/cs-quote-relec.jpg" alt="Relec Electronics custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Relec Electronics</h2>
+ <h2 class="cs-card__name"><span>Relec Electronics</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">A single UK shipment to Relec became three weeks of LinkedIn content. The posts pulled more inbound interest than the trade show that prompted the order.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -777,13 +718,8 @@
  <img src="images/quote-block/cs-quote-verder.jpg" alt="Verder Liquids custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Verder Liquids</h2>
+ <h2 class="cs-card__name"><span>Verder Liquids</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Verder's Netherlands team ordered a small launch batch. Their Spain office saw the photos and reordered double within the same quarter.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -794,13 +730,8 @@
  <img src="images/quote-block/cs-quote-south-dakota.jpg" alt="South Dakota Coyotes custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">South Dakota Coyotes</h2>
+ <h2 class="cs-card__name"><span>South Dakota Coyotes</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">The Coyotes athletic department made 25 custom pairs the unofficial uniform of the booster network. A second order followed before the season ended.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -811,13 +742,8 @@
  <img src="images/quote-block/cs-quote-sma.jpg" alt="SMA, Inc. custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">SMA, Inc.</h2>
+ <h2 class="cs-card__name"><span>SMA, Inc.</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Federal proposal consultants don't wear conference t-shirts. SMA's lead picked custom paint-splatter sneakers for the Orlando APMP event and did not blend in.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
@@ -828,13 +754,8 @@
  <img src="images/quote-block/cs-quote-kitazato.jpg" alt="Kitazato custom Shoe Zero shoes" loading="lazy">
  </div>
  <div class="cs-card__body">
- <h2 class="cs-card__name">Kitazato</h2>
+ <h2 class="cs-card__name"><span>Kitazato</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
  <p class="cs-card__tagline">Kitazato's reproductive medicine team displayed their custom pair at the trade show booth. The shoes outdrew the catalog as a conversation starter.</p>
- <div class="cs-card__meta">
- <div class="cs-card__arrow">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
- </div>
- </div>
  </div>
  </a>
  </article>
