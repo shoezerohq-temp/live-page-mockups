@@ -295,24 +295,23 @@
  .cs-card--featured:hover .cs-card__img img,
  .cs-card--tall:hover .cs-card__img img { transform: scale(1.03); }
 
- /* Standard cards: fixed-height frame, image scaled up to fill (crops built-in whitespace) */
+ /* Standard cards: real photo, cover crop at fixed height */
  .cs-card--std .cs-card__img {
  flex: 0 0 auto;
- height: 200px;
- background: var(--sz-white);
+ height: 240px;
+ background: var(--sz-black);
  overflow: hidden;
  position: relative;
  }
  .cs-card--std .cs-card__img img {
- width: 140%;
- height: 140%;
- object-fit: contain;
- position: absolute;
- top: 50%; left: 50%;
- transform: translate(-50%, -50%);
- transition: transform 400ms var(--sz-ease);
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center;
+ display: block;
+ transition: transform 600ms var(--sz-ease);
  }
- .cs-card--std:hover .cs-card__img img { transform: translate(-50%, -50%) scale(1.04); }
+ .cs-card--std:hover .cs-card__img img { transform: scale(1.04); }
 
  /* Card overlay for featured/tall, gradient at bottom */
  .cs-card--featured .cs-card__img::after,
@@ -631,7 +630,7 @@
  <article class="cs-card cs-card--featured" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/foxen.html" aria-label="Foxen case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-foxen.jpg" alt="Foxen custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-foxen.jpg" alt="foxen customer reviewing custom shoes on camera" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Foxen</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -643,7 +642,7 @@
  <article class="cs-card cs-card--tall" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/capgemini.html" aria-label="Capgemini case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-capgemini.jpg" alt="Capgemini custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-capgemini.jpg" alt="capgemini teal sneakers in editorial film strip" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Capgemini</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -655,7 +654,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/veritas-technologies.html" aria-label="Veritas Technologies case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-veritas.jpg" alt="Veritas Technologies custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-veritas-technologies.jpg" alt="veritas alta shoes on cardboard shipping box" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Veritas Technologies</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -667,7 +666,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/relex-solutions.html" aria-label="RELEX Solutions case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-relex.jpg" alt="RELEX Solutions custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-relex-solutions.jpg" alt="relex blue branded sneakers at sales conference" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>RELEX Solutions</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -679,7 +678,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/fairfield-residential.html" aria-label="Fairfield Residential case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-fairfield.jpg" alt="Fairfield Residential custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-fairfield-residential.jpg" alt="fairfield branded shoe in hand outside on patio" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Fairfield Residential</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -691,7 +690,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/big-sing-thing.html" aria-label="The Big Sing Thing case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-big-sing-thing.jpg" alt="The Big Sing Thing custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-big-sing-thing.jpg" alt="big sing thing high tops worn by two on stage" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>The Big Sing Thing</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -703,7 +702,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/relec-electronics.html" aria-label="Relec Electronics case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-relec.jpg" alt="Relec Electronics custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-relec-electronics.jpg" alt="relec branded white sneaker held by hand" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Relec Electronics</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -715,7 +714,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/verder-liquids.html" aria-label="Verder Liquids case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-verder.jpg" alt="Verder Liquids custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-verder-liquids.jpg" alt="pink verder shoe in front of trade show backdrop" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Verder Liquids</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -727,7 +726,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/university-of-south-dakota.html" aria-label="South Dakota Coyotes case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-south-dakota.jpg" alt="South Dakota Coyotes custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-university-of-south-dakota.jpg" alt="south dakota coyotes red sneakers by shoebox" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>South Dakota Coyotes</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -739,7 +738,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/sma-inc.html" aria-label="SMA, Inc. case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-sma.jpg" alt="SMA, Inc. custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-sma-inc.jpg" alt="two pairs of sma paint splatter shoes on red carpet" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>SMA, Inc.</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
@@ -751,7 +750,7 @@
  <article class="cs-card cs-card--std" data-category="b2b" data-reveal>
  <a class="cs-card__link" href="detail/kitazato.html" aria-label="Kitazato case study">
  <div class="cs-card__img">
- <img src="images/quote-block/cs-quote-kitazato.jpg" alt="Kitazato custom Shoe Zero shoes" loading="lazy">
+ <img src="images/card-photos/cs-card-kitazato.jpg" alt="four pairs of kitazato custom high tops around table" loading="lazy">
  </div>
  <div class="cs-card__body">
  <h2 class="cs-card__name"><span>Kitazato</span><span class="cs-card__arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></h2>
