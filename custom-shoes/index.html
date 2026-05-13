@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Shoes Page Redesign V2 | Shoe Zero Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/tokens.css">
+  <style>
+    /* ============================================================
+       TOOLBAR (mockup chrome) — not part of the live design
+       ============================================================ */
+    .csm-bar{position:fixed;top:0;left:0;right:0;height:44px;background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:9000;font-family:'Inter',sans-serif}
+    .csm-bar__label{font-size:11px;font-weight:700;color:#888;letter-spacing:.1em;text-transform:uppercase}
+    .csm-bar__nav{display:flex;gap:6px;flex-wrap:wrap}
+    .csm-bar__nav a{font-size:10px;font-weight:700;color:#fff;padding:4px 9px;border-radius:5px;background:rgba(255,255,255,.1);text-decoration:none}
+    .csm-bar__nav a:hover{background:rgba(255,255,255,.2)}
+    .csm-toast{position:fixed;bottom:80px;right:24px;background:#1a1a1a;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;pointer-events:none;z-index:9001}
+    .csm-toast.show{opacity:1;transform:translateY(0)}
+
+    /* ============================================================
+       BASE
+       ============================================================ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#1a1a1a;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;padding-top:44px}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;cursor:pointer}
+
+    /* ============================================================
+       S1: HERO — 1:1 from live sz-hero-v3.liquid
+       Content + assets + structure all preserved.
+       ============================================================ */
+    /* Hero scale + crop: contain + transform-scale(0.8) like homepage so the shoe sits at the right size, not zoomed-in cover */
+    .hero-video-wrapper{position:relative;width:100%;height:55vh;min-height:337px;max-height:516px;overflow:hidden;background:#000}
+    .hero-desktop-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:80% center;transform:scale(0.8);transform-origin:80% center}
+    .hero-mobile-video{display:none}
+    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.1) 70%,transparent 100%);pointer-events:none}
+    .hero-video-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;height:100%;display:flex;flex-direction:column;justify-content:center;color:#fff}
+    /* H1 is lighter weight to match homepage hero feel (600, not 800) */
+    .hero-video-content h1{font-size:clamp(44px,5.2vw,72px);font-weight:600;letter-spacing:-.025em;line-height:1.02;margin-bottom:18px;max-width:680px}
+    .hero-video-content p{font-size:17px;line-height:1.5;color:rgba(255,255,255,.86);margin-bottom:32px;max-width:480px}
+    .hero-video-btns{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:48px}
+    .hero-video-btns-secondary{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+    .hero-btn-primary{display:inline-flex;align-items:center;gap:6px;padding:14px 28px;background:#00704a;color:#fff;font-size:15px;font-weight:600;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
+    .hero-btn-primary:hover{background:#005c3d;transform:translateY(-2px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .hero-btn-enterprise{font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.6);padding-bottom:3px;transition:color .2s,border-color .2s}
+    .hero-btn-enterprise:hover{color:#7dd3a8;border-color:#7dd3a8}
+    .hero-trust{position:absolute;left:0;right:0;bottom:32px;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+    .hero-trust-item{font-size:14px;font-weight:500;color:rgba(255,255,255,.92);letter-spacing:.005em}
+    @media(max-width:768px){
+      .hero-video-wrapper{height:560px}
+      .hero-desktop-video{display:none}
+      .hero-mobile-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .hero-video-content{padding:0 20px}
+      .hero-video-content h1{font-size:36px;line-height:1.05;margin-bottom:14px}
+      .hero-video-content p{font-size:15px;margin-bottom:24px}
+      .hero-video-btns{gap:18px;margin-bottom:0}
+      .hero-trust{padding:0 20px;bottom:24px;gap:18px}
+      .hero-trust-item{font-size:12px}
+    }
+
+    /* ============================================================
+       S2: TRUST MARQUEE — redesign (one-row, cleaner), content kept 1:1
+       Source content: sz-trusted-brands-v3.liquid
+       ============================================================ */
+    /* Cool bg so Trust alternates from Products white below */
+    .sz-brands{background:#f0f0f0;padding:18px 0}
+    .sz-brands__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px}
+    .sz-brands-reviews{display:flex;gap:24px;flex-shrink:0}
+    /* Flat review row — no pill backgrounds */
+    .sz-review{display:inline-flex;align-items:center;gap:10px}
+    .sz-review-name{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#1a1a1a}
+    .sz-review-name svg{height:18px;width:18px}
+    .sz-review-name img{height:16px;width:auto}
+    .sz-review-rating{display:inline-flex;align-items:center;gap:4px}
+    .sz-review-rating strong{font-size:14px;font-weight:800;color:#1a1a1a;letter-spacing:-.01em}
+    .sz-review-rating svg{width:14px;height:14px;fill:#f5a623}
+    .sz-review-label{font-size:11px;color:#888;font-weight:500;margin-left:2px}
+    .sz-brands-divider{width:1px;height:32px;background:#e5e5e5;flex-shrink:0}
+    .sz-brands-marquee{flex:1;min-width:0;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%)}
+    /* Fade-edge gradients adopt cool bg color so they blend correctly */
+    .sz-review{background:transparent}
+    .sz-brands-track{display:flex;align-items:center;gap:56px;width:max-content;animation:szTrustScroll 35s linear infinite}
+    /* Brand logos: fully black always, no hover state change */
+    .sz-brands-track img{max-height:26px;max-width:120px;width:auto;height:auto;flex-shrink:0;filter:brightness(0);opacity:1}
+    @keyframes szTrustScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){.sz-brands-track{animation:none}}
+    @media(max-width:768px){
+      .sz-brands{padding:14px 0}
+      .sz-brands__inner{flex-direction:column;gap:14px;padding:0 16px}
+      .sz-brands-divider{display:none}
+      .sz-brands-reviews{gap:10px}
+      .sz-review{padding:7px 12px}
+      .sz-brands-marquee{width:100%}
+    }
+
+    /* ============================================================
+       S3: PRODUCT GRID — redesign (one-row slider, bounded 1280)
+       Real 8 products from /collections/custom-shoes
+       ============================================================ */
+    .sz-pgs{background:#fff;padding:40px 0 48px}
+    .sz-pgs__c{max-width:1280px;margin:0 auto;padding:0 24px}
+    .sz-pgs__header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+    .sz-pgs__header h2{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a}
+    .sz-pgs__header p{font-size:14px;color:#777;margin-top:6px}
+    .sz-pgs__nav{display:flex;align-items:center;gap:10px}
+    /* Arrows: active state has a clear green ring + tinted bg so it reads as
+       "actionable" against a white section. Disabled stays a quiet white card. */
+    .sz-pgs__arrow{width:52px;height:44px;border-radius:12px;background:#e6f2ed;border:1.5px solid #00704a;color:#00704a;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,112,74,.12),0 12px 32px rgba(0,112,74,.08);transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1),color .2s,background .2s,border-color .2s}
+    .sz-pgs__arrow:hover{color:#fff;background:#00704a;border-color:#00704a;transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,112,74,.14),0 8px 20px rgba(0,112,74,.18),0 20px 44px rgba(0,112,74,.14)}
+    .sz-pgs__arrow:disabled{color:#cfcfcf;cursor:default;transform:none;background:#fff;border-color:#ececec;box-shadow:0 1px 2px rgba(0,0,0,.03),0 2px 6px rgba(0,0,0,.03)}
+    .sz-pgs__arrow svg{width:20px;height:20px;stroke-width:3}
+    /* No right-edge fade — let cards reach the section edge */
+    .sz-pgs__viewport{position:relative}
+    /* 5-up sizing matched to homepage hp2-products (16px gap, 1:1 image, 14px info padding).
+       scroll-snap is `proximity` (not `mandatory`) — mandatory forces a secondary snap
+       animation after smooth-scroll, which causes a noticeable delay mid-track. */
+    .sz-pgs__track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none}
+    .sz-pgs__track::-webkit-scrollbar{display:none}
+    .sz-pgs__card{flex:0 0 calc((100% - 64px)/5);scroll-snap-align:start;background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;transition:box-shadow .4s,transform .4s,border-color .3s;text-decoration:none;color:inherit}
+    .sz-pgs__card:hover{box-shadow:0 12px 36px rgba(0,0,0,.1),0 4px 12px rgba(0,0,0,.06);transform:translateY(-6px);border-color:rgba(0,112,74,.2)}
+    .sz-pgs__img{aspect-ratio:1;overflow:hidden;background:#f5f5f5;position:relative}
+    .sz-pgs__img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .sz-pgs__card:hover .sz-pgs__img img{transform:scale(1.08)}
+    .sz-pgs__info{padding:14px 16px}
+    .sz-pgs__name{font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.3;color:#1a1a1a}
+    .sz-pgs__row{display:flex;justify-content:space-between;align-items:center}
+    .sz-pgs__price{font-size:14px;font-weight:700;color:#1a1a1a}
+    .sz-pgs__customize{font-size:10px;font-weight:700;color:#00704a;text-transform:uppercase;letter-spacing:.05em;opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s}
+    .sz-pgs__card:hover .sz-pgs__customize{opacity:1;transform:translateX(0)}
+    /* Progress: full-width across the section, taller bar. Transition matched to the
+       slider scroll duration (400ms + sz-ease) so the bar feels synced with the cards. */
+    .sz-pgs__progress{margin-top:22px;height:5px;background:#e5e5e5;border-radius:99px;overflow:hidden;width:100%}
+    /* No CSS transition: width is driven directly by scrollLeft via the scroll event,
+       so the fill tracks the cards 1:1 instead of running on a separate timer. */
+    .sz-pgs__progress-fill{height:100%;background:#00704a;border-radius:99px;width:1%}
+    @media(max-width:1100px){.sz-pgs__card{flex:0 0 calc((100% - 48px)/4)}}
+    @media(max-width:900px){.sz-pgs__card{flex:0 0 calc((100% - 32px)/3)}}
+    @media(max-width:640px){.sz-pgs__card{flex:0 0 calc((100% - 16px)/2)}}
+
+    /* ============================================================
+       S4: HTC — 1:1 VERBATIM from live sz-htc-v3.liquid
+       (all .oB-* classes, accordion behaviour, copy preserved)
+       ============================================================ */
+    .oB-wrap{background:#f0f0f0;padding:40px 40px 56px;width:100%}
+    .oB-card{background:#fff;border-radius:24px;box-shadow:0 2px 4px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.09),0 24px 48px rgba(0,0,0,.06);max-width:1200px;margin:0 auto;overflow:hidden}
+    .oB-tut{padding:52px 56px 48px}
+    .oB-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+    .oB-h{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:24px;color:#1a1a1a}
+    .oB-h em{font-style:normal;color:#00704a}
+    .oB-steps{display:flex;flex-direction:column}
+    .oB-step{border-left:3px solid #e5e5e5;padding:20px 0 20px 24px;cursor:pointer;transition:border-color .3s cubic-bezier(.22,1,.36,1)}
+    .oB-step.active{border-left-color:#00704a}
+    .oB-step-head{display:flex;align-items:center;gap:14px}
+    .oB-step-num{width:40px;height:40px;border-radius:50%;background:#00704a;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+    .oB-step:hover .oB-step-num,.oB-step.active .oB-step-num{transform:scale(1.1);box-shadow:0 0 0 4px rgba(0,112,74,.2)}
+    .oB-step-title{font-size:16px;font-weight:700;flex:1;color:#1a1a1a;transition:color .3s cubic-bezier(.22,1,.36,1)}
+    .oB-step:hover .oB-step-title,.oB-step.active .oB-step-title{color:#00704a}
+    .oB-step-chev{width:20px;height:20px;flex-shrink:0;color:#777;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .oB-step-chev svg{width:20px;height:20px}
+    .oB-step.active .oB-step-chev{transform:rotate(180deg);color:#00704a}
+    .oB-step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 350ms cubic-bezier(.22,1,.36,1)}
+    .oB-step.active .oB-step-body{grid-template-rows:1fr}
+    .oB-step-body-inner{min-height:0;overflow:hidden}
+    .oB-step-desc{font-size:14px;color:#777;line-height:1.6;margin-top:8px;opacity:0;transform:translateY(-10px);transition:opacity 350ms cubic-bezier(.22,1,.36,1),transform 350ms cubic-bezier(.22,1,.36,1)}
+    .oB-step.active .oB-step-desc{opacity:1;transform:translateY(0)}
+    .oB-step-progress{height:2px;background:#e5e5e5;margin-top:12px;border-radius:1px;overflow:hidden}
+    .oB-step-progress-fill{height:100%;width:0;background:#00704a;border-radius:1px;transition:width .4s cubic-bezier(.22,1,.36,1)}
+    .oB-step.active .oB-step-progress-fill{width:100%}
+    .oB-cta{margin-top:24px;text-align:center}
+    .oB-cta a{display:inline-flex;align-items:center;padding:14px 28px;font-size:15px;font-weight:600;background:#00704a;color:#fff;border-radius:8px;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+    .oB-cta a:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .oB-vid{aspect-ratio:16/10;position:relative;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .oB-vid video{width:100%;height:100%;object-fit:cover;display:block}
+    .oB-vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.15);cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+    .oB-vid-play:hover{transform:translate(-50%,-50%) scale(1.08)}
+    .oB-vid-play::after{content:'';border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid #00704a;margin-left:3px}
+    @media(max-width:768px){
+      .oB-wrap{padding:20px 16px 28px}
+      .oB-tut{padding:32px 24px}
+      .oB-grid{grid-template-columns:1fr;gap:32px}
+      .oB-vid-wrap{order:-1}
+    }
+
+    /* ============================================================
+       S5: MANUFACTURING — 3 phase cards in a row, each with photo.
+       White bg (alternates from HTC cool above).
+       ============================================================ */
+    .sz-mfg{background:#fff;padding:48px 0 56px}
+    .sz-mfg__c{max-width:1280px;margin:0 auto;padding:0 24px}
+    /* Header: H2 + sub left aligned, See Manufacturing Page CTA right aligned */
+    .sz-mfg__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+    .sz-mfg__head-text{max-width:680px}
+    .sz-mfg__h{font-size:clamp(28px,2.6vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a;margin-bottom:10px}
+    .sz-mfg__sub{font-size:15px;color:#777;line-height:1.55}
+    .sz-mfg__more{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#00704a;text-decoration:none;transition:color .2s,transform .2s}
+    .sz-mfg__more:hover{color:#005c3d;transform:translateX(2px)}
+    .sz-mfg__more svg{color:#00704a;flex-shrink:0}
+    /* 4 cards — snippets from the 7-step manufacturing page (the "See Manufacturing Page →"
+       link in the header is the full content). Not fabricated steps. */
+    .sz-mfg__row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .sz-mfg__card{background:#fff;border:1px solid #ececec;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+    .sz-mfg__card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06),0 20px 40px rgba(0,0,0,.05)}
+    .sz-mfg__img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#1a1a1a}
+    .sz-mfg__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+    .sz-mfg__card:hover .sz-mfg__img img{transform:scale(1.04)}
+    .sz-mfg__body{padding:22px 24px 24px;display:flex;gap:16px;align-items:flex-start;flex:1}
+    .sz-mfg__num{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(0,112,74,.08);color:#00704a;font-size:13px;font-weight:800;letter-spacing:.04em}
+    .sz-mfg__phase-body{flex:1;min-width:0}
+    .sz-mfg__phase-title{font-size:16px;font-weight:800;letter-spacing:-.01em;color:#1a1a1a;margin-bottom:6px;line-height:1.25}
+    .sz-mfg__phase-text{font-size:13px;color:#777;line-height:1.6;margin:0}
+    @media(max-width:1100px){.sz-mfg__row{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.sz-mfg__row{grid-template-columns:1fr;gap:14px}}
+
+    /* ============================================================
+       S6: CUSTOMER WALL — `.oC-bottom` structure 1:1 from homepage.
+       Cool bg here (deviates from homepage's white) so Mfg white → CW cool
+       alternates. Class names/structure/content/assets stay identical.
+       ============================================================ */
+    .sz-cw{padding:40px 0;background:#f0f0f0}
+    .sz-cw__c{max-width:1280px;margin:0 auto;padding:0 24px}
+    .oC-bottom{padding-top:0;margin-top:0}
+    .oC-bhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+    .oC-bhead h3{font-size:16px;font-weight:700;letter-spacing:-.01em;color:#1a1a1a}
+    .oC-bhead span{font-size:12px;color:#999;font-weight:500}
+    .oC-brow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .oC-bitem{aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#000}
+    .oC-bitem img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+    .oC-bitem:hover img{transform:scale(1.05)}
+    @media(max-width:768px){.oC-brow{grid-template-columns:repeat(2,1fr)}}
+
+    /* ============================================================
+       S7: COMPARISON TABLE — content 1:1 from brand-comparison-table.liquid
+       Design redesign: cleaner header, sharper sz-column distinction,
+       softer body rows, no warm khaki bg (cool #f0f0f0 to fit rhythm)
+       ============================================================ */
+    /* Compare section: white per rhythm (CW cool above → Compare white → Reviews near-white below). */
+    .ct-section{padding:48px 24px 56px;background:#fff}
+    .ct-inner{max-width:1240px;margin:0 auto}
+    .ct-h{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:10px;text-wrap:balance;color:#1a1a1a}
+    .ct-sub{font-size:15px;color:#00704a;font-weight:500;text-align:center;line-height:1.55;max-width:560px;margin:0 auto 32px}
+    .ct-card{background:#fff;border:1px solid #ececec;border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.06),0 24px 56px rgba(0,0,0,.05);overflow:hidden;position:relative}
+    /* BEST FIT badge sits over the SZ column header. positioned by nth-child so it stays aligned. */
+    .ct-best{position:absolute;top:0;left:50%;transform:translateX(-50%);background:#00704a;color:#fff;font-size:10px;font-weight:800;letter-spacing:.14em;padding:5px 14px;border-radius:0 0 8px 8px;text-transform:uppercase;z-index:2;display:none}
+    /* the badge is positioned by JS once the layout is known; declared below for resilience */
+    .ct-card table{width:100%;border-collapse:collapse;table-layout:fixed}
+    .ct-card thead th{padding:34px 18px 18px;text-align:center;vertical-align:bottom;border-bottom:1px solid #e8e3dc;width:auto;white-space:nowrap}
+    .ct-card thead th:first-child{text-align:left;padding-left:28px;width:200px;white-space:normal}
+    /* Highlight applied DIRECTLY to the SZ column cells — no overlay, padding stays even */
+    .ct-card thead th.sz-col-head{background:rgba(0,112,74,.05);border-top:3px solid #00704a}
+    .ct-card tbody td.sz-col{background:rgba(0,112,74,.04)}
+    .ct-card tbody tr:last-child td.sz-col{border-bottom-left-radius:0}
+    .th-brand-name{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.1em;margin-top:8px}
+    .brand-logo{width:32px;height:32px;object-fit:contain;margin:0 auto 6px;display:block;filter:brightness(0);opacity:.65}
+    .sz-col-head .brand-logo{filter:none;opacity:1}
+    .sz-label{font-size:11px;font-weight:800;color:#00704a;text-transform:uppercase;letter-spacing:.14em;display:block;margin-top:8px}
+    .ct-card tbody tr{border-bottom:1px solid #e8e3dc}
+    .ct-card tbody tr:last-child{border-bottom:none}
+    .ct-card tbody td{padding:18px 18px;text-align:center;vertical-align:middle;font-size:13px;color:#777;line-height:1.45;white-space:nowrap}
+    .ct-card tbody td:first-child{text-align:left;font-weight:700;font-size:14px;color:#1a1a1a;padding-left:28px;padding-right:18px;width:200px;line-height:1.4;white-space:normal}
+    .ico-sz{width:34px;height:34px;border-radius:50%;background:#00704a;color:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ico-sz svg{width:17px;height:17px}
+    .sz-text{font-size:12px;color:#00704a;font-weight:600;margin-top:6px;line-height:1.3;text-align:center}
+    /* Gray-outlined neutral competitor icon */
+    .ico-comp{width:26px;height:26px;border-radius:50%;border:2px solid #d8d5d0;color:#bbb;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;background:#fafafa}
+    .ico-comp svg{width:12px;height:12px}
+    .comp-text{font-size:11px;color:#aaa;margin-top:5px;line-height:1.3;text-align:center}
+    .ico-dash{font-size:18px;color:#cfccc7;font-weight:400;line-height:1;display:inline-block}
+    .cell-wrap{display:flex;flex-direction:column;align-items:center}
+    .ct-foot{padding:28px 32px 30px;border-top:1px solid #e8e3dc;text-align:center}
+    .ct-btn{display:inline-flex;align-items:center;padding:14px 30px;font-size:15px;font-weight:700;background:#00704a;color:#fff;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+    .ct-btn:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .ct-disc{font-size:11px;color:#aaa;margin-bottom:16px;line-height:1.6}
+    @media(max-width:768px){
+      .ct-section{padding:32px 12px}
+      .ct-card{overflow-x:auto}
+      .ct-card table{min-width:680px}
+      .ct-btn{width:100%}
+    }
+
+    /* ============================================================
+       S8: GOOGLE REVIEWS — 1:1 VERBATIM from live google-reviews-marquee.liquid
+       ============================================================ */
+    .reviews-marquee{--rm-bg:#f9f9f9;--rm-text:#222222;--rm-accent:#FBBC05;--rm-speed:45s;--rm-card-bg:#ffffff;--rm-card-border:#eeeeee;background:var(--rm-bg);padding:20px 0;overflow:hidden;position:relative;width:100%}
+    .reviews-marquee__heading{text-align:center;color:var(--rm-text);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:0 0 16px;opacity:.7}
+    .reviews-marquee__track{display:flex;width:max-content;animation:marquee-scroll var(--rm-speed) linear infinite}
+    .reviews-marquee:hover .reviews-marquee__track{animation-play-state:paused}
+    @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .reviews-marquee__card{flex:0 0 auto;display:flex;align-items:flex-start;gap:14px;background:var(--rm-card-bg);border:1px solid var(--rm-card-border);border-radius:10px;padding:16px 20px;margin:0 10px;max-width:360px;min-width:300px;box-sizing:border-box;transition:box-shadow .2s}
+    .reviews-marquee__card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+    .reviews-marquee__avatar{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:#e0e0e0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#555}
+    .reviews-marquee__body{flex:1;min-width:0}
+    .reviews-marquee__stars{display:flex;gap:2px;margin-bottom:6px}
+    .reviews-marquee__star{width:14px;height:14px;fill:var(--rm-accent)}
+    .reviews-marquee__text{font-size:13px;line-height:1.5;color:var(--rm-text);margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .reviews-marquee__name{font-size:12px;font-weight:600;color:var(--rm-text);opacity:.75;margin:0}
+    @media(prefers-reduced-motion:reduce){.reviews-marquee__track{animation:none}}
+
+    /* ============================================================
+       S9: B2B FORM — 1:1 from homepage `.hp2-binq` design
+       (homepage-v3.html lines 773-* CSS, 1526-1636 HTML)
+       ============================================================ */
+    .hp2-binq{padding:40px 0;background:#f0f0f0}
+    .hp2-binq__c{max-width:1240px;margin:0 auto;padding:0 24px}
+    .hp2-binq__header{text-align:center;max-width:760px;margin:0 auto 24px}
+    .hp2-binq__header h2{font-size:clamp(28px,2.6vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a;margin-bottom:8px}
+    .hp2-binq__lead{font-size:15px;color:#555;line-height:1.6}
+    .hp2-binq__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .hp2-binq__visual{display:flex;flex-direction:column;gap:14px;min-width:0}
+    /* Fallback bg photo shows behind iframe (visible in file:// preview where iframe is blocked; covered by the video in production). */
+    .hp2-binq__video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#1a1a1a url('../assets/customer-wall/cw-asrm-2023.jpeg') center/cover no-repeat;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .hp2-binq__video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    /* Shoe marquee: larger white-card tiles to match homepage's hp2-binq rot. */
+    .hp2-binq__rot{position:relative;overflow:hidden;padding:4px 0}
+    .hp2-binq__rot-fade{position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+    .hp2-binq__rot-fade--l{left:0;background:linear-gradient(to right,#f0f0f0,transparent)}
+    .hp2-binq__rot-fade--r{right:0;background:linear-gradient(to left,#f0f0f0,transparent)}
+    .hp2-binq__rot-track{display:flex;gap:14px;animation:hp2BinqRot 32s linear infinite;width:max-content;padding:6px 0}
+    .hp2-binq__rot-item{width:200px;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#fff;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .hp2-binq__rot-item img{width:100%;height:100%;object-fit:contain;padding:18px}
+    @keyframes hp2BinqRot{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){.hp2-binq__rot-track{animation:none}}
+    .hp2-binq__form-card{min-width:0;display:flex;flex-direction:column;background:#f9f9f9;border-radius:12px;padding:20px 24px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .hp2-binq__form-card h3{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px;color:#1a1a1a}
+    .hp2-binq__form-sub{font-size:13px;color:#777;margin-bottom:14px}
+    .hp2-binq__form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hp2-binq__label{display:block;font-size:13px;font-weight:500;color:#222;margin-bottom:4px}
+    .hp2-binq__input,.hp2-binq__select,.hp2-binq__textarea{width:100%;padding:11px 13px;font-size:14px;font-family:inherit;border:1px solid #ddd;border-radius:10px;background:#fff;color:#1a1a1a;transition:border-color .18s,box-shadow .18s;outline:none}
+    .hp2-binq__input:focus,.hp2-binq__select:focus,.hp2-binq__textarea:focus{border-color:#1a1a1a;box-shadow:0 0 0 1.5px rgba(26,26,26,.2)}
+    .hp2-binq__textarea{resize:vertical;min-height:60px}
+    .hp2-binq__phone{display:flex;gap:0;align-items:stretch}
+    .hp2-binq__phone-prefix{padding:11px 12px;font-size:14px;font-weight:600;color:#1a1a1a;background:#fff;border:1px solid #ddd;border-right:0;border-radius:10px 0 0 10px}
+    .hp2-binq__phone-input{flex:1;padding:11px 13px;font-size:14px;border:1px solid #ddd;border-left:0;border-radius:0 10px 10px 0;outline:none;transition:border-color .18s,box-shadow .18s}
+    .hp2-binq__phone-input:focus{border-color:#1a1a1a;box-shadow:0 0 0 1.5px rgba(26,26,26,.2)}
+    .hp2-binq__full{grid-column:1/-1}
+    .hp2-binq__submit{display:block;margin:6px auto 4px;width:auto;padding:13px 32px;font-size:15px;font-weight:600;background:#00704a;color:#fff;border:0;border-radius:8px;cursor:pointer;transition:opacity .2s}
+    .hp2-binq__submit:hover{opacity:.85}
+    .hp2-binq__fineprint{font-size:12px;color:#666;margin-top:4px;text-align:center;line-height:1.4}
+    /* Trust band: flat row, no card backgrounds, top divider — matches homepage. */
+    .hp2-binq__trust-band{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:36px auto 0;max-width:1100px;padding:24px 24px 0;border-top:1px solid #d8d8d8}
+    .hp2-binq__trust-item{display:flex;align-items:center;gap:10px;font-size:14px;color:#1a1a1a;justify-content:center}
+    .hp2-binq__trust-item svg{width:18px;height:18px;color:#00704a;flex-shrink:0}
+    .hp2-binq__trust-item strong{font-weight:700}
+    .hp2-binq__trust-item span{color:#666;font-weight:500}
+    .hp2-binq__trust-item strong + {color:#666}
+    @media(max-width:900px){
+      .hp2-binq__grid{grid-template-columns:1fr;gap:18px}
+      .hp2-binq__trust-band{grid-template-columns:1fr;padding:0 12px}
+    }
+
+    /* ============================================================
+       S10: SEO 3-BOXES — content 1:1 from sz-seo-boxes.liquid
+       Design redesign: white cards on cool bg, stronger headers, icon bullets
+       ============================================================ */
+    .seoA-s{background:#fff;padding:48px 24px 56px}
+    .seoA-inner{max-width:1180px;margin:0 auto}
+    .seoA-header{text-align:center;margin-bottom:36px}
+    .seoA-h{font-size:clamp(26px,2.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px;color:#1a1a1a}
+    .seoA-header-right{font-size:15px;color:#777;line-height:1.55;max-width:560px;margin:0 auto}
+    .seoA-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .seoA-card{padding:32px 28px 30px;border-radius:14px;background:#fafafa;position:relative;border:1px solid #ececec}
+    /* Icon + heading row inline (icon BEFORE H3 on the same line) */
+    .seoA-card-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .seoA-card-icon{display:inline-flex;width:36px;height:36px;border-radius:9px;background:rgba(0,112,74,.08);color:#00704a;align-items:center;justify-content:center;flex-shrink:0}
+    .seoA-card-icon svg{width:18px;height:18px}
+    .seoA-card h3{font-size:17px;font-weight:800;letter-spacing:-.01em;margin:0;color:#1a1a1a}
+    .seoA-card p{font-size:14px;color:#777;line-height:1.65;margin-bottom:12px}
+    .seoA-card ul{list-style:none;padding:0;font-size:14px;color:#555;line-height:1.7;margin:0}
+    .seoA-card li{margin-bottom:8px;padding-left:18px;position:relative}
+    .seoA-card li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:2px;border-radius:99px;background:#00704a}
+    .seoA-card li strong{color:#1a1a1a;font-weight:700}
+    .seoA-card li a{color:#00704a;font-weight:700;border-bottom:1px solid rgba(0,112,74,.2)}
+    .seoA-card li a:hover{border-color:#00704a}
+    @media(max-width:900px){.seoA-grid{grid-template-columns:1fr}}
+
+    /* ============================================================
+       S11: FAQ — 1:1 VERBATIM from live sz-faq-standard.liquid (.oFQ-*)
+       ============================================================ */
+    .oFQ-section{background:#f0f0f0}
+    .oFQ-wrap{max-width:1100px;margin:0 auto;padding:32px 40px 48px}
+    .oFQ-header{text-align:center;margin-bottom:36px}
+    .oFQ-bar{width:32px;height:3px;background:#00704a;border-radius:2px;margin:0 auto 16px}
+    .oFQ-heading{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+    .oFQ-sub{font-size:15px;color:#777;line-height:1.6;max-width:600px;margin:0 auto}
+    .oFQ-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
+    .oFQ-item{background:#fff;border-radius:12px;overflow:hidden;transition:box-shadow .3s cubic-bezier(.22,1,.36,1)}
+    .oFQ-item.open{box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
+    .oFQ-trigger{width:100%;display:flex;align-items:center;gap:14px;padding:18px 22px;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left}
+    .oFQ-tag{font-size:11px;font-weight:700;color:#00704a;flex-shrink:0;min-width:24px}
+    .oFQ-q-text{font-size:15px;font-weight:600;color:#1a1a1a;line-height:1.4;flex:1;transition:color .3s cubic-bezier(.22,1,.36,1)}
+    .oFQ-item.open .oFQ-q-text{color:#00704a}
+    .oFQ-chevron{width:20px;height:20px;flex-shrink:0;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .oFQ-chevron svg{width:20px;height:20px}
+    .oFQ-item.open .oFQ-chevron{transform:rotate(180deg)}
+    .oFQ-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
+    .oFQ-body-inner{padding:0 22px 18px 60px;font-size:14px;line-height:1.7;color:#777}
+    @media(max-width:768px){.oFQ-wrap{padding:24px 16px}.oFQ-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- ─── Mockup toolbar ─── -->
+  <div class="csm-bar">
+    <div class="csm-bar__label">Custom Shoes — Redesign V2 (mockup)</div>
+    <div class="csm-bar__nav">
+      <a href="#hero">Hero</a><a href="#trust">Trust</a><a href="#products">Grid</a>
+      <a href="#htc">HTC</a><a href="#mfg">Mfg</a><a href="#wall">Wall</a>
+      <a href="#compare">Compare</a><a href="#reviews">Reviews</a>
+      <a href="#b2b">B2B</a><a href="#seo">SEO</a><a href="#faq">FAQ</a>
+    </div>
+    <button class="csm-copy" onclick="csmCopyAll()" style="padding:7px 14px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;background:#00704a;color:#fff;border:none;border-radius:6px;cursor:pointer">Copy Code</button>
+  </div>
+  <div class="csm-toast" id="csmToast">Copied</div>
+
+  <!-- ============================================================
+       S1: HERO (1:1 from live sz-hero-v3 — content, assets, structure)
+       ============================================================ -->
+  <section id="hero">
+    <div class="hero-video-wrapper">
+      <video class="hero-desktop-video" autoplay muted loop playsinline
+             poster="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop-poster.webp?v=98690032460295840781775819493"
+             aria-label="Shoe Zero custom shoes showcase video">
+        <source src="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop.mp4?v=114742411458932646431774277700" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+      <div class="hero-video-content">
+        <h1>Custom Shoes</h1>
+        <p>Full-panel printing on 30+ styles. No minimums.</p>
+        <div class="hero-video-btns">
+          <a href="#products" class="hero-btn-primary">Design Now &rarr;</a>
+          <div class="hero-video-btns-secondary">
+            <a href="/pages/business-inquiry" class="hero-btn-enterprise">Business Branded Shoes &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-item">&#10003; No order minimum</span>
+        <span class="hero-trust-item">&#10003; Global shipping</span>
+        <span class="hero-trust-item">&#10003; Free design tools</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S2: TRUST MARQUEE — single row (Google + Trustpilot + brand marquee inline)
+       Content + assets 1:1 from live sz-trusted-brands-v3. Visual redesign only.
+       ============================================================ -->
+  <section id="trust">
+    <div class="sz-brands">
+      <div class="sz-brands__inner">
+        <div class="sz-brands-reviews">
+          <div class="sz-review">
+            <div class="sz-review-name">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span>Google</span>
+            </div>
+            <div class="sz-review-rating">
+              <strong>4.9</strong>
+              <svg viewBox="0 0 24 24" fill="#f5a623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <span class="sz-review-label">Reviews</span>
+            </div>
+          </div>
+          <div class="sz-review">
+            <div class="sz-review-name">
+              <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-trustpilot-star.png?v=146041826341132994521774277696" alt="Trustpilot review platform logo" width="120" height="19">
+              <span>Trustpilot</span>
+            </div>
+            <div class="sz-review-rating">
+              <strong>4.8</strong>
+              <svg viewBox="0 0 24 24" fill="#f5a623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <span class="sz-review-label">Reviews</span>
+            </div>
+          </div>
+        </div>
+        <div class="sz-brands-divider"></div>
+        <div class="sz-brands-marquee">
+          <div class="sz-brands-track">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce logo — custom shoe client" title="Salesforce" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz logo — custom shoe client" title="Kraft Heinz" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness logo — custom shoe client" title="Guinness" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar logo — custom shoe client" title="TrueCar" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft logo — custom shoe client" title="Microsoft" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota logo — custom shoe client" title="University of South Dakota" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas logo — custom shoe client" title="Cintas" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo logo — custom shoe client" title="Gallo" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB logo — custom shoe client" title="ABB" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank logo — custom shoe client" title="D.L. Evans Bank" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health logo — custom shoe client" title="Sutter Health" loading="lazy">
+            <!-- duplicate set for seamless loop -->
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce brand logo" title="Salesforce" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz brand logo" title="Kraft Heinz" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness brand logo" title="Guinness" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar brand logo" title="TrueCar" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft brand logo" title="Microsoft" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota brand logo" title="University of South Dakota" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas brand logo" title="Cintas" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo brand logo" title="Gallo" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB brand logo" title="ABB" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank brand logo" title="D.L. Evans Bank" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health brand logo" title="Sutter Health" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S3: PRODUCT GRID — one-row slider (8 real products, bounded 1280)
+       ============================================================ -->
+  <section id="products">
+    <div class="sz-pgs">
+      <div class="sz-pgs__c">
+        <div class="sz-pgs__header">
+          <div>
+            <h2>Custom Shoes</h2>
+            <p>Choose a style. Print your design. Made to order, shipped worldwide.</p>
+          </div>
+          <div class="sz-pgs__nav">
+            <button class="sz-pgs__arrow" id="pgsPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+            <button class="sz-pgs__arrow" id="pgsNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </div>
+        <div class="sz-pgs__viewport">
+          <div class="sz-pgs__track" id="pgsTrack">
+            <a class="sz-pgs__card" href="/products/classic-zero">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/4_014ac1df-680a-4fa0-bda8-10d69f0cf755.webp?v=1747819592" alt="Classic Zero"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Classic Zero</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$120</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/core-zero-low-tops">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/2_70ca1ec5-b4bc-4a66-b889-5921d9db6c75.webp?v=1755095204" alt="Core Zero Low Tops"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Core Zero Low Tops</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$120</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/zero-canvas">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_1_7ada83c6-cc6d-49bf-aa86-814fc630a2cd.webp?v=1747834205" alt="Zero Canvas"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Zero Canvas</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$100</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/zero-running-shoes">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_6_317ae3eb-d24d-41b3-a973-52fe4277dd71.webp?v=1747838027" alt="Zero Running Shoes"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Zero Running Shoes</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$110</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/core-zero-high-tops">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/Customizable_Hightop_Shoe.jpg?v=1756405945" alt="Core Zero High Tops"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Core Zero High Tops</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$140</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/zero-slides">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_2_84a06b66-e378-4981-80e6-0a82bc544534.webp?v=1747829772" alt="Zero Slides"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Zero Slides</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$35</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/base-zero">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_62b88054-306b-4be0-a6a7-2540cf47dac1.webp?v=1747821267" alt="Base Zero"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Base Zero</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$130</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/ace-zero">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/Custom_Shoes_6.webp?v=1747930691" alt="Ace Zero"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Ace Zero</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$140</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="sz-pgs__progress"><div class="sz-pgs__progress-fill" id="pgsFill"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S4: HTC — 1:1 VERBATIM from live sz-htc-v3
+       (3-step accordion + 16:10 video preview)
+       ============================================================ -->
+  <section id="htc">
+    <div class="oB-wrap">
+      <div class="oB-card">
+        <div class="oB-tut">
+          <div class="oB-grid">
+            <div>
+              <h2 class="oB-h">How to Customize <em>Your Own Shoe</em></h2>
+              <div class="oB-steps" id="obSteps">
+                <div class="oB-step active" data-step="0">
+                  <div class="oB-step-head">
+                    <div class="oB-step-num">01</div>
+                    <span class="oB-step-title">Choose Your Shoe Style</span>
+                    <span class="oB-step-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </div>
+                  <div class="oB-step-body"><div class="oB-step-body-inner">
+                    <p class="oB-step-desc">Browse 30+ shoe silhouettes including sneakers, casuals, basketball shoes, boots and more. Pick the canvas for your design.</p>
+                    <div class="oB-step-progress"><div class="oB-step-progress-fill"></div></div>
+                  </div></div>
+                </div>
+                <div class="oB-step" data-step="1">
+                  <div class="oB-step-head">
+                    <div class="oB-step-num">02</div>
+                    <span class="oB-step-title">Add Your Designs &amp; Customize</span>
+                    <span class="oB-step-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </div>
+                  <div class="oB-step-body"><div class="oB-step-body-inner">
+                    <p class="oB-step-desc">Upload logos, set colors, add text. Full control over every panel of the shoe using our 3D customizer.</p>
+                    <div class="oB-step-progress"><div class="oB-step-progress-fill"></div></div>
+                  </div></div>
+                </div>
+                <div class="oB-step" data-step="2">
+                  <div class="oB-step-head">
+                    <div class="oB-step-num">03</div>
+                    <span class="oB-step-title">Save &amp; Order</span>
+                    <span class="oB-step-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </div>
+                  <div class="oB-step-body"><div class="oB-step-body-inner">
+                    <p class="oB-step-desc">Preview your design in 3D, save it, and place your order. We handle production and worldwide shipping.</p>
+                    <div class="oB-step-progress"><div class="oB-step-progress-fill"></div></div>
+                  </div></div>
+                </div>
+              </div>
+              <div class="oB-cta"><a href="#products">Start designing &rarr;</a></div>
+            </div>
+            <div class="oB-vid-wrap">
+              <div class="oB-vid">
+                <video muted playsinline preload="none" width="960" height="600"
+                  poster="https://shoezero.com/cdn/shop/t/98/assets/sz-tutorial-poster-3d.png?v=168813661223556133041775003624"
+                  aria-label="Shoe Zero custom shoe design tutorial">
+                  <source src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/how-to-tutorial.mp4?v=1773848786" type="video/mp4">
+                </video>
+                <div class="oB-vid-play" onclick="var v=this.parentElement.querySelector('video');v.playbackRate=2;v.play();this.style.display='none'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S5: MANUFACTURING — 2-col split: hero photo + 3 phase cards.
+       Placeholder copy per user direction.
+       ============================================================ -->
+  <section id="mfg">
+    <div class="sz-mfg">
+      <div class="sz-mfg__c">
+        <div class="sz-mfg__head">
+          <div class="sz-mfg__head-text">
+            <h2 class="sz-mfg__h">Made in our workshop, by hand.</h2>
+            <p class="sz-mfg__sub">Placeholder copy. Short intro to the manufacturing process goes here. Two to three sentences.</p>
+          </div>
+          <a href="/pages/manufacturing" class="sz-mfg__more">See Manufacturing Page
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="sz-mfg__row">
+          <article class="sz-mfg__card">
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/workshop-video-poster.jpg" alt="Workshop print floor with DTG printer running custom panels"></div>
+            <div class="sz-mfg__body">
+              <div class="sz-mfg__phase-body">
+                <h3 class="sz-mfg__phase-title">Every panel gets printed</h3>
+                <p class="sz-mfg__phase-text">Direct-to-garment printed before the panels are cut. Pre-treatment is tuned per substrate so colors stay vivid and the print does not fade.</p>
+              </div>
+            </div>
+          </article>
+          <article class="sz-mfg__card">
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-boiron.jpg" alt="CO2 laser cutting printed panels"></div>
+            <div class="sz-mfg__body">
+              <div class="sz-mfg__phase-body">
+                <h3 class="sz-mfg__phase-title">We laser-cut the panels</h3>
+                <p class="sz-mfg__phase-text">Panels are cut out of the printed material with a CO2 laser. The laser tracks the design's panel borders precisely and seals the edge during the cut.</p>
+              </div>
+            </div>
+          </article>
+          <article class="sz-mfg__card">
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-verder.jpg" alt="Hand assembly on industrial sewing machines"></div>
+            <div class="sz-mfg__body">
+              <div class="sz-mfg__phase-body">
+                <h3 class="sz-mfg__phase-title">The shoe is sewn together</h3>
+                <p class="sz-mfg__phase-text">Each pair is assembled by hand on industrial sewing machines, panel by panel. The upper is then bonded to the sole with industrial adhesive.</p>
+              </div>
+            </div>
+          </article>
+          <article class="sz-mfg__card">
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-oscar-mayer.png" alt="Final inspection and boxing for shipment"></div>
+            <div class="sz-mfg__body">
+              <div class="sz-mfg__phase-body">
+                <h3 class="sz-mfg__phase-title">Final QC, lace, and ship</h3>
+                <p class="sz-mfg__phase-text">Every pair passes a manual quality check before it leaves. The team looks for print misalignment, color drift, stitching defects, and topcoat irregularities.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S6: CUSTOMER WALL — 1:1 from homepage `.oC-bottom`
+       (homepage-v3.html lines 1418-1435)
+       ============================================================ -->
+  <section id="wall">
+    <div class="sz-cw">
+      <div class="sz-cw__c">
+        <div class="oC-bottom">
+          <div class="oC-bhead">
+            <h3>From the customer wall</h3>
+            <span>120,000+ pairs shipped since 2021</span>
+          </div>
+          <div class="oC-brow">
+            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/South_Dakota_Shoes.jpg?format=webp&v=1771415592&width=800" alt="University of South Dakota custom shoes"></div>
+            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Techstars_1.png?format=webp&v=1771848710&width=800" alt="Techstars custom branded shoes"></div>
+            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-03.jpg?format=webp&v=1773846784&width=800" alt="Customer custom shoe design"></div>
+            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-07.jpg?format=webp&v=1773846797&width=800" alt="Customer custom shoe design"></div>
+            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-10.png?format=webp&v=1773846807&width=800" alt="Customer custom shoe design"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S7: COMPARISON TABLE — content 1:1 from brand-comparison-table.liquid
+       Visual redesign only.
+       ============================================================ -->
+  <section id="compare">
+    <div class="ct-section">
+      <div class="ct-inner">
+        <h2 class="ct-h">How Shoe Zero Compares</h2>
+        <p class="ct-sub">Your logo, front and center. Shoes built to showcase your brand identity.</p>
+        <div class="ct-card">
+          <div class="ct-best" aria-hidden="true">Best fit</div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th class="sz-col-head">
+                  <img class="brand-logo" src="https://shoezero.com/cdn/shop/files/New_Project_8.png?v=1658410774&width=96" alt="Shoe Zero">
+                  <span class="sz-label">Shoe Zero</span>
+                </th>
+                <th>
+                  <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike">
+                  <div class="th-brand-name">Nike By You</div>
+                </th>
+                <th>
+                  <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Vans-logo.svg" alt="Vans">
+                  <div class="th-brand-name">Vans Customs</div>
+                </th>
+                <th>
+                  <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Converse_logo.svg" alt="Converse">
+                  <div class="th-brand-name">Converse</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Can I design it<br>myself online?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">3D preview, instant mockup</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div></td>
+                <td><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div></td>
+                <td><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div></td>
+              </tr>
+              <tr>
+                <td>Your brand, your<br>exact colors</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Any shade — no outside logos</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+              </tr>
+              <tr>
+                <td>Can I use my own logo<br>and images?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Logos, photos, text, patterns</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Personal images, select panels</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+              </tr>
+              <tr>
+                <td>Will my brand cover<br>the entire shoe?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Every panel, every angle</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Preset color zones only</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Per-panel colors &amp; prints</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Per-panel colors only</div></div></td>
+              </tr>
+              <tr>
+                <td>Can I order in bulk<br>for my business?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Any quantity, no limits</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">High minimums required</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Small runs only</div></div></td>
+              </tr>
+              <tr>
+                <td>Does it ship<br>worldwide?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Global delivery</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">US-focused</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Select regions</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Select regions</div></div></td>
+              </tr>
+              <tr>
+                <td>How long until<br>I get them?</td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">10-day production, 2-4 week delivery</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Standard 4+ week wait</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Standard 4+ week wait</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Standard 4+ week wait</div></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ct-foot">
+            <p class="ct-disc">Details sourced from each brand's official website. Features and availability may change.<br>Nike By You, Vans Customs, and Converse shoes include their own brand logos on every pair.</p>
+            <a href="#b2b" class="ct-btn">Get a Quote for Custom Shoes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S8: GOOGLE REVIEWS — 1:1 VERBATIM from live google-reviews-marquee.liquid
+       Content from template blocks (6 reviews) preserved verbatim.
+       ============================================================ -->
+  <section id="reviews">
+    <div class="reviews-marquee" aria-label="Customer reviews">
+      <p class="reviews-marquee__heading">What Our Clients Say</p>
+      <div class="reviews-marquee__track" aria-hidden="true">
+        <!-- set 1 -->
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p>
+            <p class="reviews-marquee__name">Cherakee Baker</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p>
+            <p class="reviews-marquee__name">Cynthia Highfill</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">S</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p>
+            <p class="reviews-marquee__name">Sara Kristock</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p>
+            <p class="reviews-marquee__name">Chenoa Mullen</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">S</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p>
+            <p class="reviews-marquee__name">Saint Anderson</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">R</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p>
+            <p class="reviews-marquee__name">Rayy Green</p>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p><p class="reviews-marquee__name">Cherakee Baker</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p><p class="reviews-marquee__name">Cynthia Highfill</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p><p class="reviews-marquee__name">Sara Kristock</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p><p class="reviews-marquee__name">Chenoa Mullen</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p><p class="reviews-marquee__name">Saint Anderson</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">R</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p><p class="reviews-marquee__name">Rayy Green</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S9: B2B FORM — 1:1 from homepage `.hp2-binq` design
+       (homepage-v3.html: same structure, same fields, same copy)
+       ============================================================ -->
+  <section id="b2b">
+    <div class="hp2-binq">
+      <div class="hp2-binq__c">
+        <div class="hp2-binq__header">
+          <h2>Branded Shoes Built for Your Business</h2>
+          <p class="hp2-binq__lead">Tell us about your business project. We'll take it from there.</p>
+        </div>
+        <div class="hp2-binq__grid">
+          <div class="hp2-binq__visual">
+            <div class="hp2-binq__video">
+              <!-- Live homepage uses the same iframe — clarified by user 2026-05-13. -->
+              <iframe src="https://www.youtube-nocookie.com/embed/eH7TOd1MAVM?rel=0&modestbranding=1&controls=0&fs=0&disablekb=1&iv_load_policy=3&autoplay=1&mute=1&playsinline=1&loop=1&playlist=eH7TOd1MAVM"
+                title="Custom Branded Shoes for Business, Shoe Zero"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="autoplay; picture-in-picture; clipboard-write" allowfullscreen></iframe>
+            </div>
+            <div class="hp2-binq__rot" aria-label="Brands we've worked with">
+              <span class="hp2-binq__rot-fade hp2-binq__rot-fade--l"></span>
+              <span class="hp2-binq__rot-fade hp2-binq__rot-fade--r"></span>
+              <div class="hp2-binq__rot-track">
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM"></div>
+                <!-- duplicate -->
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction"></div>
+                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hp2-binq__form-card">
+            <h3>Request a Quote</h3>
+            <p class="hp2-binq__form-sub">A team member will respond with pricing and next steps.</p>
+            <form class="hp2-binq__form-grid" onsubmit="event.preventDefault(); csmToast('Mockup-only form — wired on Liquid deploy.');">
+              <div>
+                <label class="hp2-binq__label">Name *</label>
+                <input class="hp2-binq__input" type="text" placeholder="Your name" required>
+              </div>
+              <div>
+                <label class="hp2-binq__label">Business Name</label>
+                <input class="hp2-binq__input" type="text" placeholder="Company name">
+              </div>
+              <div>
+                <label class="hp2-binq__label">Email *</label>
+                <input class="hp2-binq__input" type="email" placeholder="you@company.com" required>
+              </div>
+              <div>
+                <label class="hp2-binq__label">Cell Phone <span style="color:#999;font-weight:400">(optional)</span></label>
+                <div class="hp2-binq__phone">
+                  <span class="hp2-binq__phone-prefix">+1</span>
+                  <input class="hp2-binq__phone-input" type="tel" placeholder="Digits only">
+                </div>
+              </div>
+              <div>
+                <label class="hp2-binq__label">Estimated Quantity</label>
+                <select class="hp2-binq__select">
+                  <option value="">Select range...</option>
+                  <option>Start a Shoe Line</option>
+                  <option>1–5</option>
+                  <option>6–24</option>
+                  <option>25–49</option>
+                  <option>50–99</option>
+                  <option>100+</option>
+                </select>
+              </div>
+              <div>
+                <label class="hp2-binq__label">Event Date <span style="color:#999;font-weight:400">(optional)</span></label>
+                <input class="hp2-binq__input" type="date">
+              </div>
+              <div class="hp2-binq__full">
+                <label class="hp2-binq__label">Project Notes</label>
+                <textarea class="hp2-binq__textarea" placeholder="What's the event, campaign, or use case? Any design ideas already in mind?"></textarea>
+              </div>
+              <div class="hp2-binq__full">
+                <button type="submit" class="hp2-binq__submit">Book a Call</button>
+                <p class="hp2-binq__fineprint">We typically reply within one business day. No spam, ever.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="hp2-binq__trust-band">
+          <div class="hp2-binq__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            <span><strong>Free mockup sample</strong> before production</span>
+          </div>
+          <div class="hp2-binq__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span><strong>No Minimum Orders</strong></span>
+          </div>
+          <div class="hp2-binq__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span><strong>Volume discounts</strong> on bulk orders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S10: SEO 3-BOXES — content 1:1 from sz-seo-boxes.liquid
+       Visual redesign only (cool bg, icon chips, list dashes).
+       ============================================================ -->
+  <section id="seo">
+    <div class="seoA-s">
+      <div class="seoA-inner">
+        <div class="seoA-header">
+          <h2 class="seoA-h">Why Choose Custom Shoes?</h2>
+          <p class="seoA-header-right">Each shoe style built for a different person and a different purpose.</p>
+        </div>
+        <div class="seoA-grid">
+          <div class="seoA-card">
+            <div class="seoA-card-head">
+              <span class="seoA-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+              <h3>Best For</h3>
+            </div>
+            <p>People order Shoe Zero for personal projects, branded merchandise, and everything in between.</p>
+            <ul>
+              <li>Artists &amp; designers turning their artworks into wearable footwear</li>
+              <li>Businesses who want their logo on the shoes and marketing events gear</li>
+              <li>Schools, teams, &amp; organizations ordering custom shoes in bulk</li>
+              <li>Parties &amp; events like weddings and trade shows that need matching shoes</li>
+              <li>Gift-givers designing something personal that people actually wear</li>
+            </ul>
+          </div>
+          <div class="seoA-card">
+            <div class="seoA-card-head">
+              <span class="seoA-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+              <h3>Materials &amp; Quality</h3>
+            </div>
+            <ul>
+              <li><strong>Synthetic leather (PU).</strong> Polyurethane uppers that are water-resistant, easy to clean, and completely animal-free</li>
+              <li><strong>Canvas.</strong> Woven fabric that holds printed designs with sharp, clean detail</li>
+              <li><strong>Mesh and flyknit.</strong> Lightweight, breathable uppers built for running and training shoes</li>
+              <li><strong>EVA cushioned insoles.</strong> Lightweight foam padding across all styles for shock absorption and day-long comfort. Removable on most models</li>
+              <li><strong>Rubber outsoles.</strong> Wear-resistant soles on most styles for grip and durability</li>
+              <li><strong>Machine washable.</strong> Most styles go in the wash without damaging the printed design</li>
+            </ul>
+          </div>
+          <div class="seoA-card">
+            <div class="seoA-card-head">
+              <span class="seoA-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+              <h3>Find Your Style</h3>
+            </div>
+            <p>Six shoe types, each built for different activities.</p>
+            <ul>
+              <li><strong><a href="/collections/low-tops">Low-Tops.</a></strong> The go-to for everyday wear and branded footwear, from synthetic leather to mesh to canvas</li>
+              <li><strong><a href="/collections/high-tops">High-Tops.</a></strong> Extra panels and more printable space for your design</li>
+              <li><strong><a href="/collections/custom-basketball">Basketball Shoes.</a></strong> Court-ready styles with cushioned midsoles and ankle support</li>
+              <li><strong><a href="/collections/boots">Boots.</a></strong> Synthetic leather that is waterproof with rubber outsoles and foam-lined interiors</li>
+              <li><strong><a href="/collections/kids">Kids Shoes.</a></strong> Toddler to early teen sizes in canvas and synthetic leather</li>
+              <li><strong><a href="/collections/sandals">Sandals.</a></strong> Slides, flip flops, and slippers built for summer and indoor comfort</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S11: FAQ — 1:1 VERBATIM from live sz-faq-standard.liquid
+       Content from template blocks (6 FAQ items) preserved verbatim.
+       ============================================================ -->
+  <section id="faq">
+    <div class="oFQ-section">
+      <div class="oFQ-wrap">
+        <div class="oFQ-header">
+          <div class="oFQ-bar"></div>
+          <h2 class="oFQ-heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="oFQ-grid">
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#1</span>
+              <span class="oFQ-q-text">Are the shoes actually comfortable for everyday wear?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>Yes. Our shoes are made to be worn, not just looked at. The materials we use hold up through long days without breaking down.</p></div></div>
+          </div>
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#2</span>
+              <span class="oFQ-q-text">How do I get started if I've never designed anything before?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>There are how to design guides everywhere on our website that walk you through everything in three steps. You don't need any design experience to get going.</p></div></div>
+          </div>
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#3</span>
+              <span class="oFQ-q-text">Will the finished shoe actually look like what I designed in the preview?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>What you design in the customizer is exactly what gets printed. No surprises when the box arrives.</p></div></div>
+          </div>
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#4</span>
+              <span class="oFQ-q-text">Can I design shoes specifically for a wedding or event?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>A lot of people use us for exactly that. Upload your design, photo, or any graphic that fits the occasion and build from there.</p></div></div>
+          </div>
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#5</span>
+              <span class="oFQ-q-text">Do you work with schools, sports teams, or nonprofits?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>Universities, sports teams, nonprofits, and established companies have all come to us for custom orders.</p></div></div>
+          </div>
+          <div class="oFQ-item">
+            <button class="oFQ-trigger" onclick="csmToggleFaq(this)" aria-expanded="false">
+              <span class="oFQ-tag">#6</span>
+              <span class="oFQ-q-text">Can I get a sample before committing to a large order?</span>
+              <span class="oFQ-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </button>
+            <div class="oFQ-body"><div class="oFQ-body-inner"><p>You can request a mockup pair first so you can check the fit and see how your design looks in person before committing.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ── Copy full page HTML to clipboard ──
+    function csmCopyAll() {
+      var html = document.documentElement.outerHTML;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(html).then(function () { csmToast('Page HTML copied'); });
+      } else { csmToast('Clipboard not available in this preview'); }
+    }
+
+    // ── Toast util ──
+    function csmToast(msg) {
+      var t = document.getElementById('csmToast');
+      if (!t) return;
+      t.textContent = msg || 'Done';
+      t.classList.add('show');
+      clearTimeout(t._h);
+      t._h = setTimeout(function () { t.classList.remove('show'); }, 1600);
+    }
+
+    // ── HTC accordion (verbatim from sz-htc-v3 behaviour) ──
+    (function () {
+      var c = document.getElementById('obSteps');
+      if (!c) return;
+      c.querySelectorAll('.oB-step').forEach(function (s) {
+        s.querySelector('.oB-step-head').addEventListener('click', function () {
+          var active = s.classList.contains('active');
+          c.querySelectorAll('.oB-step').forEach(function (x) { x.classList.remove('active'); });
+          if (!active) s.classList.add('active');
+        });
+      });
+    })();
+
+    // ── FAQ toggle (verbatim from sz-faq-standard behaviour) ──
+    window.csmToggleFaq = function (btn) {
+      var item = btn.parentElement;
+      var body = item.querySelector('.oFQ-body');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.oFQ-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.oFQ-body').style.maxHeight = null;
+        el.querySelector('.oFQ-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    // ── Product slider ──
+    (function () {
+      var track = document.getElementById('pgsTrack');
+      var prev = document.getElementById('pgsPrev');
+      var next = document.getElementById('pgsNext');
+      var fill = document.getElementById('pgsFill');
+      if (!track) return;
+      function step() {
+        var card = track.querySelector('.sz-pgs__card');
+        if (!card) return 320;
+        var gap = parseFloat(getComputedStyle(track).gap) || 18;
+        return card.getBoundingClientRect().width + gap;
+      }
+      function update() {
+        var max = track.scrollWidth - track.clientWidth;
+        // Continuous mapping: 1% floor at start so the bar is always visible,
+        // climbs to 100% as scrollLeft reaches max. Scroll event fires throughout
+        // smooth-scroll so this stays in perfect sync with the cards.
+        var pct = max <= 0 ? 100 : Math.max(1, Math.min(100, (track.scrollLeft / max) * 100));
+        if (fill) fill.style.width = pct + '%';
+        if (prev) prev.disabled = track.scrollLeft < 4;
+        if (next) next.disabled = track.scrollLeft >= max - 4;
+      }
+      prev && prev.addEventListener('click', function () { track.scrollBy({ left: -step() * 2, behavior: 'smooth' }); });
+      next && next.addEventListener('click', function () { track.scrollBy({ left: step() * 2, behavior: 'smooth' }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
+</body>
+</html>
