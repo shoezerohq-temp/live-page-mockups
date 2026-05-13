@@ -208,7 +208,8 @@
     /* 4 cards — snippets from the 7-step manufacturing page (the "See Manufacturing Page →"
        link in the header is the full content). Not fabricated steps. */
     .sz-mfg__row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .sz-mfg__card{background:#fff;border:1px solid #ececec;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+    /* Grey card bg so they stand out on the white Mfg section bg */
+    .sz-mfg__card{background:#f0f0f0;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
     .sz-mfg__card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06),0 20px 40px rgba(0,0,0,.05)}
     .sz-mfg__img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#1a1a1a}
     .sz-mfg__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
