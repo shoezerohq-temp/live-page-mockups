@@ -122,7 +122,9 @@
     .sz-pgs__track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none}
     .sz-pgs__track.is-dragging{cursor:grabbing;scroll-behavior:auto;scroll-snap-type:none}
     .sz-pgs__track.is-dragging .sz-pgs__card{pointer-events:none}
-    .sz-pgs__track .sz-pgs__card img{user-select:none;-webkit-user-drag:none;pointer-events:none}
+    /* Kill all native drag behavior on cards (anchors drag URL; images drag image data) */
+    .sz-pgs__card,.sz-pgs__card *{-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+    .sz-pgs__track .sz-pgs__card img{pointer-events:none}
     .sz-pgs__track::-webkit-scrollbar{display:none}
     .sz-pgs__card{flex:0 0 calc((100% - 64px)/5);scroll-snap-align:start;background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;transition:box-shadow .4s,transform .4s,border-color .3s;text-decoration:none;color:inherit}
     .sz-pgs__card:hover{box-shadow:0 12px 36px rgba(0,0,0,.1),0 4px 12px rgba(0,0,0,.06);transform:translateY(-6px);border-color:rgba(0,112,74,.2)}
@@ -1412,6 +1414,10 @@
       // Pointer events unify mouse + pen drag here without breaking that.
       var DRAG_THRESHOLD = 5; // px of movement before we treat it as a drag, not a click
       var isDown = false, didDrag = false, startX = 0, startScroll = 0, pid = null;
+
+      // Kill native drag-start (anchor URL drag, image drag) — preventDefault before they hijack the gesture
+      track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+      track.querySelectorAll('a, img').forEach(function (el) { el.setAttribute('draggable', 'false'); });
       track.addEventListener('pointerdown', function (e) {
         if (e.pointerType === 'touch') return; // let native touch handle it
         isDown = true; didDrag = false;
