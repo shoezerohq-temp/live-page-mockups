@@ -33,8 +33,9 @@
        Content + assets + structure all preserved.
        ============================================================ */
     /* Hero scale + crop: contain + transform-scale(0.8) like homepage so the shoe sits at the right size, not zoomed-in cover */
-    .hero-video-wrapper{position:relative;width:100%;height:55vh;min-height:337px;max-height:516px;overflow:hidden;background:#000}
-    .hero-desktop-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:80% center;transform:scale(0.8);transform-origin:80% center}
+    .hero-video-wrapper{position:relative;width:100%;height:50vh;min-height:287px;max-height:466px;overflow:hidden;background:#000}
+    /* Shoe bigger (scale 1.0) and shifted left (object-position 65%) */
+    .hero-desktop-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:65% center;transform:scale(1.0);transform-origin:65% center}
     .hero-mobile-video{display:none}
     .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.1) 70%,transparent 100%);pointer-events:none}
     .hero-video-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;height:100%;display:flex;flex-direction:column;justify-content:center;color:#fff}
@@ -65,8 +66,8 @@
        S2: TRUST MARQUEE — redesign (one-row, cleaner), content kept 1:1
        Source content: sz-trusted-brands-v3.liquid
        ============================================================ */
-    /* Cool bg so Trust alternates from Products white below */
-    .sz-brands{background:#f0f0f0;padding:18px 0}
+    /* White bg per rhythm: Hero black → Trust white → Products cool → CW white → HTC cool → ... */
+    .sz-brands{background:#fff;padding:18px 0}
     .sz-brands__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px}
     .sz-brands-reviews{display:flex;gap:24px;flex-shrink:0}
     /* Flat review row — no pill backgrounds */
@@ -100,7 +101,8 @@
        S3: PRODUCT GRID — redesign (one-row slider, bounded 1280)
        Real 8 products from /collections/custom-shoes
        ============================================================ */
-    .sz-pgs{background:#fff;padding:40px 0 48px}
+    /* Cool bg per rhythm (Trust white above → Products cool → CW white below) */
+    .sz-pgs{background:#f0f0f0;padding:40px 0 48px}
     .sz-pgs__c{max-width:1280px;margin:0 auto;padding:0 24px}
     .sz-pgs__header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
     .sz-pgs__header h2{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a}
@@ -145,7 +147,8 @@
        (all .oB-* classes, accordion behaviour, copy preserved)
        ============================================================ */
     .oB-wrap{background:#f0f0f0;padding:40px 40px 56px;width:100%}
-    .oB-card{background:#fff;border-radius:24px;box-shadow:0 2px 4px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.09),0 24px 48px rgba(0,0,0,.06);max-width:1200px;margin:0 auto;overflow:hidden}
+    /* No rounded card wrap — HTC content sits flat on the section bg */
+    .oB-card{background:transparent;border-radius:0;box-shadow:none;max-width:1200px;margin:0 auto;overflow:visible}
     .oB-tut{padding:52px 56px 48px}
     .oB-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
     .oB-h{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:24px;color:#1a1a1a}
@@ -239,8 +242,8 @@
        Design redesign: cleaner header, sharper sz-column distinction,
        softer body rows, no warm khaki bg (cool #f0f0f0 to fit rhythm)
        ============================================================ */
-    /* Compare section: white per rhythm (CW cool above → Compare white → Reviews near-white below). */
-    .ct-section{padding:48px 24px 56px;background:#fff}
+    /* Cool bg per rhythm (Mfg white above → Compare cool → Reviews near-white below) */
+    .ct-section{padding:48px 24px 56px;background:#f0f0f0}
     .ct-inner{max-width:1240px;margin:0 auto}
     .ct-h{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:10px;text-wrap:balance;color:#1a1a1a}
     .ct-sub{font-size:15px;color:#00704a;font-weight:500;text-align:center;line-height:1.55;max-width:560px;margin:0 auto 32px}
@@ -627,7 +630,8 @@
           </div>
           <div class="sz-review">
             <div class="sz-review-name">
-              <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-trustpilot-star.png?v=146041826341132994521774277696" alt="Trustpilot review platform logo" width="120" height="19">
+              <!-- Green Trustpilot star — inline SVG so we control color (asset PNG was solid black) -->
+              <svg viewBox="0 0 24 24" fill="#00704a" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
               <span>Trustpilot</span>
             </div>
             <div class="sz-review-rating">
