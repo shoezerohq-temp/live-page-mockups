@@ -299,55 +299,210 @@
     @media(prefers-reduced-motion:reduce){.reviews-marquee__track{animation:none}}
 
     /* ============================================================
-       S9: B2B FORM — 1:1 from homepage `.hp2-binq` design
-       (homepage-v3.html lines 773-* CSS, 1526-1636 HTML)
+       S9b: B2B INQUIRY — CSS VERBATIM from homepage-v3.html lines 773-968
+       Do not modify. Sync source: sections/full-page/homepage-v3.html
        ============================================================ */
-    .hp2-binq{padding:40px 0;background:#f0f0f0}
-    .hp2-binq__c{max-width:1240px;margin:0 auto;padding:0 24px}
-    .hp2-binq__header{text-align:center;max-width:760px;margin:0 auto 24px}
-    .hp2-binq__header h2{font-size:clamp(28px,2.6vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a;margin-bottom:8px}
-    .hp2-binq__lead{font-size:15px;color:#555;line-height:1.6}
-    .hp2-binq__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-    .hp2-binq__visual{display:flex;flex-direction:column;gap:14px;min-width:0}
-    /* Fallback bg photo shows behind iframe (visible in file:// preview where iframe is blocked; covered by the video in production). */
-    .hp2-binq__video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#1a1a1a url('../assets/customer-wall/cw-asrm-2023.jpeg') center/cover no-repeat;box-shadow:0 4px 16px rgba(0,0,0,.08)}
-    .hp2-binq__video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    /* Shoe marquee: larger white-card tiles to match homepage's hp2-binq rot. */
-    .hp2-binq__rot{position:relative;overflow:hidden;padding:4px 0}
-    .hp2-binq__rot-fade{position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
-    .hp2-binq__rot-fade--l{left:0;background:linear-gradient(to right,#f0f0f0,transparent)}
-    .hp2-binq__rot-fade--r{right:0;background:linear-gradient(to left,#f0f0f0,transparent)}
-    .hp2-binq__rot-track{display:flex;gap:14px;animation:hp2BinqRot 32s linear infinite;width:max-content;padding:6px 0}
-    .hp2-binq__rot-item{width:200px;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#fff;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.04)}
-    .hp2-binq__rot-item img{width:100%;height:100%;object-fit:contain;padding:18px}
-    @keyframes hp2BinqRot{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    @media(prefers-reduced-motion:reduce){.hp2-binq__rot-track{animation:none}}
-    .hp2-binq__form-card{min-width:0;display:flex;flex-direction:column;background:#f9f9f9;border-radius:12px;padding:20px 24px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
-    .hp2-binq__form-card h3{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px;color:#1a1a1a}
-    .hp2-binq__form-sub{font-size:13px;color:#777;margin-bottom:14px}
-    .hp2-binq__form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .hp2-binq__label{display:block;font-size:13px;font-weight:500;color:#222;margin-bottom:4px}
-    .hp2-binq__input,.hp2-binq__select,.hp2-binq__textarea{width:100%;padding:11px 13px;font-size:14px;font-family:inherit;border:1px solid #ddd;border-radius:10px;background:#fff;color:#1a1a1a;transition:border-color .18s,box-shadow .18s;outline:none}
-    .hp2-binq__input:focus,.hp2-binq__select:focus,.hp2-binq__textarea:focus{border-color:#1a1a1a;box-shadow:0 0 0 1.5px rgba(26,26,26,.2)}
-    .hp2-binq__textarea{resize:vertical;min-height:60px}
-    .hp2-binq__phone{display:flex;gap:0;align-items:stretch}
-    .hp2-binq__phone-prefix{padding:11px 12px;font-size:14px;font-weight:600;color:#1a1a1a;background:#fff;border:1px solid #ddd;border-right:0;border-radius:10px 0 0 10px}
-    .hp2-binq__phone-input{flex:1;padding:11px 13px;font-size:14px;border:1px solid #ddd;border-left:0;border-radius:0 10px 10px 0;outline:none;transition:border-color .18s,box-shadow .18s}
-    .hp2-binq__phone-input:focus{border-color:#1a1a1a;box-shadow:0 0 0 1.5px rgba(26,26,26,.2)}
-    .hp2-binq__full{grid-column:1/-1}
-    .hp2-binq__submit{display:block;margin:6px auto 4px;width:auto;padding:13px 32px;font-size:15px;font-weight:600;background:#00704a;color:#fff;border:0;border-radius:8px;cursor:pointer;transition:opacity .2s}
-    .hp2-binq__submit:hover{opacity:.85}
-    .hp2-binq__fineprint{font-size:12px;color:#666;margin-top:4px;text-align:center;line-height:1.4}
-    /* Trust band: flat row, no card backgrounds, top divider — matches homepage. */
-    .hp2-binq__trust-band{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:36px auto 0;max-width:1100px;padding:24px 24px 0;border-top:1px solid #d8d8d8}
-    .hp2-binq__trust-item{display:flex;align-items:center;gap:10px;font-size:14px;color:#1a1a1a;justify-content:center}
-    .hp2-binq__trust-item svg{width:18px;height:18px;color:#00704a;flex-shrink:0}
-    .hp2-binq__trust-item strong{font-weight:700}
-    .hp2-binq__trust-item span{color:#666;font-weight:500}
-    .hp2-binq__trust-item strong + {color:#666}
-    @media(max-width:900px){
-      .hp2-binq__grid{grid-template-columns:1fr;gap:18px}
-      .hp2-binq__trust-band{grid-template-columns:1fr;padding:0 12px}
+    /* Container used inside the section (homepage's global container class). */
+    .hp2-c { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+    .hp2-binq { padding: 40px 0; background: var(--sz-bg-cool); }
+    .hp2-binq__header { text-align: center; max-width: 760px; margin: 0 auto 24px; }
+    .hp2-binq__overline {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sz-accent); margin-bottom: 14px;
+    }
+    .hp2-binq__header h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .hp2-binq__lead {
+      font-size: 16px; color: var(--sz-muted);
+      line-height: 1.65; max-width: 620px; margin: 0 auto;
+    }
+    .hp2-binq__grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 40px; align-items: start;
+    }
+    /* Left visual stack — fills column height to match form */
+    .hp2-binq__visual { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+    .hp2-binq__form-card { min-width: 0; display: flex; flex-direction: column; }
+    .hp2-binq__video {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--sz-radius-card);
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .hp2-binq__video iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    .hp2-binq__video-badge {
+      position: absolute; top: 14px; left: 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 11px; border-radius: 999px;
+      background: rgba(0,0,0,0.55); color: #fff;
+      backdrop-filter: blur(6px);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      z-index: 2;
+    }
+    .hp2-binq__video-badge::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: #ff5252; box-shadow: 0 0 0 0 rgba(255,82,82,0.7);
+      animation: hp2BinqPulse 1.6s infinite;
+    }
+    @keyframes hp2BinqPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,82,82,0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(255,82,82,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,82,82,0); }
+    }
+    /* Rotating shoe carousel */
+    .hp2-binq__rot {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--sz-radius-card);
+      flex: 0 0 168px;
+      height: 168px;
+    }
+    .hp2-binq__rot-track {
+      display: flex; gap: 12px;
+      animation: hp2BinqMarquee 28s linear infinite;
+      width: max-content;
+      height: 100%;
+    }
+    .hp2-binq__rot:hover .hp2-binq__rot-track { animation-play-state: paused; }
+    .hp2-binq__rot-item {
+      flex: 0 0 auto;
+      width: 168px;
+      height: 100%;
+      background: var(--sz-white);
+      border: 1px solid var(--sz-border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hp2-binq__rot-item img {
+      width: 100%; height: 100%; object-fit: contain;
+      padding: 12px;
+      transition: transform 400ms var(--sz-ease);
+    }
+    .hp2-binq__rot-item:hover img { transform: scale(1.06); }
+    .hp2-binq__rot-fade {
+      position: absolute; top: 0; bottom: 0; width: 40px;
+      pointer-events: none; z-index: 2;
+    }
+    .hp2-binq__rot-fade--l { left: 0; background: linear-gradient(90deg, var(--sz-white), transparent); }
+    .hp2-binq__rot-fade--r { right: 0; background: linear-gradient(-90deg, var(--sz-white), transparent); }
+    @keyframes hp2BinqMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50% - 6px)); }
+    }
+    /* Trust band under both cols */
+    .hp2-binq__trust-band {
+      margin-top: 24px;
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 20px 36px; align-items: center;
+      padding-top: 20px; border-top: 1px solid var(--sz-border);
+    }
+    .hp2-binq__trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--sz-muted); line-height: 1.4;
+    }
+    .hp2-binq__trust-item svg { width: 18px; height: 18px; color: var(--sz-accent); flex-shrink: 0; }
+    .hp2-binq__trust-item strong { color: var(--sz-text); font-weight: 700; }
+    .hp2-binq__trust-item--tl { align-items: flex-start; gap: 12px; }
+    .hp2-binq__trust-item--tl > svg { margin-top: 2px; }
+    .hp2-binq__tl { display: flex; flex-direction: column; gap: 5px; min-width: 240px; }
+    .hp2-binq__tl-head { font-weight: 700; color: var(--sz-text); font-size: 13px; line-height: 1.2; }
+    .hp2-binq__tl-track { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--sz-muted); white-space: nowrap; }
+    .hp2-binq__tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sz-accent); flex-shrink: 0; }
+    .hp2-binq__tl-bar { flex: 1; height: 2px; background: linear-gradient(90deg, var(--sz-accent) 0%, var(--sz-border) 100%); border-radius: 2px; min-width: 14px; }
+    .hp2-binq__tl-bar--ship { background: linear-gradient(90deg, var(--sz-border) 0%, var(--sz-accent) 100%); }
+    .hp2-binq__tl-seg { color: var(--sz-text); font-weight: 600; }
+    .hp2-binq__form-card {
+      background: var(--sz-white);
+      border: 1px solid var(--sz-border);
+      border-radius: var(--sz-radius-card);
+      padding: 32px 32px 36px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.06);
+    }
+    .hp2-binq__form-card h3 {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .hp2-binq__form-card .hp2-binq__form-sub { font-size: 14px; color: var(--sz-muted); margin-bottom: 22px; }
+    .hp2-binq__form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .hp2-binq__form-grid .hp2-binq__full { grid-column: 1 / -1; }
+    .hp2-binq__label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--sz-text); margin-bottom: 6px;
+    }
+    .hp2-binq__label .hp2-binq__req { color: #c0392b; }
+    .hp2-binq__label .hp2-binq__opt { font-weight: 400; color: var(--sz-muted); font-size: 12px; }
+    .hp2-binq__input,
+    .hp2-binq__select,
+    .hp2-binq__textarea {
+      width: 100%; padding: 12px 14px; font-size: 14px; font-family: inherit;
+      border: 1.5px solid var(--sz-border); border-radius: 8px;
+      background: var(--sz-white); color: var(--sz-text);
+      transition: border-color 0.25s var(--sz-ease), box-shadow 0.25s var(--sz-ease);
+      outline: none;
+    }
+    .hp2-binq__input::placeholder, .hp2-binq__textarea::placeholder { color: #bbb; }
+    .hp2-binq__input:focus,
+    .hp2-binq__select:focus,
+    .hp2-binq__textarea:focus {
+      border-color: var(--sz-accent);
+      box-shadow: 0 0 0 3px rgba(0,112,74,0.08);
+    }
+    .hp2-binq__textarea { resize: vertical; min-height: 90px; }
+    .hp2-binq__select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 36px;
+    }
+    .hp2-binq__phone {
+      display: flex; align-items: center;
+      border: 1.5px solid var(--sz-border); border-radius: 8px;
+      background: var(--sz-white);
+      transition: border-color 0.25s var(--sz-ease), box-shadow 0.25s var(--sz-ease);
+    }
+    .hp2-binq__phone:focus-within {
+      border-color: var(--sz-accent);
+      box-shadow: 0 0 0 3px rgba(0,112,74,0.08);
+    }
+    .hp2-binq__phone-prefix {
+      display: flex; align-items: center; gap: 4px;
+      padding: 0 10px 0 12px; font-size: 13px; font-weight: 600;
+      color: var(--sz-text); border-right: 1px solid var(--sz-border);
+      align-self: stretch;
+    }
+    .hp2-binq__phone-input {
+      border: none; outline: none; padding: 12px 14px;
+      font-size: 14px; font-family: inherit; flex: 1; min-width: 0;
+      background: transparent;
+    }
+    .hp2-binq__phone-input::placeholder { color: #bbb; }
+    .hp2-binq__submit {
+      width: 100%; padding: 14px; font-size: 15px; font-weight: 700;
+      font-family: inherit; background: var(--sz-accent); color: #fff;
+      border: none; border-radius: 8px; cursor: pointer;
+      transition: background 0.25s var(--sz-ease), transform 0.25s var(--sz-ease), box-shadow 0.25s var(--sz-ease);
+      margin-top: 8px;
+    }
+    .hp2-binq__submit:hover {
+      background: var(--sz-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--sz-shadow);
+    }
+    .hp2-binq__fineprint {
+      font-size: 12px; color: var(--sz-muted);
+      margin-top: 12px; line-height: 1.5; text-align: center;
+    }
+    @media (max-width: 900px) {
+      .hp2-binq__grid { grid-template-columns: 1fr; gap: 24px; }
+      .hp2-binq__form-card { padding: 24px 22px 28px; }
     }
 
     /* ============================================================
@@ -604,7 +759,7 @@
             <div>
               <h2 class="oB-h">How to Customize <em>Your Own Shoe</em></h2>
               <div class="oB-steps" id="obSteps">
-                <div class="oB-step active" data-step="0">
+                <div class="oB-step" data-step="0">
                   <div class="oB-step-head">
                     <div class="oB-step-num">01</div>
                     <span class="oB-step-title">Choose Your Shoe Style</span>
@@ -916,107 +1071,114 @@
        S9: B2B FORM — 1:1 from homepage `.hp2-binq` design
        (homepage-v3.html: same structure, same fields, same copy)
        ============================================================ -->
-  <section id="b2b">
-    <div class="hp2-binq">
-      <div class="hp2-binq__c">
-        <div class="hp2-binq__header">
-          <h2>Branded Shoes Built for Your Business</h2>
-          <p class="hp2-binq__lead">Tell us about your business project. We'll take it from there.</p>
-        </div>
-        <div class="hp2-binq__grid">
-          <div class="hp2-binq__visual">
-            <div class="hp2-binq__video">
-              <!-- Live homepage uses the same iframe — clarified by user 2026-05-13. -->
-              <iframe src="https://www.youtube-nocookie.com/embed/eH7TOd1MAVM?rel=0&modestbranding=1&controls=0&fs=0&disablekb=1&iv_load_policy=3&autoplay=1&mute=1&playsinline=1&loop=1&playlist=eH7TOd1MAVM"
-                title="Custom Branded Shoes for Business, Shoe Zero"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="autoplay; picture-in-picture; clipboard-write" allowfullscreen></iframe>
-            </div>
-            <div class="hp2-binq__rot" aria-label="Brands we've worked with">
-              <span class="hp2-binq__rot-fade hp2-binq__rot-fade--l"></span>
-              <span class="hp2-binq__rot-fade hp2-binq__rot-fade--r"></span>
-              <div class="hp2-binq__rot-track">
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM"></div>
-                <!-- duplicate -->
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction"></div>
-                <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM"></div>
-              </div>
-            </div>
+  <!-- ===== S9b: B2B INQUIRY ===== verbatim from homepage-v3.html lines 1525-1636 ===== -->
+  <section class="hp2-binq" id="b2b">
+    <div class="hp2-c">
+      <div class="hp2-binq__header" data-reveal>
+        <h2>Branded Shoes Built for Your Business</h2>
+        <p class="hp2-binq__lead">Tell us about your business project. We'll take it from there.</p>
+      </div>
+
+      <div class="hp2-binq__grid">
+        <div class="hp2-binq__visual" data-reveal>
+          <div class="hp2-binq__video">
+            <iframe src="https://www.youtube-nocookie.com/embed/eH7TOd1MAVM?rel=0&modestbranding=1&controls=0&fs=0&disablekb=1&iv_load_policy=3&autoplay=1&mute=1&playsinline=1&loop=1&playlist=eH7TOd1MAVM"
+              title="Custom Branded Shoes for Business, Shoe Zero"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; picture-in-picture; clipboard-write" allowfullscreen></iframe>
           </div>
-          <div class="hp2-binq__form-card">
-            <h3>Request a Quote</h3>
-            <p class="hp2-binq__form-sub">A team member will respond with pricing and next steps.</p>
-            <form class="hp2-binq__form-grid" onsubmit="event.preventDefault(); csmToast('Mockup-only form — wired on Liquid deploy.');">
-              <div>
-                <label class="hp2-binq__label">Name *</label>
-                <input class="hp2-binq__input" type="text" placeholder="Your name" required>
-              </div>
-              <div>
-                <label class="hp2-binq__label">Business Name</label>
-                <input class="hp2-binq__input" type="text" placeholder="Company name">
-              </div>
-              <div>
-                <label class="hp2-binq__label">Email *</label>
-                <input class="hp2-binq__input" type="email" placeholder="you@company.com" required>
-              </div>
-              <div>
-                <label class="hp2-binq__label">Cell Phone <span style="color:#999;font-weight:400">(optional)</span></label>
-                <div class="hp2-binq__phone">
-                  <span class="hp2-binq__phone-prefix">+1</span>
-                  <input class="hp2-binq__phone-input" type="tel" placeholder="Digits only">
-                </div>
-              </div>
-              <div>
-                <label class="hp2-binq__label">Estimated Quantity</label>
-                <select class="hp2-binq__select">
-                  <option value="">Select range...</option>
-                  <option>Start a Shoe Line</option>
-                  <option>1–5</option>
-                  <option>6–24</option>
-                  <option>25–49</option>
-                  <option>50–99</option>
-                  <option>100+</option>
-                </select>
-              </div>
-              <div>
-                <label class="hp2-binq__label">Event Date <span style="color:#999;font-weight:400">(optional)</span></label>
-                <input class="hp2-binq__input" type="date">
-              </div>
-              <div class="hp2-binq__full">
-                <label class="hp2-binq__label">Project Notes</label>
-                <textarea class="hp2-binq__textarea" placeholder="What's the event, campaign, or use case? Any design ideas already in mind?"></textarea>
-              </div>
-              <div class="hp2-binq__full">
-                <button type="submit" class="hp2-binq__submit">Book a Call</button>
-                <p class="hp2-binq__fineprint">We typically reply within one business day. No spam, ever.</p>
-              </div>
-            </form>
+
+          <div class="hp2-binq__rot" aria-label="Brands we've worked with">
+            <span class="hp2-binq__rot-fade hp2-binq__rot-fade--l"></span>
+            <span class="hp2-binq__rot-fade hp2-binq__rot-fade--r"></span>
+            <div class="hp2-binq__rot-track">
+              <!-- set 1 -->
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG Low Top Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets V3 Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM Custom Shoes"></div>
+              <!-- set 2 (duplicate for seamless loop) -->
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/MfFeJwnUEtYfmdwNOGWCQnzkdQWeKsnm.jpg?crop=center&height=900&v=1653398588&width=900" alt="UKG Low Top Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/products/OzzYdeifvWGrTVgUkSbVNBvpIttCZvMY.jpg?crop=center&height=900&v=1672432080&width=900" alt="Veritas Alta Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ZgfUiICbhXleJujzksxVAtPmNAXKOnwb.jpg?crop=center&height=900&v=1709131288&width=900" alt="Google Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/BsimrrFGUWInYSeAzWAlhlPFEDJrrOYf.jpg?crop=center&height=900&v=1686239868&width=900" alt="NetJets V3 Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/ugakzJLLrKTWeKrKiPrIRETFbcKCizPt.jpg?crop=center&height=900&v=1709129724&width=900" alt="Amazon Music Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1729544507-2-utXmE5B4Or.jpg?crop=center&height=900&v=1729544918&width=900" alt="Turner Construction Sneakers"></div>
+              <div class="hp2-binq__rot-item"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/1708958727-1-wxaWZ8finc.jpg?crop=center&height=900&v=1708958948&width=900" alt="Halo CRM Custom Shoes"></div>
+            </div>
           </div>
         </div>
-        <div class="hp2-binq__trust-band">
-          <div class="hp2-binq__trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            <span><strong>Free mockup sample</strong> before production</span>
-          </div>
-          <div class="hp2-binq__trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span><strong>No Minimum Orders</strong></span>
-          </div>
-          <div class="hp2-binq__trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-            <span><strong>Volume discounts</strong> on bulk orders</span>
-          </div>
+
+        <div class="hp2-binq__form-card" data-reveal>
+          <h3>Request a Quote</h3>
+          <p class="hp2-binq__form-sub">A team member will respond with pricing and next steps.</p>
+
+          <!-- SZ-FORM-B2B: visual scaffold only. On Shopify deploy, the form is replaced with the {% form 'contact', id: 'ContactB2B' %} version mirroring everything-shopify/customizer-backend/sz-biz-form.liquid (42-option country code select, hidden composited contact[Phone], 6 UTM hiddens, server-side error + success states, contact[...] names on every field, submit "Book a Call"). Source of truth is the deployed sz-hp-v3.liquid; do not let scripts/mockup-to-liquid.mjs blindly emit this scaffold. -->
+          <form class="hp2-binq__form-grid" onsubmit="event.preventDefault(); hp2BinqSubmit();">
+            <div>
+              <label class="hp2-binq__label">Name <span class="hp2-binq__req">*</span></label>
+              <input class="hp2-binq__input" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label class="hp2-binq__label">Business Name</label>
+              <input class="hp2-binq__input" type="text" placeholder="Company name">
+            </div>
+            <div>
+              <label class="hp2-binq__label">Email <span class="hp2-binq__req">*</span></label>
+              <input class="hp2-binq__input" type="email" placeholder="you@company.com" required>
+            </div>
+            <div>
+              <label class="hp2-binq__label">Cell Phone <span class="hp2-binq__opt">(optional)</span></label>
+              <div class="hp2-binq__phone">
+                <span class="hp2-binq__phone-prefix">+1</span>
+                <input class="hp2-binq__phone-input" type="tel" placeholder="Digits only">
+              </div>
+            </div>
+            <div>
+              <label class="hp2-binq__label">Estimated Quantity</label>
+              <select class="hp2-binq__select">
+                <option value="">Select range...</option>
+                <option>Start a Shoe Line</option>
+                <option>1–5</option>
+                <option>6–24</option>
+                <option>25–49</option>
+                <option>50–99</option>
+                <option>100+</option>
+              </select>
+            </div>
+            <div>
+              <label class="hp2-binq__label">Event Date <span class="hp2-binq__opt">(optional)</span></label>
+              <input class="hp2-binq__input" type="date">
+            </div>
+            <div class="hp2-binq__full">
+              <label class="hp2-binq__label">Project Notes</label>
+              <textarea class="hp2-binq__textarea" placeholder="What's the event, campaign, or use case? Any design ideas already in mind?"></textarea>
+            </div>
+            <div class="hp2-binq__full">
+              <button type="submit" class="hp2-binq__submit">Request a Quote
+                <svg style="width:16px;height:16px;vertical-align:-3px;margin-left:6px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+              <p class="hp2-binq__fineprint">We typically reply within one business day. No spam, ever.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="hp2-binq__trust-band" data-reveal>
+        <div class="hp2-binq__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+          <strong>Free mockup sample</strong> before production
+        </div>
+        <div class="hp2-binq__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <strong>2–3 weeks production</strong> + <strong>3–4 weeks shipping</strong>
+        </div>
+        <div class="hp2-binq__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          <strong>Volume discounts</strong> on bulk orders
         </div>
       </div>
     </div>
