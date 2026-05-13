@@ -361,6 +361,7 @@
       white-space: nowrap;
     }
     .hp2-whatwedo__intro h2 em { font-style: normal; color: var(--sz-accent); }
+    .hp2-whatwedo__accent { color: var(--sz-accent); font-style: normal; }
     .hp2-whatwedo__intro p {
       font-size: 15px; color: var(--sz-muted); line-height: 1.6;
       max-width: 440px; margin-bottom: 28px;
@@ -433,8 +434,8 @@
        ================================================================ */
     .oC-wrap{padding:40px 0;background:var(--sz-bg-cool)}
     .oC-c{max-width:1280px;margin:0 auto;padding:0 24px}
-    .oC-top{display:grid;grid-template-columns:1fr 0.98fr;gap:12px;margin-bottom:20px;align-items:stretch}
-    .oC-feature{position:relative;border-radius:14px;overflow:hidden;height:420px;background:#1a1a1a}
+    .oC-top{display:grid;grid-template-columns:0.72fr 1fr;gap:12px;margin-bottom:20px;align-items:stretch}
+    .oC-feature{position:relative;border-radius:14px;overflow:hidden;height:462px;background:#1a1a1a}
     .oC-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:oCFeatRot 22.5s infinite}
     .oC-feature img:nth-child(1){animation-delay:0s}
     .oC-feature img:nth-child(2){animation-delay:4.5s}
@@ -454,7 +455,13 @@
     .oC-feature__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:var(--sz-accent);color:#fff;font-size:13px;font-weight:700;border-radius:8px;text-decoration:none;transition:background .2s var(--sz-ease),transform .2s var(--sz-ease)}
     .oC-feature__cta:hover{background:var(--sz-accent-hover);transform:translateY(-2px)}
     .oC-feature__logos{display:flex;gap:18px;font-size:10px;color:rgba(255,255,255,.55);font-weight:600;letter-spacing:.08em;text-transform:uppercase;align-items:center}
-    .oC-side{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:420px}
+    /* Top-left feature variant — H2 anchors to top-left like stile tags, CTA pinned bottom-left */
+    .oC-feature__inner--topleft{justify-content:flex-start !important;align-items:flex-start !important;text-align:left !important}
+    .oC-feature__inner--topleft .oC-feature__h{margin:0 !important;max-width:520px}
+    .oC-feature__inner--topleft .oC-feature__bottom{margin-top:auto !important;justify-content:flex-start !important;align-self:flex-start !important;width:auto}
+    /* Stile with zoomed-out image variant — used on Corporate Programs (DL Evans toe) */
+    .oC-stile--zoom-out img{object-fit:cover !important;object-position:center 78% !important;transform:none !important}
+    .oC-side{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:462px}
     .oC-stile{position:relative;border-radius:10px;overflow:hidden;background:#000;min-height:0;min-width:0}
     .oC-stile img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--sz-ease)}
     .oC-stile:hover img{transform:scale(1.05)}
@@ -470,7 +477,7 @@
     .oC-bitem:hover img{transform:scale(1.05)}
     @media(max-width:768px){
       .oC-top{grid-template-columns:1fr;gap:12px}
-      .oC-feature{height:340px}
+      .oC-feature{height:374px}
       .oC-feature__inner{padding:24px 22px}
       .oC-side{height:auto;grid-template-rows:140px 140px}
       .oC-brow{grid-template-columns:repeat(3,1fr)}
@@ -1129,7 +1136,7 @@
 
     <div class="hp2-hero__content">
       <div class="hp2-hero__copy">
-        <h2>Made to Order Shoes.<br>Yours to Design.</h2>
+        <h2>Made to Order Shoes<br>Yours to Design</h2>
         <div class="hp2-hero__rule" aria-hidden="true"></div>
         <p class="hp2-hero__sub">For businesses, teams, events, gifts, and personal wear.</p>
         <div class="hp2-hero__actions">
@@ -1155,7 +1162,7 @@
           </div>
         </div>
         <div class="hp2-brands__review">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-trustpilot-star.png?v=146041826341132994521774277696" alt="Trustpilot">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-trustpilot-star.png?v=146041826341132994521774277696" alt="Trustpilot 4.8 star rating logo">
           <div class="hp2-brands__review-info">
             <div class="hp2-brands__review-score">4.8</div>
             <div class="hp2-brands__review-meta"><span class="hp2-brands__review-stars">★★★★★</span> <span class="hp2-brands__review-label">Trustpilot</span></div>
@@ -1165,29 +1172,29 @@
       <div class="hp2-brands__divider"></div>
       <div class="hp2-brands__marquee">
         <div class="hp2-brands__track">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="U of South Dakota">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce trusts Shoe Zero for custom branded shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz partners with Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar custom branded shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft trusts Shoe Zero for branded merchandise">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota custom branded shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo Winery trusts Shoe Zero for custom shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D L Evans Bank branded custom shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health branded custom shoes">
           <!-- Duplicate for seamless loop -->
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="U of South Dakota">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank">
-          <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce trusts Shoe Zero for custom branded shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz partners with Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar custom branded shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft trusts Shoe Zero for branded merchandise">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota custom branded shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo Winery trusts Shoe Zero for custom shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB branded custom shoes by Shoe Zero">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D L Evans Bank branded custom shoes">
+          <img loading="lazy" src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health branded custom shoes">
         </div>
       </div>
     </div>
@@ -1198,7 +1205,7 @@
     <div class="hp2-c">
       <div class="hp2-whatwedo__split">
         <div class="hp2-whatwedo__intro" data-reveal>
-          <h2>The Original Home of<br><span class="hp2-whatwedo__accent">Custom Shoes</span></h2>
+          <h2>The Original Home of<br><span class="hp2-whatwedo__accent">Custom Shoes.</span></h2>
           <p>Every pair from Shoe Zero runs through the hands that know footwear. Every shoe is built by people who understand the craft.</p>
         </div>
         <div class="hp2-whatwedo__right">
@@ -1249,17 +1256,15 @@
     <div class="oC-c">
       <div class="oC-top">
         <div class="oC-feature">
-          <img src="./assets/wcyd/b2b-big-sing-thing.png" alt="BIG SING THING duo on stage in custom branded high-top sneakers">
-          <img src="./assets/wcyd/b2b-sma-tower.jpeg" alt="SMA branded shoe-box tower display at corporate event">
-          <img src="./assets/wcyd/b2b-relex-conference.jpeg" alt="RELEX Solutions sales conference attendees with custom branded shoes">
-          <img src="./assets/wcyd/b2b-fairfield-call.jpg" alt="Fairfield team showing off custom F-pattern branded sneakers on Teams call" style="object-position:50% 25%;">
-          <img src="./assets/wcyd/b2b-sun-hydraulics.jpg" alt="Sun Hydraulics team in matching custom red and white branded sneakers at booth">
+          <img loading="lazy" src="./assets/wcyd/b2b-big-sing-thing.png" alt="BIG SING THING duo on stage in custom branded high-top sneakers">
+          <img loading="lazy" src="./assets/wcyd/b2b-sma-tower.jpeg" alt="SMA branded shoe-box tower display at corporate event">
+          <img loading="lazy" src="./assets/wcyd/b2b-relex-conference-v2.webp" alt="RELEX Solutions speaker presenting to audience at sales conference with custom branded shoes">
+          <img loading="lazy" src="./assets/wcyd/b2b-fairfield-call.jpg" alt="Fairfield team showing off custom F-pattern branded sneakers on Teams call" style="object-position:50% 80%;">
+          <img loading="lazy" src="./assets/wcyd/b2b-sun-hydraulics.jpg" alt="Sun Hydraulics team in matching custom red and white branded sneakers at booth">
           <div class="oC-feature__inner">
-            <div>
-              <h2 class="oC-feature__h">Your brand, on a shoe people actually wear.</h2>
-            </div>
+            <h2 class="oC-feature__h">Your Brand on a Shoe</h2>
             <div class="oC-feature__bottom">
-              <a href="#" class="oC-feature__cta">Book a call
+              <a href="#b2bform" class="oC-feature__cta">Book a call
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
             </div>
@@ -1267,19 +1272,19 @@
         </div>
         <div class="oC-side">
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-south-dakota-events.png" alt="University of South Dakota event team in custom branded sneakers">
+            <img loading="lazy" src="./assets/wcyd/b2b-south-dakota-events.png" alt="University of South Dakota event team in custom branded sneakers">
             <span class="oC-stile__tag oC-stile__tag--biz">Events</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-team-uniforms-sig-events.jpg" alt="SIG Events activation team uniform custom low-top sneakers" style="object-position: 50% 15%;">
+            <img loading="lazy" src="./assets/wcyd/b2b-team-uniforms-sig-events.jpg" alt="SIG Events activation team uniform custom low-top sneakers" style="object-position: 50% 15%;">
             <span class="oC-stile__tag oC-stile__tag--biz">Team Uniforms</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-brand-activation-b-hex.jpeg" alt="B-monogram custom branded sneakers at a beachside bar activation">
+            <img loading="lazy" src="./assets/wcyd/b2b-brand-activation-b-hex.jpeg" alt="B-monogram custom branded sneakers at a beachside bar activation">
             <span class="oC-stile__tag oC-stile__tag--biz">Brand Activations</span>
           </div>
           <div class="oC-stile">
-            <img src="./assets/wcyd/b2b-dl-evans-bank-shoe.jpeg" alt="D.L. Evans Bank custom branded white sneakers with navy logo">
+            <img loading="lazy" src="./assets/wcyd/b2b-dl-evans-bank-shoe-v2.jpeg" alt="D.L. Evans Bank custom branded white sneakers with navy heel on desk in front of monitor showing the design mockup">
             <span class="oC-stile__tag oC-stile__tag--biz">Corporate Programs</span>
           </div>
         </div>
@@ -1299,7 +1304,7 @@
       <div class="hp2-products" data-stagger>
         <div class="hp2-product">
           <div class="hp2-product__img">
-            <img src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/4_014ac1df-680a-4fa0-bda8-10d69f0cf755.webp?v=1747819592&width=400" alt="Classic Zero">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/4_014ac1df-680a-4fa0-bda8-10d69f0cf755.webp?v=1747819592&width=400" alt="Classic Zero">
           </div>
           <div class="hp2-product__info">
             <div class="hp2-product__name">Classic Zero</div>
@@ -1308,7 +1313,7 @@
         </div>
         <div class="hp2-product">
           <div class="hp2-product__img">
-            <img src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/2_70ca1ec5-b4bc-4a66-b889-5921d9db6c75.webp?v=1755095204&width=400" alt="Core Zero Low Tops">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/2_70ca1ec5-b4bc-4a66-b889-5921d9db6c75.webp?v=1755095204&width=400" alt="Core Zero Low Tops">
           </div>
           <div class="hp2-product__info">
             <div class="hp2-product__name">Core Zero Low Tops</div>
@@ -1317,7 +1322,7 @@
         </div>
         <div class="hp2-product">
           <div class="hp2-product__img">
-            <img src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_1_7ada83c6-cc6d-49bf-aa86-814fc630a2cd.webp?v=1747834205&width=400" alt="Zero Canvas">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_1_7ada83c6-cc6d-49bf-aa86-814fc630a2cd.webp?v=1747834205&width=400" alt="Zero Canvas">
           </div>
           <div class="hp2-product__info">
             <div class="hp2-product__name">Zero Canvas</div>
@@ -1326,7 +1331,7 @@
         </div>
         <div class="hp2-product">
           <div class="hp2-product__img">
-            <img src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_6_317ae3eb-d24d-41b3-a973-52fe4277dd71.webp?v=1747838027&width=400" alt="Zero Runner">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_6_317ae3eb-d24d-41b3-a973-52fe4277dd71.webp?v=1747838027&width=400" alt="Zero Runner">
           </div>
           <div class="hp2-product__info">
             <div class="hp2-product__name">Zero Runner</div>
@@ -1335,7 +1340,7 @@
         </div>
         <div class="hp2-product">
           <div class="hp2-product__img">
-            <img src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/Customizable_Hightop_Shoe.jpg?v=1756405945&width=400" alt="Core Zero High Tops">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/Customizable_Hightop_Shoe.jpg?v=1756405945&width=400" alt="Core Zero High Tops">
           </div>
           <div class="hp2-product__info">
             <div class="hp2-product__name">Core Zero High Tops</div>
@@ -1388,7 +1393,7 @@
         </div>
 
         <div class="hp2-htc__preview" data-scale>
-          <video id="hp2HtcVideo" autoplay muted loop playsinline
+          <video id="hp2HtcVideo" autoplay muted loop playsinline preload="metadata" poster="https://shoezero.com/cdn/shop/t/98/assets/sz-hero-desktop-poster.webp?v=98690032460295840781775819493"
             data-src-3d="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/how-to-tutorial.mp4?v=1773848786"
             data-src-2d="https://shoezero.com/cdn/shop/videos/c/vp/9d8aa4d9fe1946129f2bf61bcb9f287d/9d8aa4d9fe1946129f2bf61bcb9f287d.HD-1080p-3.3Mbps-23286597.mp4?v=0">
             <source src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/how-to-tutorial.mp4?v=1773848786" type="video/mp4">
@@ -1419,11 +1424,11 @@
           <span>120,000+ pairs shipped since 2021</span>
         </div>
         <div class="oC-brow">
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt="Customer wearing custom Wednesday-themed printed sneakers"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-sma-splatter.jpeg" alt="Custom SMA monogram low-tops with paint splatter design"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-asrm-2023.jpeg" alt="ASRM 2023 New Orleans custom patterned high-top sneakers in display case"></div>
-          <div class="oC-bitem"><img src="./assets/customer-wall/cw-boiron.jpg" alt="Les Vergers Boiron custom branded white sneakers with burgundy accents"></div>
-          <div class="oC-bitem"><img src="./assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt="Happy customer with personalized custom shoes"></div>
+          <div class="oC-bitem"><img loading="lazy" src="./assets/gallery-candidates/Customer-Wednesday-Shoes__wednesday-shoes-3.jpg" alt="Customer wearing custom Wednesday-themed printed sneakers"></div>
+          <div class="oC-bitem"><img loading="lazy" src="./assets/customer-wall/cw-sma-splatter.jpeg" alt="Custom SMA monogram low-tops with paint splatter design"></div>
+          <div class="oC-bitem"><img loading="lazy" src="./assets/customer-wall/cw-asrm-2023.jpeg" alt="ASRM 2023 New Orleans custom patterned high-top sneakers in display case"></div>
+          <div class="oC-bitem"><img loading="lazy" src="./assets/customer-wall/cw-boiron.jpg" alt="Les Vergers Boiron custom branded white sneakers with burgundy accents"></div>
+          <div class="oC-bitem"><img loading="lazy" src="./assets/gallery-candidates/Customer-Photos-of-Customers-for-Website__7.jpg" alt="Happy customer with personalized custom shoes"></div>
         </div>
       </div>
     </div>
@@ -1562,6 +1567,7 @@
           <h3>Request a Quote</h3>
           <p class="hp2-binq__form-sub">A team member will respond with pricing and next steps.</p>
 
+          <!-- SZ-FORM-B2B: visual scaffold only. On Shopify deploy, the form is replaced with the {% form 'contact', id: 'ContactB2B' %} version mirroring everything-shopify/customizer-backend/sz-biz-form.liquid (42-option country code select, hidden composited contact[Phone], 6 UTM hiddens, server-side error + success states, contact[...] names on every field, submit "Book a Call"). Source of truth is the deployed sz-hp-v3.liquid; do not let scripts/mockup-to-liquid.mjs blindly emit this scaffold. -->
           <form class="hp2-binq__form-grid" onsubmit="event.preventDefault(); hp2BinqSubmit();">
             <div>
               <label class="hp2-binq__label">Name <span class="hp2-binq__req">*</span></label>
@@ -1586,13 +1592,12 @@
               <label class="hp2-binq__label">Estimated Quantity</label>
               <select class="hp2-binq__select">
                 <option value="">Select range...</option>
-                <option>Under 50</option>
-                <option>50–100</option>
-                <option>100–250</option>
-                <option>250–500</option>
-                <option>500–1,000</option>
-                <option>1,000+</option>
-                <option>Not sure yet</option>
+                <option>Start a Shoe Line</option>
+                <option>1–5</option>
+                <option>6–24</option>
+                <option>25–49</option>
+                <option>50–99</option>
+                <option>100+</option>
               </select>
             </div>
             <div>
@@ -1766,7 +1771,7 @@
     var btn = document.querySelector('.hp2-binq__submit');
     if (!btn) return;
     var original = btn.innerHTML;
-    btn.innerHTML = Thanks, we\'ll be in touch';
+    btn.innerHTML = 'Thanks, we\'ll be in touch';
     btn.style.background = 'var(--sz-accent-hover)';
     setTimeout(function() {
       btn.innerHTML = original;
