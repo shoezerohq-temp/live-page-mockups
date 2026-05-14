@@ -1,0 +1,14 @@
+{
+  "id": "session-1778694574914",
+  "startedAt": "2026-05-13T17:49:34.914Z",
+  "cwd": "/Users/benedictxyryl/Documents/claude/shoezero/projects/shoe-zero-specific/Mockup-Generator/homepage-v3-deploy",
+  "context": {},
+  "metrics": {
+    "edits": 2,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-05-13T18:16:35.842Z",
+  "duration": 1620928
+}

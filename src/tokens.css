@@ -1,24 +1,46 @@
 /* ══════════════════════════════════════════════════════════════════
    Shoe Zero — Design Tokens (Single Source of Truth)
    Source: ../everything-shopify/docs/design-brand-guidelines.md
-   Updated: 2026-04-19
+   Last structural update: 2026-05-14 (design-system intelligence harvest)
 
    ALL mockup files <link> this file instead of declaring :root inline.
    To change a token, edit HERE — it propagates to all 80+ mockups.
+
+   ──────────────────────────────────────────────────────────────────
+   ARCHITECTURE
+     1. Primitives (raw values) live alongside Semantics below.
+        Renames blocked until a coordinated migration of sections/.
+     2. Semantic tokens (--sz-*) are the agent-consumable layer.
+        Every mockup uses these names, never raw hex.
+     3. Legacy aliases at the bottom for pre-rename mockup files.
+
+   TOKEN TRAPS (read before generating)
+     • --sz-radius-full (9999px) is for circular elements only:
+       avatars, dots, status pills inside CTA banners. NEVER for
+       primary buttons — locked rule 3 (sz-design skill).
+     • --sz-bg-page (#f7f7f5) and --sz-bg-section (#f0f0f0) alternate
+       on a strict rhythm with white. Never two adjacent sections
+       sharing a bg — locked rule 5. (Legacy aliases --sz-bg-warm
+       and --sz-bg-cool still resolve; do not add new references.)
+     • --sz-accent (#00704a) is accent only: buttons, links, eyebrows.
+       NEVER section bg, NEVER full-card bg. One exception: the
+       case-study quote-card. Locked rule 4.
+     • Font weight ceiling: --sz-weight-heading (800). Do not use
+       weights 900 or above — breaks the editorial register.
    ══════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* --- Colors --- */
-  --sz-accent: #00704a;
-  --sz-accent-hover: #005c3d;
-  --sz-accent-light: #e6f2ed;
-  --sz-text: #1a1a1a;
-  --sz-muted: #777777;
-  --sz-border: #e5e5e5;
-  --sz-bg-warm: #f7f7f5;
-  --sz-bg-cool: #f0f0f0;
+  /* --- Colors (semantic, with primitive values inline) --- */
+  --sz-accent: #00704a;           /* primitive: green-700, brand anchor */
+  --sz-accent-hover: #005c3d;     /* primitive: green-800 */
+  --sz-accent-light: #e6f2ed;     /* primitive: green-50 */
+  --sz-text: #1a1a1a;             /* primitive: ink-900 */
+  --sz-muted: #777777;            /* primitive: gray-500 */
+  --sz-border: #e5e5e5;           /* primitive: gray-200 */
+  --sz-bg-page: #f7f7f5;          /* primitive: stone-50, page-level alternate (was --sz-bg-warm) */
+  --sz-bg-section: #f0f0f0;       /* primitive: gray-100, section-level alternate (was --sz-bg-cool) */
   --sz-white: #ffffff;
-  --sz-black: #1a1a1a;
+  --sz-black: #1a1a1a;            /* not pure black — softened ink-900 */
 
   /* --- Dark section (on --sz-black bg) --- */
   --sz-dark-text: #ffffff;
@@ -31,24 +53,66 @@
   --sz-accent-text: #ffffff;
   --sz-accent-muted: rgba(255,255,255,0.80);
 
+  /* --- On-color pairings (Material 3 convention, makes contrast structural) --- */
+  --sz-on-accent: #ffffff;        /* foreground on --sz-accent surfaces */
+  --sz-on-dark: #ffffff;          /* foreground on --sz-black surfaces */
+  --sz-on-light: var(--sz-text);  /* foreground on --sz-white / --sz-bg-* surfaces */
+
+  /* --- Legacy temperature aliases (post-migration 2026-05-14, kept for safety) ---
+     Migration is complete: all 137 mockup files now use --sz-bg-page/--sz-bg-section.
+     These aliases exist only to catch any lingering references during the audit window.
+     Safe to remove after 2026-06 if no regressions surface. */
+  --sz-bg-warm: var(--sz-bg-page);
+  --sz-bg-cool: var(--sz-bg-section);
+
+  /* --- Typography (no theme dependency; mockups render outside Shopify too) --- */
+  --sz-font-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --sz-weight-body: 400;
+  --sz-weight-strong: 600;
+  --sz-weight-heading: 800;
+
   /* --- Radius --- */
   --sz-radius-btn: 8px;
   --sz-radius-img: 8px;
   --sz-radius-card: 12px;
   --sz-radius-hero: 16px;
-  --sz-radius-full: 9999px;
+  --sz-radius-lg: 20px;           /* asymmetric hero corners, large feature cards */
+  --sz-radius-full: 9999px;       /* CIRCULAR ONLY — avatars, dots. NEVER buttons. */
 
-  /* --- Shadows (volumetric 3-layer) --- */
+  /* --- Spacing (8px base ladder, drives gap + padding from one source) --- */
+  --sz-space-1: 4px;
+  --sz-space-2: 8px;
+  --sz-space-3: 12px;
+  --sz-space-4: 16px;
+  --sz-space-5: 20px;
+  --sz-space-6: 24px;
+  --sz-space-8: 32px;
+  --sz-space-10: 40px;
+  --sz-space-12: 48px;
+  --sz-space-16: 64px;
+  --sz-space-20: 80px;
+
+  /* --- Shadows (volumetric 3-layer; community-preferred over single heavy drops) --- */
   --sz-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.04);
   --sz-shadow-hover: 0 2px 4px rgba(0,0,0,0.06), 0 8px 20px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.06);
   --sz-shadow-glass: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
 
-  /* --- Animation --- */
+  /* --- Easings (semantic axes per Carbon: productive vs expressive) ---
+     --sz-ease         : standard transitions, hover lifts, panel reveals
+     --sz-ease-entrance: feature reveals with slight overshoot (expressive)
+     --sz-ease-micro   : state toggles, focus rings, micro-interactions (productive) */
   --sz-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --sz-ease-entrance: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --sz-duration-fast: 400ms;
-  --sz-duration-base: 600ms;
-  --sz-stagger: 80ms;
+  --sz-ease-micro: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Durations (full ladder matching sz-design TLDR) --- */
+  --sz-duration-micro: 200ms;     /* toggles, focus rings */
+  --sz-duration-quick: 300ms;     /* hover state changes */
+  --sz-duration-snap: 350ms;      /* button presses, small reveals */
+  --sz-duration-fast: 400ms;      /* standard hover, card lifts */
+  --sz-duration-base: 600ms;      /* panel entrances, section reveals */
+  --sz-duration-slow: 1000ms;     /* page-level reveals, hero choreography */
+  --sz-stagger: 80ms;             /* between-item delay for grid reveals */
 
   /* --- Legacy aliases (old files use these — DO NOT add new references) --- */
   --green: var(--sz-accent);
@@ -70,8 +134,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   :root {
+    --sz-duration-micro: 0ms;
+    --sz-duration-quick: 0ms;
+    --sz-duration-snap: 0ms;
     --sz-duration-fast: 0ms;
     --sz-duration-base: 0ms;
+    --sz-duration-slow: 0ms;
     --sz-stagger: 0ms;
   }
 }

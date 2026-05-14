@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../src/tokens.css">
   <style>
     /* ============================================================
-       TOOLBAR (mockup chrome) — not part of the live design
+       TOOLBAR (mockup chrome) ,  not part of the live design
        ============================================================ */
     .csm-bar{position:fixed;top:0;left:0;right:0;height:44px;background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:9000;font-family:'Inter',sans-serif}
     .csm-bar__label{font-size:11px;font-weight:700;color:#888;letter-spacing:.1em;text-transform:uppercase}
@@ -29,7 +29,7 @@
     button{font-family:inherit;cursor:pointer}
 
     /* ============================================================
-       S1: HERO — 1:1 from live sz-hero-v3.liquid
+       S1: HERO ,  1:1 from live sz-hero-v3.liquid
        Content + assets + structure all preserved.
        ============================================================ */
     /* Hero scale + crop: contain + transform-scale(0.8) like homepage so the shoe sits at the right size, not zoomed-in cover */
@@ -63,14 +63,14 @@
     }
 
     /* ============================================================
-       S2: TRUST MARQUEE — redesign (one-row, cleaner), content kept 1:1
+       S2: TRUST MARQUEE ,  redesign (one-row, cleaner), content kept 1:1
        Source content: sz-trusted-brands-v3.liquid
        ============================================================ */
     /* White bg per rhythm: Hero black → Trust white → Products cool → CW white → HTC cool → ... */
     .sz-brands{background:#fff;padding:18px 0}
     .sz-brands__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px}
     .sz-brands-reviews{display:flex;gap:24px;flex-shrink:0}
-    /* Flat review row — no pill backgrounds */
+    /* Flat review row ,  no pill backgrounds */
     .sz-review{display:inline-flex;align-items:center;gap:10px}
     .sz-review-name{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#1a1a1a}
     .sz-review-name svg{height:18px;width:18px}
@@ -98,7 +98,7 @@
     }
 
     /* ============================================================
-       S3: PRODUCT GRID — redesign (one-row slider, bounded 1280)
+       S3: PRODUCT GRID ,  redesign (one-row slider, bounded 1280)
        Real 8 products from /collections/custom-shoes
        ============================================================ */
     /* Cool bg per rhythm (Trust white above → Products cool → CW white below) */
@@ -114,10 +114,10 @@
     .sz-pgs__arrow:hover{color:#fff;background:#00704a;border-color:#00704a;transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,112,74,.14),0 8px 20px rgba(0,112,74,.18),0 20px 44px rgba(0,112,74,.14)}
     .sz-pgs__arrow:disabled{color:#cfcfcf;cursor:default;transform:none;background:#fff;border-color:#ececec;box-shadow:0 1px 2px rgba(0,0,0,.03),0 2px 6px rgba(0,0,0,.03)}
     .sz-pgs__arrow svg{width:20px;height:20px;stroke-width:3}
-    /* No right-edge fade — let cards reach the section edge */
+    /* No right-edge fade ,  let cards reach the section edge */
     .sz-pgs__viewport{position:relative}
     /* 5-up sizing matched to homepage hp2-products (16px gap, 1:1 image, 14px info padding).
-       scroll-snap is `proximity` (not `mandatory`) — mandatory forces a secondary snap
+       scroll-snap is `proximity` (not `mandatory`) ,  mandatory forces a secondary snap
        animation after smooth-scroll, which causes a noticeable delay mid-track. */
     .sz-pgs__track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none}
     .sz-pgs__track.is-dragging{cursor:grabbing;scroll-behavior:auto;scroll-snap-type:none}
@@ -148,7 +148,7 @@
     @media(max-width:640px){.sz-pgs__card{flex:0 0 calc((100% - 16px)/2)}}
 
     /* ============================================================
-       S4: HTC — 1:1 VERBATIM from live sz-htc-v3.liquid
+       S4: HTC ,  1:1 VERBATIM from live sz-htc-v3.liquid
        (all .oB-* classes, accordion behaviour, copy preserved)
        ============================================================ */
     .oB-wrap{background:#f0f0f0;padding:40px 40px 56px;width:100%}
@@ -159,7 +159,7 @@
     .oB-h{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:24px;color:#1a1a1a}
     .oB-h em{font-style:normal;color:#00704a}
     .oB-steps{display:flex;flex-direction:column}
-    /* Vertical accent line on each step — softer in default, full green when active, with hover state */
+    /* Vertical accent line on each step ,  softer in default, full green when active, with hover state */
     .oB-step{border-left:3px solid #ececec;padding:20px 0 20px 24px;cursor:pointer;transition:border-color .3s cubic-bezier(.22,1,.36,1),background-color .25s var(--sz-ease)}
     .oB-step:hover{border-left-color:rgba(0,112,74,.4)}
     .oB-step.active{border-left-color:#00704a;background:rgba(0,112,74,.025)}
@@ -197,7 +197,7 @@
     }
 
     /* ============================================================
-       S5: MANUFACTURING — 3 phase cards in a row, each with photo.
+       S5: MANUFACTURING ,  3 phase cards in a row, each with photo.
        White bg (alternates from HTC cool above).
        ============================================================ */
     .sz-mfg{background:#fff;padding:48px 0 56px}
@@ -210,7 +210,7 @@
     .sz-mfg__more{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#00704a;text-decoration:none;transition:color .2s,transform .2s}
     .sz-mfg__more:hover{color:#005c3d;transform:translateX(2px)}
     .sz-mfg__more svg{color:#00704a;flex-shrink:0}
-    /* 4 cards — snippets from the 7-step manufacturing page (the "See Manufacturing Page →"
+    /* 4 cards ,  snippets from the 7-step manufacturing page (the "See Manufacturing Page →"
        link in the header is the full content). Not fabricated steps. */
     .sz-mfg__row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     /* Grey card bg so they stand out on the white Mfg section bg */
@@ -228,7 +228,7 @@
     @media(max-width:640px){.sz-mfg__row{grid-template-columns:1fr;gap:14px}}
 
     /* ============================================================
-       S6: CUSTOMER WALL — `.oC-bottom` structure 1:1 from homepage.
+       S6: CUSTOMER WALL ,  `.oC-bottom` structure 1:1 from homepage.
        Cool bg here (deviates from homepage's white) so Mfg white → CW cool
        alternates. Class names/structure/content/assets stay identical.
        ============================================================ */
@@ -249,7 +249,7 @@
     @media(max-width:768px){.oC-brow{grid-template-columns:repeat(2,1fr)}}
 
     /* ============================================================
-       S7: COMPARISON TABLE — content 1:1 from brand-comparison-table.liquid
+       S7: COMPARISON TABLE ,  content 1:1 from brand-comparison-table.liquid
        Design redesign: cleaner header, sharper sz-column distinction,
        softer body rows, no warm khaki bg (cool #f0f0f0 to fit rhythm)
        ============================================================ */
@@ -265,7 +265,7 @@
     .ct-card table{width:100%;border-collapse:collapse;table-layout:fixed}
     .ct-card thead th{padding:34px 18px 18px;text-align:center;vertical-align:bottom;border-bottom:1px solid #e8e3dc;width:auto;white-space:nowrap}
     .ct-card thead th:first-child{text-align:left;padding-left:28px;width:200px;white-space:normal}
-    /* Highlight applied DIRECTLY to the SZ column cells — no overlay, padding stays even */
+    /* Highlight applied DIRECTLY to the SZ column cells ,  no overlay, padding stays even */
     .ct-card thead th.sz-col-head{background:rgba(0,112,74,.05);border-top:3px solid #00704a}
     .ct-card tbody td.sz-col{background:rgba(0,112,74,.04)}
     .ct-card tbody tr:last-child td.sz-col{border-bottom-left-radius:0}
@@ -298,7 +298,7 @@
     }
 
     /* ============================================================
-       S8: GOOGLE REVIEWS — 1:1 VERBATIM from live google-reviews-marquee.liquid
+       S8: GOOGLE REVIEWS ,  1:1 VERBATIM from live google-reviews-marquee.liquid
        ============================================================ */
     .reviews-marquee{--rm-bg:#f9f9f9;--rm-text:#222222;--rm-accent:#FBBC05;--rm-speed:45s;--rm-card-bg:#ffffff;--rm-card-border:#eeeeee;background:var(--rm-bg);padding:20px 0;overflow:hidden;position:relative;width:100%}
     .reviews-marquee__heading{text-align:center;color:var(--rm-text);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:0 0 16px;opacity:.7}
@@ -316,12 +316,12 @@
     @media(prefers-reduced-motion:reduce){.reviews-marquee__track{animation:none}}
 
     /* ============================================================
-       S9b: B2B INQUIRY — CSS VERBATIM from homepage-v3.html lines 773-968
+       S9b: B2B INQUIRY ,  CSS VERBATIM from homepage-v3.html lines 773-968
        Do not modify. Sync source: sections/full-page/homepage-v3.html
        ============================================================ */
     /* Container used inside the section (homepage's global container class). */
     .hp2-c { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-    .hp2-binq { padding: 40px 0; background: var(--sz-bg-cool); }
+    .hp2-binq { padding: 40px 0; background: var(--sz-bg-section); }
     .hp2-binq__header { text-align: center; max-width: 760px; margin: 0 auto 24px; }
     .hp2-binq__overline {
       font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
@@ -340,7 +340,7 @@
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
       gap: 40px; align-items: start;
     }
-    /* Left visual stack — fills column height to match form */
+    /* Left visual stack ,  fills column height to match form */
     .hp2-binq__visual { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
     .hp2-binq__form-card { min-width: 0; display: flex; flex-direction: column; }
     .hp2-binq__video {
@@ -523,7 +523,7 @@
     }
 
     /* ============================================================
-       S10: SEO 3-BOXES — content 1:1 from sz-seo-boxes.liquid
+       S10: SEO 3-BOXES ,  content 1:1 from sz-seo-boxes.liquid
        Design redesign: white cards on cool bg, stronger headers, icon bullets
        ============================================================ */
     .seoA-s{background:#fff;padding:48px 24px 56px}
@@ -548,7 +548,7 @@
     @media(max-width:900px){.seoA-grid{grid-template-columns:1fr}}
 
     /* ============================================================
-       S11: FAQ — 1:1 VERBATIM from live sz-faq-standard.liquid (.oFQ-*)
+       S11: FAQ ,  1:1 VERBATIM from live sz-faq-standard.liquid (.oFQ-*)
        ============================================================ */
     .oFQ-section{background:#f0f0f0}
     .oFQ-wrap{max-width:1100px;margin:0 auto;padding:32px 40px 48px}
@@ -575,7 +575,7 @@
 
   <!-- ─── Mockup toolbar ─── -->
   <div class="csm-bar">
-    <div class="csm-bar__label">Custom Shoes — Redesign V2 (mockup)</div>
+    <div class="csm-bar__label">Custom Shoes ,  Redesign V2 (mockup)</div>
     <div class="csm-bar__nav">
       <a href="#hero">Hero</a><a href="#trust">Trust</a><a href="#products">Grid</a>
       <a href="#htc">HTC</a><a href="#mfg">Mfg</a><a href="#wall">Wall</a>
@@ -587,7 +587,7 @@
   <div class="csm-toast" id="csmToast">Copied</div>
 
   <!-- ============================================================
-       S1: HERO (1:1 from live sz-hero-v3 — content, assets, structure)
+       S1: HERO (1:1 from live sz-hero-v3 ,  content, assets, structure)
        ============================================================ -->
   <section id="hero">
     <div class="hero-video-wrapper">
@@ -616,7 +616,7 @@
   </section>
 
   <!-- ============================================================
-       S2: TRUST MARQUEE — single row (Google + Trustpilot + brand marquee inline)
+       S2: TRUST MARQUEE ,  single row (Google + Trustpilot + brand marquee inline)
        Content + assets 1:1 from live sz-trusted-brands-v3. Visual redesign only.
        ============================================================ -->
   <section id="trust">
@@ -642,7 +642,7 @@
           <div class="sz-review">
             <div class="sz-review-name">
               <!-- Trustpilot mark: solid green star (#00B67A) with the iconic darker fold triangle on bottom-right.
-                   Bare star next to "Trustpilot" wordmark — matches the official 2022 logo lockup. -->
+                   Bare star next to "Trustpilot" wordmark ,  matches the official 2022 logo lockup. -->
               <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path fill="#00B67A" d="M22 9.74h-7.13L12 2 9.13 9.74H2l5.76 4.78L5.6 22 12 17.27 18.4 22l-2.15-7.48L22 9.74z"/>
                 <path fill="#005128" d="M16.25 14.52 15.59 12.39 12 17.27 18.4 22z"/>
@@ -659,17 +659,17 @@
         <div class="sz-brands-divider"></div>
         <div class="sz-brands-marquee">
           <div class="sz-brands-track">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce logo — custom shoe client" title="Salesforce" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz logo — custom shoe client" title="Kraft Heinz" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness logo — custom shoe client" title="Guinness" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar logo — custom shoe client" title="TrueCar" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft logo — custom shoe client" title="Microsoft" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota logo — custom shoe client" title="University of South Dakota" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas logo — custom shoe client" title="Cintas" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo logo — custom shoe client" title="Gallo" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB logo — custom shoe client" title="ABB" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank logo — custom shoe client" title="D.L. Evans Bank" loading="lazy">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health logo — custom shoe client" title="Sutter Health" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce logo ,  custom shoe client" title="Salesforce" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz logo ,  custom shoe client" title="Kraft Heinz" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness logo ,  custom shoe client" title="Guinness" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar logo ,  custom shoe client" title="TrueCar" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-microsoft.png" alt="Microsoft logo ,  custom shoe client" title="Microsoft" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-u-of-south-dakota.png" alt="University of South Dakota logo ,  custom shoe client" title="University of South Dakota" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-cintas.png" alt="Cintas logo ,  custom shoe client" title="Cintas" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-gallo.png" alt="Gallo logo ,  custom shoe client" title="Gallo" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-abb.png" alt="ABB logo ,  custom shoe client" title="ABB" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank logo ,  custom shoe client" title="D.L. Evans Bank" loading="lazy">
+            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health logo ,  custom shoe client" title="Sutter Health" loading="lazy">
             <!-- duplicate set for seamless loop -->
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce brand logo" title="Salesforce" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz brand logo" title="Kraft Heinz" loading="lazy">
@@ -689,7 +689,7 @@
   </section>
 
   <!-- ============================================================
-       S3: PRODUCT GRID — one-row slider (8 real products, bounded 1280)
+       S3: PRODUCT GRID ,  one-row slider (8 real products, bounded 1280)
        ============================================================ -->
   <section id="products">
     <div class="sz-pgs">
@@ -770,7 +770,7 @@
   </section>
 
   <!-- ============================================================
-       S6: CUSTOMER WALL — 1:1 from homepage `.oC-bottom`
+       S6: CUSTOMER WALL ,  1:1 from homepage `.oC-bottom`
        (homepage-v3.html lines 1418-1435)
        ============================================================ -->
   <section id="wall">
@@ -794,7 +794,7 @@
   </section>
 
   <!-- ============================================================
-       S4: HTC — 1:1 VERBATIM from live sz-htc-v3
+       S4: HTC ,  1:1 VERBATIM from live sz-htc-v3
        (3-step accordion + 16:10 video preview)
        ============================================================ -->
   <section id="htc">
@@ -858,7 +858,7 @@
   </section>
 
   <!-- ============================================================
-       S5: MANUFACTURING — 2-col split: hero photo + 3 phase cards.
+       S5: MANUFACTURING ,  2-col split: hero photo + 3 phase cards.
        Placeholder copy per user direction.
        ============================================================ -->
   <section id="mfg">
@@ -884,7 +884,7 @@
             </div>
           </article>
           <article class="sz-mfg__card">
-            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-boiron.jpg" alt="CO2 laser cutting printed panels"></div>
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/laser-cutting-panels.png" alt="CO2 laser cutter tracing printed shoe panel borders into a sheet of material"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
                 <h3 class="sz-mfg__phase-title">We laser-cut the panels</h3>
@@ -893,7 +893,7 @@
             </div>
           </article>
           <article class="sz-mfg__card">
-            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-verder.jpg" alt="Hand assembly on industrial sewing machines"></div>
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/sewing-machine.png" alt="Close-up of an industrial sewing machine stitching a shoe panel by hand"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
                 <h3 class="sz-mfg__phase-title">The shoe is sewn together</h3>
@@ -902,7 +902,7 @@
             </div>
           </article>
           <article class="sz-mfg__card">
-            <div class="sz-mfg__img"><img loading="lazy" src="../assets/customer-wall/cw-oscar-mayer.png" alt="Final inspection and boxing for shipment"></div>
+            <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/finished-shoe-rapidhire.png" alt="Finished custom-printed RapidHire-branded sneaker after final QC"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
                 <h3 class="sz-mfg__phase-title">Final QC, lace, and ship</h3>
@@ -917,7 +917,7 @@
 
 
   <!-- ============================================================
-       S7: COMPARISON TABLE — content 1:1 from brand-comparison-table.liquid
+       S7: COMPARISON TABLE ,  content 1:1 from brand-comparison-table.liquid
        Visual redesign only.
        ============================================================ -->
   <section id="compare">
@@ -959,17 +959,17 @@
               </tr>
               <tr>
                 <td>Your brand, your<br>exact colors</td>
-                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Any shade — no outside logos</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Any shade ,  no outside logos</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
               </tr>
               <tr>
                 <td>Can I use my own logo<br>and images?</td>
                 <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Logos, photos, text, patterns</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
                 <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Personal images, select panels</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
               </tr>
               <tr>
                 <td>Will my brand cover<br>the entire shoe?</td>
@@ -982,7 +982,7 @@
                 <td>Can I order in bulk<br>for my business?</td>
                 <td class="sz-col"><div class="cell-wrap"><span class="ico-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="sz-text">Any quantity, no limits</div></div></td>
                 <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">High minimums required</div></div></td>
-                <td><div class="cell-wrap"><span class="ico-dash">—</span><div class="comp-text">No</div></div></td>
+                <td><div class="cell-wrap"><span class="ico-dash">, </span><div class="comp-text">No</div></div></td>
                 <td><div class="cell-wrap"><span class="ico-comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="comp-text">Small runs only</div></div></td>
               </tr>
               <tr>
@@ -1011,7 +1011,7 @@
   </section>
 
   <!-- ============================================================
-       S8: GOOGLE REVIEWS — 1:1 VERBATIM from live google-reviews-marquee.liquid
+       S8: GOOGLE REVIEWS ,  1:1 VERBATIM from live google-reviews-marquee.liquid
        Content from template blocks (6 reviews) preserved verbatim.
        ============================================================ -->
   <section id="reviews">
@@ -1091,7 +1091,7 @@
   </section>
 
   <!-- ============================================================
-       S9: B2B FORM — 1:1 from homepage `.hp2-binq` design
+       S9: B2B FORM ,  1:1 from homepage `.hp2-binq` design
        (homepage-v3.html: same structure, same fields, same copy)
        ============================================================ -->
   <!-- ===== S9b: B2B INQUIRY ===== verbatim from homepage-v3.html lines 1525-1636 ===== -->
@@ -1165,10 +1165,10 @@
               <select class="hp2-binq__select">
                 <option value="">Select range...</option>
                 <option>Start a Shoe Line</option>
-                <option>1–5</option>
-                <option>6–24</option>
-                <option>25–49</option>
-                <option>50–99</option>
+                <option>1-5</option>
+                <option>6-24</option>
+                <option>25-49</option>
+                <option>50-99</option>
                 <option>100+</option>
               </select>
             </div>
@@ -1197,7 +1197,7 @@
         </div>
         <div class="hp2-binq__trust-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <strong>2–3 weeks production</strong> + <strong>3–4 weeks shipping</strong>
+          <strong>2-3 weeks production</strong> + <strong>3-4 weeks shipping</strong>
         </div>
         <div class="hp2-binq__trust-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
@@ -1208,7 +1208,7 @@
   </section>
 
   <!-- ============================================================
-       S10: SEO 3-BOXES — content 1:1 from sz-seo-boxes.liquid
+       S10: SEO 3-BOXES ,  content 1:1 from sz-seo-boxes.liquid
        Visual redesign only (cool bg, icon chips, list dashes).
        ============================================================ -->
   <section id="seo">
@@ -1268,7 +1268,7 @@
   </section>
 
   <!-- ============================================================
-       S11: FAQ — 1:1 VERBATIM from live sz-faq-standard.liquid
+       S11: FAQ ,  1:1 VERBATIM from live sz-faq-standard.liquid
        Content from template blocks (6 FAQ items) preserved verbatim.
        ============================================================ -->
   <section id="faq">
@@ -1416,7 +1416,7 @@
       var DRAG_THRESHOLD = 5; // px of movement before we treat it as a drag, not a click
       var isDown = false, didDrag = false, startX = 0, startScroll = 0, pid = null;
 
-      // Kill native drag-start (anchor URL drag, image drag) — preventDefault before they hijack the gesture
+      // Kill native drag-start (anchor URL drag, image drag) ,  preventDefault before they hijack the gesture
       track.addEventListener('dragstart', function (e) { e.preventDefault(); });
       track.querySelectorAll('a, img').forEach(function (el) { el.setAttribute('draggable', 'false'); });
       track.addEventListener('pointerdown', function (e) {
