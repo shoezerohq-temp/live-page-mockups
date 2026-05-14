@@ -321,10 +321,7 @@
        ============================================================ */
     /* Container used inside the section (homepage's global container class). */
     .hp2-c { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-    /* Bg rhythm: custom-shoes page has Compare (gray) immediately above B2B,
-       so B2B uses white here. Homepage canonical .hp2-binq stays gray (lives
-       in sections/sz-hp-v3.liquid; that file is unaffected). */
-    .hp2-binq { padding: 40px 0; background: var(--sz-white); }
+    .hp2-binq { padding: 40px 0; background: var(--sz-bg-section); }
     .hp2-binq__header { text-align: center; max-width: 760px; margin: 0 auto 24px; }
     .hp2-binq__overline {
       font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
@@ -1014,6 +1011,86 @@
   </section>
 
   <!-- ============================================================
+       S8: GOOGLE REVIEWS ,  1:1 VERBATIM from live google-reviews-marquee.liquid
+       Content from template blocks (6 reviews) preserved verbatim.
+       ============================================================ -->
+  <section id="reviews">
+    <div class="reviews-marquee" aria-label="Customer reviews">
+      <p class="reviews-marquee__heading">What Our Clients Say</p>
+      <div class="reviews-marquee__track" aria-hidden="true">
+        <!-- set 1 -->
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p>
+            <p class="reviews-marquee__name">Cherakee Baker</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p>
+            <p class="reviews-marquee__name">Cynthia Highfill</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">S</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p>
+            <p class="reviews-marquee__name">Sara Kristock</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">C</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p>
+            <p class="reviews-marquee__name">Chenoa Mullen</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">S</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p>
+            <p class="reviews-marquee__name">Saint Anderson</p>
+          </div>
+        </div>
+        <div class="reviews-marquee__card">
+          <div class="reviews-marquee__avatar">R</div>
+          <div class="reviews-marquee__body">
+            <div class="reviews-marquee__stars">
+              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p>
+            <p class="reviews-marquee__name">Rayy Green</p>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p><p class="reviews-marquee__name">Cherakee Baker</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p><p class="reviews-marquee__name">Cynthia Highfill</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p><p class="reviews-marquee__name">Sara Kristock</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p><p class="reviews-marquee__name">Chenoa Mullen</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p><p class="reviews-marquee__name">Saint Anderson</p></div></div>
+        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">R</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p><p class="reviews-marquee__name">Rayy Green</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        S9: B2B FORM ,  1:1 from homepage `.hp2-binq` design
        (homepage-v3.html: same structure, same fields, same copy)
        ============================================================ -->
@@ -1126,86 +1203,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
           <strong>Volume discounts</strong> on bulk orders
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       S8: GOOGLE REVIEWS ,  1:1 VERBATIM from live google-reviews-marquee.liquid
-       Content from template blocks (6 reviews) preserved verbatim.
-       ============================================================ -->
-  <section id="reviews">
-    <div class="reviews-marquee" aria-label="Customer reviews">
-      <p class="reviews-marquee__heading">What Our Clients Say</p>
-      <div class="reviews-marquee__track" aria-hidden="true">
-        <!-- set 1 -->
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">C</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p>
-            <p class="reviews-marquee__name">Cherakee Baker</p>
-          </div>
-        </div>
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">C</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p>
-            <p class="reviews-marquee__name">Cynthia Highfill</p>
-          </div>
-        </div>
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">S</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p>
-            <p class="reviews-marquee__name">Sara Kristock</p>
-          </div>
-        </div>
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">C</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p>
-            <p class="reviews-marquee__name">Chenoa Mullen</p>
-          </div>
-        </div>
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">S</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p>
-            <p class="reviews-marquee__name">Saint Anderson</p>
-          </div>
-        </div>
-        <div class="reviews-marquee__card">
-          <div class="reviews-marquee__avatar">R</div>
-          <div class="reviews-marquee__body">
-            <div class="reviews-marquee__stars">
-              <svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p>
-            <p class="reviews-marquee__name">Rayy Green</p>
-          </div>
-        </div>
-        <!-- set 2 (duplicate for seamless loop) -->
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">My husband loves his shoes comfortable and lightweight and it didn't take me long to customize these online before ordering. Love them and we will be ordering again.</p><p class="reviews-marquee__name">Cherakee Baker</p></div></div>
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Absolutely love my custom shoes! They turned out exactly like I wanted!</p><p class="reviews-marquee__name">Cynthia Highfill</p></div></div>
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I am so impressed by the shoes I ordered/received from Shoe Zero. The process of creating them was so simple- it is amazing that you can design a shoe online and have them created and delivered.</p><p class="reviews-marquee__name">Sara Kristock</p></div></div>
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">C</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">While the shoes took a little longer than I expected to arrive, they were well worth the wait. They are exactly the way I designed and beyond comfortable and the exact right size.</p><p class="reviews-marquee__name">Chenoa Mullen</p></div></div>
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">S</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">Yooooo Great shoes the quality is amazing and just like I did them online. And it took 10days to get to my house which is very great time for something to be customized and shipped.</p><p class="reviews-marquee__name">Saint Anderson</p></div></div>
-        <div class="reviews-marquee__card"><div class="reviews-marquee__avatar">R</div><div class="reviews-marquee__body"><div class="reviews-marquee__stars"><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="reviews-marquee__star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="reviews-marquee__text">I have been looking for quality shoes for a long time that I can really enjoy wearing and feel good in them. I'm very passionate about hippos and could not find anything just right.</p><p class="reviews-marquee__name">Rayy Green</p></div></div>
       </div>
     </div>
   </section>
