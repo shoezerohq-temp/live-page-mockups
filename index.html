@@ -1104,6 +1104,34 @@
       .hp2-cs, .hp2-faq { padding: 40px 0; }
       .hp2-cta { padding: 40px 0; }
     }
+
+    /* ================================================================
+       LIVE-PARITY OVERRIDES (from sz-hp-v3-mobile-fix.css on shoezero.com)
+       Added 2026-05-15 after Playwright visual diff revealed mockup wraps
+       hero subtitle to 2 lines while live keeps it on 1 line at desktop.
+       ================================================================ */
+    @media (min-width: 1024px) {
+      .hp2-hero__sub {
+        white-space: nowrap !important;
+        max-width: none !important;
+        overflow: visible;
+      }
+    }
+    @media (min-width: 768px) {
+      .hp2-binq__header h2 {
+        white-space: nowrap !important;
+        max-width: none !important;
+        overflow: visible !important;
+        font-size: clamp(24px, 4.2vw, 38px) !important;
+        line-height: 1.15 !important;
+      }
+    }
+    @media (min-width: 1600px) {
+      .hp2-c, .hp2-hero__content, .hp2-brands { max-width: 1480px !important; }
+    }
+    @media (min-width: 1920px) {
+      .hp2-c, .hp2-hero__content, .hp2-brands { max-width: 1600px !important; }
+    }
   </style>
 </head>
 <body>
@@ -1205,7 +1233,7 @@
     <div class="hp2-c">
       <div class="hp2-whatwedo__split">
         <div class="hp2-whatwedo__intro" data-reveal>
-          <h2>The Original Home of<br><span class="hp2-whatwedo__accent">Custom Shoes.</span></h2>
+          <h2>The Original Home of<br><span class="hp2-whatwedo__accent">Custom Shoes</span></h2>
           <p>Every pair from Shoe Zero runs through the hands that know footwear. Every shoe is built by people who understand the craft.</p>
         </div>
         <div class="hp2-whatwedo__right">
