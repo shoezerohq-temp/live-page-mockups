@@ -68,7 +68,7 @@
        ============================================================ */
     /* White bg per rhythm: Hero black → Trust white → Products cool → CW white → HTC cool → ... */
     .sz-brands{background:#fff;padding:18px 0}
-    .sz-brands__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px}
+    .sz-brands__inner{max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:32px}
     .sz-brands-reviews{display:flex;gap:24px;flex-shrink:0}
     /* Flat review row ,  no pill backgrounds */
     .sz-review{display:inline-flex;align-items:center;gap:10px}
@@ -102,11 +102,11 @@
        Real 8 products from /collections/custom-shoes
        ============================================================ */
     /* Cool bg per rhythm (Trust white above → Products cool → CW white below) */
-    .sz-pgs{background:#f0f0f0;padding:40px 0 48px}
-    .sz-pgs__c{max-width:1280px;margin:0 auto;padding:0 24px}
+    .sz-pgs{background:#f7f7f5;padding:40px 0}
+    .sz-pgs__c{max-width:1240px;margin:0 auto;padding:0 40px}
     .sz-pgs__header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
-    .sz-pgs__header h2{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a}
-    .sz-pgs__header p{font-size:14px;color:#777;margin-top:6px}
+    .sz-pgs__header h2{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a}
+    .sz-pgs__header p{font-size:15px;color:#777;margin-top:6px}
     .sz-pgs__nav{display:flex;align-items:center;gap:10px}
     /* Arrows: active state has a clear green ring + tinted bg so it reads as
        "actionable" against a white section. Disabled stays a quiet white card. */
@@ -151,7 +151,7 @@
        S4: HTC ,  1:1 VERBATIM from live sz-htc-v3.liquid
        (all .oB-* classes, accordion behaviour, copy preserved)
        ============================================================ */
-    .oB-wrap{background:#f0f0f0;padding:40px 40px 56px;width:100%}
+    .oB-wrap{background:#f7f7f5;padding:40px 40px;width:100%}
     /* Soft card wrap: subtle white panel with thin border, no heavy shadow */
     .oB-card{background:#fff;border:1px solid #ececec;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.03);max-width:1200px;margin:0 auto;overflow:hidden}
     .oB-tut{padding:52px 56px 48px}
@@ -200,12 +200,12 @@
        S5: MANUFACTURING ,  3 phase cards in a row, each with photo.
        White bg (alternates from HTC cool above).
        ============================================================ */
-    .sz-mfg{background:#fff;padding:48px 0 56px}
-    .sz-mfg__c{max-width:1280px;margin:0 auto;padding:0 24px}
+    .sz-mfg{background:#fff;padding:40px 0}
+    .sz-mfg__c{max-width:1240px;margin:0 auto;padding:0 40px}
     /* Header: H2 + sub left aligned, See Manufacturing Page CTA right aligned */
-    .sz-mfg__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+    .sz-mfg__head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:32px}
     .sz-mfg__head-text{max-width:680px}
-    .sz-mfg__h{font-size:clamp(28px,2.6vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a;margin-bottom:10px}
+    .sz-mfg__h{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#1a1a1a;margin-bottom:10px}
     .sz-mfg__sub{font-size:15px;color:#777;line-height:1.55}
     .sz-mfg__more{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#00704a;text-decoration:none;transition:color .2s,transform .2s}
     .sz-mfg__more:hover{color:#005c3d;transform:translateX(2px)}
@@ -235,7 +235,7 @@
     /* White bg per homepage 1/1 + rhythm: Products cool → CW white → HTC cool */
     .sz-cw{padding:40px 0;background:#fff}
     /* Wider than the 1280 default so 5 tiles read as proper rectangular landscapes */
-    .sz-cw__c{max-width:1440px;margin:0 auto;padding:0 24px}
+    .sz-cw__c{max-width:1240px;margin:0 auto;padding:0 40px}
     .oC-bottom{padding-top:0;margin-top:0}
     .oC-bhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
     .oC-bhead h3{font-size:16px;font-weight:700;letter-spacing:-.01em;color:#1a1a1a}
@@ -251,11 +251,11 @@
     /* ============================================================
        S7: COMPARISON TABLE ,  content 1:1 from brand-comparison-table.liquid
        Design redesign: cleaner header, sharper sz-column distinction,
-       softer body rows, no warm khaki bg (cool #f0f0f0 to fit rhythm)
+       softer body rows, warm page bg #f7f7f5 per 2-color rhythm (2026-05-15)
        ============================================================ */
-    /* Cool bg per rhythm (Mfg white above → Compare cool → Reviews near-white below) */
-    .ct-section{padding:48px 24px 56px;background:#f0f0f0}
-    .ct-inner{max-width:1240px;margin:0 auto}
+    /* Page bg per rhythm (Mfg white above → Compare page → Reviews white below) */
+    .ct-section{padding:40px 0;background:#f7f7f5}
+    .ct-inner{max-width:1240px;margin:0 auto;padding:0 40px}
     .ct-h{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:10px;text-wrap:balance;color:#1a1a1a}
     .ct-sub{font-size:15px;color:#00704a;font-weight:500;text-align:center;line-height:1.55;max-width:560px;margin:0 auto 32px}
     .ct-card{background:#fff;border:1px solid #ececec;border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.06),0 24px 56px rgba(0,0,0,.05);overflow:hidden;position:relative}
@@ -320,8 +320,8 @@
        Do not modify. Sync source: sections/full-page/homepage-v3.html
        ============================================================ */
     /* Container used inside the section (homepage's global container class). */
-    .hp2-c { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-    .hp2-binq { padding: 40px 0; background: var(--sz-bg-section); }
+    .hp2-c { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+    .hp2-binq { padding: 40px 0; background: var(--sz-bg-page); }
     .hp2-binq__header { text-align: center; max-width: 760px; margin: 0 auto 24px; }
     .hp2-binq__overline {
       font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
@@ -526,8 +526,8 @@
        S10: SEO 3-BOXES ,  content 1:1 from sz-seo-boxes.liquid
        Design redesign: white cards on cool bg, stronger headers, icon bullets
        ============================================================ */
-    .seoA-s{background:#fff;padding:48px 24px 56px}
-    .seoA-inner{max-width:1180px;margin:0 auto}
+    .seoA-s{background:#fff;padding:40px 0}
+    .seoA-inner{max-width:1240px;margin:0 auto;padding:0 40px}
     .seoA-header{text-align:center;margin-bottom:36px}
     .seoA-h{font-size:clamp(26px,2.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px;color:#1a1a1a}
     .seoA-header-right{font-size:15px;color:#777;line-height:1.55;max-width:560px;margin:0 auto}
@@ -550,8 +550,8 @@
     /* ============================================================
        S11: FAQ ,  1:1 VERBATIM from live sz-faq-standard.liquid (.oFQ-*)
        ============================================================ */
-    .oFQ-section{background:#f0f0f0}
-    .oFQ-wrap{max-width:1100px;margin:0 auto;padding:32px 40px 48px}
+    .oFQ-section{background:#f7f7f5}
+    .oFQ-wrap{max-width:1240px;margin:0 auto;padding:40px 40px}
     .oFQ-header{text-align:center;margin-bottom:36px}
     .oFQ-bar{width:32px;height:3px;background:#00704a;border-radius:2px;margin:0 auto 16px}
     .oFQ-heading{font-size:clamp(26px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
@@ -782,11 +782,11 @@
             <span>120,000+ pairs shipped since 2021</span>
           </div>
           <div class="oC-brow">
-            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/South_Dakota_Shoes.jpg?format=webp&v=1771415592&width=800" alt="University of South Dakota custom shoes"></div>
-            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/Techstars_1.png?format=webp&v=1771848710&width=800" alt="Techstars custom branded shoes"></div>
-            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-03.jpg?format=webp&v=1773846784&width=800" alt="Customer custom shoe design"></div>
-            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-07.jpg?format=webp&v=1773846797&width=800" alt="Customer custom shoe design"></div>
-            <div class="oC-bitem"><img loading="lazy" src="https://shoezero.com/cdn/shop/files/sz-customer-carousel-10.png?format=webp&v=1773846807&width=800" alt="Customer custom shoe design"></div>
+            <div class="oC-bitem"><img loading="lazy" src="../assets/customer-wall/cw-01-sun-hydraulics.jpg" alt="SUN Hydraulics-branded orange and white custom sneakers worn at a tradeshow"></div>
+            <div class="oC-bitem"><img loading="lazy" src="../assets/customer-wall/cw-02-pingwind.jpeg" alt="PingWind custom white low-top sneakers with blue wave artwork and brand wordmark"></div>
+            <div class="oC-bitem"><img loading="lazy" src="../assets/customer-wall/cw-03-oscar-mayer.png" alt="Oscar Mayer custom red, yellow, and white skate-style sneakers"></div>
+            <div class="oC-bitem"><img loading="lazy" src="../assets/customer-wall/cw-04-visibl.jpeg" alt="Visibl custom purple and white high-top sneakers with bold side wordmark"></div>
+            <div class="oC-bitem"><img loading="lazy" src="../assets/customer-wall/cw-05-fairfield.jpg" alt="Fairfield custom white sneakers with navy F monogram pattern and red heel tab, on a desk by an ocean view window"></div>
           </div>
         </div>
       </div>
@@ -878,7 +878,7 @@
             <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/workshop-video-poster.jpg" alt="Workshop print floor with DTG printer running custom panels"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
-                <h3 class="sz-mfg__phase-title">Every panel gets printed</h3>
+                <h3 class="sz-mfg__phase-title">Designs printed into the material</h3>
                 <p class="sz-mfg__phase-text">Direct-to-garment printed before the panels are cut. Pre-treatment is tuned per substrate so colors stay vivid and the print does not fade.</p>
               </div>
             </div>
@@ -887,8 +887,8 @@
             <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/laser-cutting-panels.png" alt="CO2 laser cutter tracing printed shoe panel borders into a sheet of material"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
-                <h3 class="sz-mfg__phase-title">We laser-cut the panels</h3>
-                <p class="sz-mfg__phase-text">Panels are cut out of the printed material with a CO2 laser. The laser tracks the design's panel borders precisely and seals the edge during the cut.</p>
+                <h3 class="sz-mfg__phase-title">Laser-cut precision</h3>
+                <p class="sz-mfg__phase-text">After printing, a CO2 laser cuts each panel from the material. The cut follows the design's exact borders and seals the edges.</p>
               </div>
             </div>
           </article>
@@ -896,8 +896,8 @@
             <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/sewing-machine.png" alt="Close-up of an industrial sewing machine stitching a shoe panel by hand"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
-                <h3 class="sz-mfg__phase-title">The shoe is sewn together</h3>
-                <p class="sz-mfg__phase-text">Each pair is assembled by hand on industrial sewing machines, panel by panel. The upper is then bonded to the sole with industrial adhesive.</p>
+                <h3 class="sz-mfg__phase-title">Hand-assembled, machine-sewn</h3>
+                <p class="sz-mfg__phase-text">Industrial sewing machines stitch the panels into the upper one at a time, every seam guided by hand. The upper is then bonded to the sole through cemented construction.</p>
               </div>
             </div>
           </article>
@@ -905,8 +905,8 @@
             <div class="sz-mfg__img"><img loading="lazy" src="../assets/workshop/finished-shoe-rapidhire.png" alt="Finished custom-printed RapidHire-branded sneaker after final QC"></div>
             <div class="sz-mfg__body">
               <div class="sz-mfg__phase-body">
-                <h3 class="sz-mfg__phase-title">Final QC, lace, and ship</h3>
-                <p class="sz-mfg__phase-text">Every pair passes a manual quality check before it leaves. The team looks for print misalignment, color drift, stitching defects, and topcoat irregularities.</p>
+                <h3 class="sz-mfg__phase-title">Quality checked, laced, shipped</h3>
+                <p class="sz-mfg__phase-text">Each pair gets a visual inspection before shipping. The team reviews print alignment, color accuracy, stitching, and topcoat coverage.</p>
               </div>
             </div>
           </article>
