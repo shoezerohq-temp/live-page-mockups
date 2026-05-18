@@ -400,6 +400,9 @@
       line-height: 1.55;
       color: var(--sz-text);
     }
+    /* Invert spec card bg when the host section is itself page-tinted,
+       so the card stays visible against its parent. */
+    .bleed--page .step__spec { background: var(--sz-white); }
     .step__spec-label {
       display: block;
       font-size: 11px;
