@@ -92,6 +92,9 @@
     .sz-brands-track img[src*="u-of-south-dakota"],
     .sz-brands-track img[src*="cintas"],
     .sz-brands-track img[src*="dl-evans-bank"] { max-height: 40px; max-width: 160px; }
+    /* Salesforce cloud+wordmark needs more vertical room than wordmark-only
+       logos because the cloud shape adds height (512x409 aspect ratio). */
+    .sz-brands-track img[src*="salesforce"] { max-height: 48px; max-width: 110px; }
     @keyframes szTrustScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.sz-brands-track{animation:none}}
     @media(max-width:768px){
