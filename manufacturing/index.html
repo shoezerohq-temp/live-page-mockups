@@ -202,19 +202,6 @@
       font-weight: var(--sz-weight-strong);
     }
 
-    /* Section eyebrow numbering (canonical return-policy pattern). Structural
-       index marker, NOT an editorial eyebrow that duplicates the H2 — locked
-       rule 1 is about duplicate uppercase taglines, this is functional numbering. */
-    .section__number {
-      display: block;
-      font-size: 11px;
-      font-weight: var(--sz-weight-heading);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sz-accent);
-      margin-bottom: var(--sz-space-2);
-    }
-
     /* ========= SECTION GROUND / FULL-BLEED ========= */
     /* Real full-bleed even inside a grid column. The element extends to viewport
        edges via 100vw + negative-margin escape. body { overflow-x: hidden; }
@@ -229,10 +216,6 @@
        Per SZ canonical (custom-shoes-redesign-v2 sections are 32-48 / 24 horiz).
        Goal: less scroll per page, less page margin. */
     .bleed__inner { max-width: 1280px; margin: 0 auto; padding: var(--sz-space-8) var(--sz-space-6); }
-    /* Tight bleed for low-content bands (collapsed details, narrow transitions).
-       20px top/bottom gives ~60px total band thickness when content is a single
-       summary line. */
-    .bleed--tight > .bleed__inner { padding: var(--sz-space-5) var(--sz-space-6); }
     /* Materials section gets a wider container so the 3 cards have more
        content space. 1440px max means each card lands at ~460px instead of
        the standard ~410px at 1280. Selector targets #materials regardless
@@ -332,6 +315,10 @@
        whether the parent uses <section class="section"> or a bleed band. */
     .section { padding: var(--sz-space-8) 0; }
     .section__head { margin-bottom: var(--sz-space-8); max-width: 720px; }
+    /* Full-width section head: opt-in modifier for sections where the H2 and
+       lede should span the full container width instead of the 720/640 cap. */
+    .section__head--full { max-width: none; }
+    .section__head--full .section__lede { max-width: none; }
     .section__head h2,
     .section h2 {
       font-size: clamp(1.875rem, 3.25vw, 2.75rem);
@@ -396,6 +383,27 @@
     }
     .step__body p { color: var(--sz-text); margin-bottom: var(--sz-space-3); text-align: justify; hyphens: auto; }
     .step__body p:last-child { margin-bottom: 0; }
+    /* Per-step spec box (replaces the collapsible appendix). Tiny tinted card
+       at the end of each step body with the production-spec details. */
+    .step__spec {
+      margin-top: var(--sz-space-4);
+      padding: var(--sz-space-3) var(--sz-space-4);
+      background: var(--sz-bg-page);
+      border-left: 3px solid var(--sz-accent);
+      border-radius: var(--sz-radius-btn);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--sz-text);
+    }
+    .step__spec-label {
+      display: block;
+      font-size: 11px;
+      font-weight: var(--sz-weight-heading);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sz-accent);
+      margin-bottom: 2px;
+    }
     /* Image = card surface (radius + shadow), 4:3 ratio, contained at 480px */
     .step__visual {
       background: var(--sz-bg-section);
@@ -405,45 +413,6 @@
       aspect-ratio: 4 / 3;
     }
     .step__visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* ========= SPEC APPENDIX (replaces the per-step spec callouts) ========= */
-    /* All seven specs live in one collapsible at the end of the process section.
-       Readers who want detail expand it; readers who want momentum do not. */
-    .spec-appendix {
-      border-top: 1px solid var(--sz-border);
-    }
-    .spec-appendix summary {
-      font-size: 16px;
-      font-weight: var(--sz-weight-strong);
-      cursor: pointer;
-      color: var(--sz-text);
-      list-style: none;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--sz-space-3);
-      padding: var(--sz-space-4) 0 0;
-    }
-    .spec-appendix summary::-webkit-details-marker { display: none; }
-    .spec-appendix summary::after {
-      content: '+';
-      font-size: 22px;
-      color: var(--sz-accent);
-      transition: transform var(--sz-duration-micro) var(--sz-ease-micro);
-    }
-    .spec-appendix[open] summary::after { content: '−'; }
-    .spec-appendix__body { padding-top: var(--sz-space-4); }
-    .spec-row {
-      display: grid; grid-template-columns: 140px 1fr;
-      gap: var(--sz-space-4);
-      padding: var(--sz-space-3) 0;
-      border-bottom: 1px solid var(--sz-border);
-      align-items: baseline;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .spec-row:last-child { border-bottom: none; }
-    .spec-row__label { font-weight: var(--sz-weight-strong); color: var(--sz-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .spec-row__value { color: var(--sz-text); }
-    .spec-row__value strong { font-weight: var(--sz-weight-strong); }
 
     /* ========= MATERIALS ========= */
     .materials {
@@ -641,7 +610,6 @@
       .step-band { padding: var(--sz-space-10) var(--sz-space-6); }
       .materials { grid-template-columns: 1fr; }
       .qc-list { grid-template-columns: 1fr; }
-      .spec-row { grid-template-columns: 1fr; gap: 4px; padding: var(--sz-space-2) 0; }
       input, select, textarea { font-size: 16px !important; }
     }
 
@@ -809,8 +777,7 @@
       <!-- Process intro band (page bg, follows white hero) -->
       <section class="bleed bleed--page" id="process" aria-labelledby="process-h2">
         <div class="bleed__inner">
-          <header class="section__head">
-            <p class="section__number">Section 1</p>
+          <header class="section__head section__head--full">
             <h2 id="process-h2">The DTG printing process, in seven steps</h2>
             <p class="section__lede">Every pair runs through the same seven steps. We print to order, not from stock.</p>
           </header>
@@ -828,6 +795,10 @@
             <h3 id="step-01-h">We receive your design</h3>
             <p>Your design starts on our customizer where you preview it on your chosen shoe model before placing the order. We accept PNG, JPG, and SVG files.</p>
             <p>Our team reviews each file before production begins. The review confirms the resolution holds up at print size, the design lays out cleanly within the printable area of each panel, the color mode is RGB (which DTG processes natively), and there are no fine elements that would soften during the print pass. If the file has issues that could affect print quality, we flag them so the design can be adjusted before production starts.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Files</span>
+              Accepted formats: PNG, JPG, SVG. Minimum resolution: 300 DPI. Color mode: RGB.
+            </aside>
           </div>
           <figure class="step__visual" aria-label="Shoe Zero customizer preview on a laptop screen, showing a Dunk-style low-top sneaker design with effect-mode and alternate-color thumbnails">
             <img src="../assets/customizer/customizer-design-assist-v5.png" alt="Shoe Zero customizer on a laptop, showing a top-down blue and white Dunk-style sneaker preview on the left and a Views panel with multiple shoe angles on the right" loading="lazy">
@@ -846,6 +817,10 @@
             <h3 id="step-02-h">Every panel gets printed</h3>
             <p>The material is direct-to-garment printed before the panels are cut. The process starts with pre-treatment, where a water-based polymer solution is applied to the material so the white ink bonds properly into the fibers. The pre-treatment chemistry is formulated per substrate. Canvas uses a cotton-grade formulation, mesh uses a synthetic-grade formulation with higher viscosity, and synthetic leather uses a formulation tuned for its non-porous surface. Without the right pre-treatment for each material, colors would dull on dark substrates and the print would fade over time.</p>
             <p>Our DTG printers then lay water-based ink directly into the material. On dark substrates, the white ink prints first as an underbase, then the CMYK colors (cyan, magenta, yellow, black) layer on top so they stay vibrant instead of being absorbed by the dark fabric. Printing on flat panels, instead of an already-assembled shoe, gives sharper detail, cleaner edges, and consistent coverage across every printable surface.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Print</span>
+              Pre-treatment: water-based polymer, varies by substrate. Inks: water-based. Color: CMYK plus white underbase. Flash cure: 300 to 340 F, 60 to 90 sec.
+            </aside>
           </div>
           <figure class="step__visual" aria-label="DTG print head laying ink onto a flat panel in motion, a red-and-black design printed on white substrate">
             <img src="../assets/workshop/print-station-v2.png" alt="Close-up of the DTG print head in motion, laying red and black ink onto a flat white panel" loading="lazy">
@@ -864,6 +839,10 @@
             <h3 id="step-03-h">We laser-cut the panels</h3>
             <p>Once the print is laid, the panels are cut out of the material with a CO2 laser. The laser wavelength is absorbed cleanly by canvas, synthetic leather, and mesh, which gives sharper edges than die-cutting or rotary blades. Cutting after printing lets the laser track the printed design's panel borders precisely, so the registration between print and cut edge stays exact. Laser cutting also seals the edge during the cut, so canvas and mesh don't fray during assembly.</p>
             <p>Cutting precision matters at this stage because every panel has to align cleanly during later assembly. A cut that drifts even a few millimeters from the pattern can leave the design misaligned when the panels are stitched into the shoe.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Cut</span>
+              Method: CO2 laser, 100 to 130 W tuned per substrate. Edges: sealed and cauterized. Materials: canvas, synthetic leather, mesh.
+            </aside>
           </div>
           <figure class="step__visual" aria-label="Twin CO2 laser cutter heads riding on a gantry, tracing printed shoe panel borders into a large sheet of material">
             <img src="../assets/workshop/laser-cutting-panels-v2.png" alt="CO2 laser cutter with two laser heads on a gantry, cutting curved panel borders into a sheet of substrate" loading="lazy">
@@ -882,6 +861,10 @@
             <h3 id="step-04-h">The print is heat-cured</h3>
             <p>After cutting, every panel runs through a full heat cure. The temperature cycle fully bonds the ink into the material's fibers. This is what separates DTG printing from surface paint. The ink can't peel off because it's inside the substrate, not on top of it.</p>
             <p>Cure temperature and dwell time are adjusted per substrate. Canvas cures hottest because cotton fibers handle higher heat. Synthetic leather cures at a lower temperature to protect its surface coating from heat damage, warping, or surface distortion. Mesh cures lowest to prevent polyester fibers from warping or melting.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Cure</span>
+              Cure range: 280 to 356 F, 15 to 90 sec. Per substrate: canvas hottest, synthetic leather mid-range, mesh lowest. Purpose: full ink bond into fibers.
+            </aside>
           </div>
         </div>
       </section>
@@ -896,6 +879,10 @@
             </div>
             <h3 id="step-05-h">The shoe is sewn together</h3>
             <p>Once panels are cured, they're stitched into a finished shoe. The original shoe pattern guides the assembly. Outer panels go first, then tongue, then toe box. Each shoe is assembled by hand on industrial sewing machines, panel by panel. The finished upper is bonded to the sole with industrial adhesive. This process is called cemented construction, and heat sets the bond permanently.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Assembly</span>
+              Hand-assembled, machine-stitched. Pattern-matched. Sole: cemented to upper with industrial adhesive.
+            </aside>
           </div>
           <figure class="step__visual" aria-label="Close-up of an industrial sewing machine needle stitching a shoe panel, hands guiding the material on both sides">
             <img src="../assets/workshop/sewing-machine-v2.png" alt="Industrial sewing machine needle in motion stitching a white shoe panel, with hands guiding the material on each side" loading="lazy">
@@ -914,6 +901,10 @@
             <h3 id="step-06-h">A protective topcoat is applied</h3>
             <p>After assembly, every shoe gets a clear protective topcoat. The coating is a water-based polyurethane-acrylic hybrid. Polyurethane is the key component because it provides the flex resistance and abrasion durability that shoes need. The acrylic adds clarity to the finish. UV inhibitors, water-repellent compounds, and plasticizers complete the formulation, keeping the coating flexible as the shoe bends.</p>
             <p>Once applied, the shoe runs through a second cure cycle to set the topcoat permanently into the surface.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Topcoat</span>
+              Coating: water-based polyurethane-acrylic hybrid. Properties: UV, water, scratch, and abrasion resistant. Cure: 250 to 280 F, 60 to 120 sec.
+            </aside>
           </div>
         </div>
       </section>
@@ -929,6 +920,10 @@
             <h3 id="step-07-h">Final QC, lace, and ship</h3>
             <p>Every pair passes through a manual quality check before it leaves. Our team looks for print misalignment, color drift, stitching defects, and topcoat irregularities. Pairs that don't meet standard go back through production.</p>
             <p>Shoes that pass are laced, packed, and shipped to your address.</p>
+            <aside class="step__spec">
+              <span class="step__spec-label">Specs / Inspection</span>
+              Hand-checked across print, color, ink cure, edges, stitching, topcoat coverage, and pair match. Shipping: 3 to 4 weeks worldwide.
+            </aside>
           </div>
           <figure class="step__visual" aria-label="Finished pair packed in a Shoe Zero shipping box, wrapped in tissue with a Thank You card on top">
             <img src="../assets/workshop/finished-shipped-box-v4.jpeg" alt="Open Shoe Zero shipping box with the finished pair wrapped in tissue and a printed Thank You card resting on top" loading="lazy">
@@ -936,52 +931,18 @@
         </div>
       </section>
 
-      <!-- Spec appendix band — tight padding (collapsed details = single line) -->
-      <section class="bleed bleed--page bleed--tight">
-        <div class="bleed__inner">
-          <details class="spec-appendix">
-            <summary>Production specifications for each step</summary>
-            <div class="spec-appendix__body">
-              <div class="spec-row">
-                <p class="spec-row__label">Step 01 / Files</p>
-                <p class="spec-row__value">Accepted formats: PNG, JPG, SVG. Minimum resolution: 300 DPI. Color mode: RGB.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 02 / Print</p>
-                <p class="spec-row__value">Pre-treatment: water-based polymer, varies by substrate. Inks: water-based. Color: CMYK plus white underbase. Flash cure: 300 to 340 F, 60 to 90 sec.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 03 / Cut</p>
-                <p class="spec-row__value">Method: CO2 laser, 100 to 130 W tuned per substrate. Edges: sealed and cauterized. Materials: canvas, synthetic leather, mesh.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 04 / Cure</p>
-                <p class="spec-row__value">Cure range: 280 to 356 F, 15 to 90 sec. Per substrate: canvas hottest, synthetic leather mid-range, mesh lowest. Purpose: full ink bond into fibers.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 05 / Assembly</p>
-                <p class="spec-row__value">Hand-assembled, machine-stitched. Pattern-matched. Sole: cemented to upper with industrial adhesive.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 06 / Topcoat</p>
-                <p class="spec-row__value">Coating: water-based polyurethane-acrylic hybrid. Properties: UV, water, scratch, and abrasion resistant. Cure: 250 to 280 F, 60 to 120 sec.</p>
-              </div>
-              <div class="spec-row">
-                <p class="spec-row__label">Step 07 / Inspection</p>
-                <p class="spec-row__value">Hand-checked across print, color, ink cure, edges, stitching, topcoat coverage, and pair match. Shipping: 3 to 4 weeks worldwide.</p>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
+      <!-- Spec-appendix band removed 2026-05-19: specs now live inline in each
+           step body via .step__spec. Removing this band cascades the bg rhythm
+           downstream: materials/quality/glossary/cta all flip to preserve
+           strict white↔page alternation. -->
+
 
   <!-- Materials, quality, glossary all sit inside .layout__content so the
        sticky sidenav stays active across the full reading flow. Bleed pattern
        escapes the grid column via 100vw. -->
-  <section class="bleed bleed--white" id="materials" aria-labelledby="materials-h2">
+  <section class="bleed bleed--page" id="materials" aria-labelledby="materials-h2">
     <div class="bleed__inner">
       <header class="section__head">
-        <p class="section__number">Section 2</p>
           <h2 id="materials-h2">The materials we print on</h2>
         <p class="section__lede">Each shoe model uses a specific substrate. DTG printing behaves differently on each one.</p>
       </header>
@@ -1050,10 +1011,9 @@
   </section>
 
   <!-- QC: full-bleed section ground -->
-  <section class="bleed bleed--page" id="quality" aria-labelledby="quality-h2">
+  <section class="bleed bleed--white" id="quality" aria-labelledby="quality-h2">
     <div class="bleed__inner">
-      <header class="section__head">
-        <p class="section__number">Section 3</p>
+      <header class="section__head section__head--full">
           <h2 id="quality-h2">What we check in our shoe manufacturing process</h2>
         <p class="section__lede">Every pair gets reviewed by hand. Here are the seven checks each shoe goes through.</p>
       </header>
@@ -1071,7 +1031,7 @@
   </section>
 
   <!-- Glossary: full-bleed section-bg, canonical FAQ pattern (centered header + green bar). -->
-  <section class="bleed bleed--white" id="glossary" aria-labelledby="glossary-h2">
+  <section class="bleed bleed--page" id="glossary" aria-labelledby="glossary-h2">
     <div class="bleed__inner bleed__inner--narrow">
       <header class="oFQ-header">
         <div class="oFQ-bar" aria-hidden="true"></div>
@@ -1144,7 +1104,7 @@
   </div><!-- /.layout -->
 
   <!-- Footer CTA: full-bleed page ground, semantic <section> not <aside> -->
-  <section class="bleed bleed--page" aria-labelledby="cta-h2">
+  <section class="bleed bleed--white" aria-labelledby="cta-h2">
     <div class="bleed__inner">
       <div class="footer-cta">
         <h2 id="cta-h2">Ready to design a pair?</h2>
