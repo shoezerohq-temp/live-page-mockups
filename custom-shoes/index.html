@@ -86,6 +86,12 @@
     .sz-brands-track{display:flex;align-items:center;gap:56px;width:max-content;animation:szTrustScroll 35s linear infinite}
     /* Brand logos: fully black always, no hover state change */
     .sz-brands-track img{max-height:26px;max-width:120px;width:auto;height:auto;flex-shrink:0;filter:brightness(0);opacity:1}
+    /* Per-logo size overrides — these wordmarks are unreadable at the
+       standard 26px cap, so they get a larger size budget. */
+    .sz-brands-track img[src*="guinness"],
+    .sz-brands-track img[src*="u-of-south-dakota"],
+    .sz-brands-track img[src*="cintas"],
+    .sz-brands-track img[src*="dl-evans-bank"] { max-height: 40px; max-width: 160px; }
     @keyframes szTrustScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.sz-brands-track{animation:none}}
     @media(max-width:768px){
@@ -146,6 +152,14 @@
     @media(max-width:1100px){.sz-pgs__card{flex:0 0 calc((100% - 48px)/4)}}
     @media(max-width:900px){.sz-pgs__card{flex:0 0 calc((100% - 32px)/3)}}
     @media(max-width:640px){.sz-pgs__card{flex:0 0 calc((100% - 16px)/2)}}
+    /* "See other shoes" terminal CTA — sits in the last carousel card slot
+       (same flex sizing as product cards) but renders as a centered green
+       underlined link instead of a green tile. No card surface — transparent. */
+    .sz-pgs__card--more{background:transparent;border:none;box-shadow:none;display:flex;align-items:center;justify-content:center;min-height:240px}
+    .sz-pgs__card--more:hover{background:transparent;border:none;box-shadow:none;transform:none}
+    .sz-pgs__see-all-link{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#00704a;border-bottom:2px solid #00704a;padding-bottom:4px;transition:color .2s,border-color .2s,transform .2s}
+    .sz-pgs__card--more:hover .sz-pgs__see-all-link{color:#005c3d;border-color:#005c3d;transform:translateX(2px)}
+    .sz-pgs__see-all-link svg{width:16px;height:16px;flex-shrink:0}
 
     /* ============================================================
        S4: HTC ,  1:1 VERBATIM from live sz-htc-v3.liquid
@@ -222,7 +236,7 @@
     .sz-mfg__body{padding:22px 24px 24px;display:flex;gap:16px;align-items:flex-start;flex:1}
     .sz-mfg__num{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(0,112,74,.08);color:#00704a;font-size:13px;font-weight:800;letter-spacing:.04em}
     .sz-mfg__phase-body{flex:1;min-width:0}
-    .sz-mfg__phase-title{font-size:16px;font-weight:800;letter-spacing:-.01em;color:#1a1a1a;margin-bottom:6px;line-height:1.25}
+    .sz-mfg__phase-title{font-size:15px;font-weight:800;letter-spacing:-.015em;color:#1a1a1a;margin-bottom:6px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .sz-mfg__phase-text{font-size:13px;color:#777;line-height:1.6;margin:0}
     @media(max-width:1100px){.sz-mfg__row{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.sz-mfg__row{grid-template-columns:1fr;gap:14px}}
@@ -569,6 +583,51 @@
     .oFQ-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
     .oFQ-body-inner{padding:0 22px 18px 60px;font-size:14px;line-height:1.7;color:#777}
     @media(max-width:768px){.oFQ-wrap{padding:24px 16px}.oFQ-grid{grid-template-columns:1fr}}
+
+    /* ================================================================
+       LIVE-PARITY ULTRA-WIDE OVERRIDES (added 2026-05-18)
+       Scoped to body.ultrawide-mode so a mockup toolbar button can flip
+       between the original "boxed" 1240px container and the homepage-
+       matching 1480/1600px expansion on wide viewports. Mirrors
+       homepage's sz-hp-v3-mobile-fix.css behavior.
+       ================================================================ */
+    @media (min-width: 1600px) {
+      body.ultrawide-mode .hero-video-content,
+      body.ultrawide-mode .hero-trust,
+      body.ultrawide-mode .sz-brands__inner,
+      body.ultrawide-mode .sz-pgs__c,
+      body.ultrawide-mode .sz-mfg__c,
+      body.ultrawide-mode .sz-cw__c,
+      body.ultrawide-mode .ct-inner,
+      body.ultrawide-mode .seoA-inner,
+      body.ultrawide-mode .hp2-c,
+      body.ultrawide-mode .oFQ-wrap { max-width: 1480px !important; }
+      body.ultrawide-mode .oB-card { max-width: 1440px !important; }
+    }
+    @media (min-width: 1920px) {
+      body.ultrawide-mode .hero-video-content,
+      body.ultrawide-mode .hero-trust,
+      body.ultrawide-mode .sz-brands__inner,
+      body.ultrawide-mode .sz-pgs__c,
+      body.ultrawide-mode .sz-mfg__c,
+      body.ultrawide-mode .sz-cw__c,
+      body.ultrawide-mode .ct-inner,
+      body.ultrawide-mode .seoA-inner,
+      body.ultrawide-mode .hp2-c,
+      body.ultrawide-mode .oFQ-wrap { max-width: 1600px !important; }
+      body.ultrawide-mode .oB-card { max-width: 1560px !important; }
+    }
+    /* Toolbar flip button styles */
+    .csm-flip-btn {
+      padding: 6px 12px; font-size: 11px; font-weight: 700;
+      font-family: 'Inter', sans-serif; background: #2a2a2a;
+      color: #fff; border: 1px solid #444; border-radius: 6px;
+      cursor: pointer; margin-right: 8px; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: background 0.15s, border-color 0.15s;
+    }
+    .csm-flip-btn:hover { background: #3a3a3a; border-color: #666; }
+    .csm-flip-btn.is-active { background: var(--sz-accent); border-color: var(--sz-accent); }
+    .csm-flip-btn__state { display: inline-block; margin-left: 6px; opacity: 0.75; }
   </style>
 </head>
 <body>
@@ -582,9 +641,38 @@
       <a href="#compare">Compare</a><a href="#reviews">Reviews</a>
       <a href="#b2b">B2B</a><a href="#seo">SEO</a><a href="#faq">FAQ</a>
     </div>
-    <button class="csm-copy" onclick="csmCopyAll()" style="padding:7px 14px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;background:#00704a;color:#fff;border:none;border-radius:6px;cursor:pointer">Copy Code</button>
+    <div style="display:flex;align-items:center;gap:0">
+      <button id="csmFlipBtn" class="csm-flip-btn" onclick="csmToggleUltrawide()" title="Flip between original boxed layout and homepage-matching ultra-wide layout. Effect visible at viewports >= 1600px.">
+        Layout<span class="csm-flip-btn__state" id="csmFlipState">: Boxed</span>
+      </button>
+      <button class="csm-copy" onclick="csmCopyAll()" style="padding:7px 14px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;background:#00704a;color:#fff;border:none;border-radius:6px;cursor:pointer">Copy Code</button>
+    </div>
   </div>
   <div class="csm-toast" id="csmToast">Copied</div>
+  <script>
+    // Layout-flip toggle: switches between the boxed 1240px container layout
+    // and the homepage-matching ultra-wide (1480/1600px) expansion at large
+    // viewports. Persists choice in localStorage so it survives reloads.
+    (function () {
+      var KEY = 'sz-cs-ultrawide';
+      var btn = document.getElementById('csmFlipBtn');
+      var state = document.getElementById('csmFlipState');
+      function apply(on) {
+        document.body.classList.toggle('ultrawide-mode', on);
+        if (btn) btn.classList.toggle('is-active', on);
+        if (state) state.textContent = on ? ': Ultra-wide' : ': Boxed';
+      }
+      try {
+        var stored = localStorage.getItem(KEY);
+        if (stored === '1') apply(true);
+      } catch (e) {}
+      window.csmToggleUltrawide = function () {
+        var on = !document.body.classList.contains('ultrawide-mode');
+        apply(on);
+        try { localStorage.setItem(KEY, on ? '1' : '0'); } catch (e) {}
+      };
+    })();
+  </script>
 
   <!-- ============================================================
        S1: HERO (1:1 from live sz-hero-v3 ,  content, assets, structure)
@@ -659,7 +747,7 @@
         <div class="sz-brands-divider"></div>
         <div class="sz-brands-marquee">
           <div class="sz-brands-track">
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce logo ,  custom shoe client" title="Salesforce" loading="lazy">
+            <img src="../assets/brands/sz-logo-salesforce.png" alt="Salesforce logo ,  custom shoe client" title="Salesforce" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz logo ,  custom shoe client" title="Kraft Heinz" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness logo ,  custom shoe client" title="Guinness" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar logo ,  custom shoe client" title="TrueCar" loading="lazy">
@@ -671,7 +759,7 @@
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-dl-evans-bank.png" alt="D.L. Evans Bank logo ,  custom shoe client" title="D.L. Evans Bank" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-sutter-health.png" alt="Sutter Health logo ,  custom shoe client" title="Sutter Health" loading="lazy">
             <!-- duplicate set for seamless loop -->
-            <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-salesforce.png" alt="Salesforce brand logo" title="Salesforce" loading="lazy">
+            <img src="../assets/brands/sz-logo-salesforce.png" alt="Salesforce brand logo" title="Salesforce" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-kraft-heinz.png" alt="Kraft Heinz brand logo" title="Kraft Heinz" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-guinness.png" alt="Guinness brand logo" title="Guinness" loading="lazy">
             <img src="https://shoezero.com/cdn/shop/t/98/assets/sz-logo-truecar.png" alt="TrueCar brand logo" title="TrueCar" loading="lazy">
@@ -741,13 +829,6 @@
                 <div class="sz-pgs__row"><span class="sz-pgs__price">$140</span></div>
               </div>
             </a>
-            <a class="sz-pgs__card" href="/products/zero-slides">
-              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_2_84a06b66-e378-4981-80e6-0a82bc544534.webp?v=1747829772" alt="Zero Slides"></div>
-              <div class="sz-pgs__info">
-                <div class="sz-pgs__name">Zero Slides</div>
-                <div class="sz-pgs__row"><span class="sz-pgs__price">$35</span></div>
-              </div>
-            </a>
             <a class="sz-pgs__card" href="/products/base-zero">
               <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_62b88054-306b-4be0-a6a7-2540cf47dac1.webp?v=1747821267" alt="Base Zero"></div>
               <div class="sz-pgs__info">
@@ -761,6 +842,19 @@
                 <div class="sz-pgs__name">Ace Zero</div>
                 <div class="sz-pgs__row"><span class="sz-pgs__price">$140</span></div>
               </div>
+            </a>
+            <a class="sz-pgs__card" href="/products/zero-slides">
+              <div class="sz-pgs__img"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0517/3195/5883/files/CustomShoes_2_84a06b66-e378-4981-80e6-0a82bc544534.webp?v=1747829772" alt="Zero Slides"></div>
+              <div class="sz-pgs__info">
+                <div class="sz-pgs__name">Zero Slides</div>
+                <div class="sz-pgs__row"><span class="sz-pgs__price">$35</span></div>
+              </div>
+            </a>
+            <a class="sz-pgs__card sz-pgs__card--more" href="/collections/all-products">
+              <span class="sz-pgs__see-all-link">
+                See other shoes
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </a>
           </div>
         </div>
@@ -869,7 +963,7 @@
             <h2 class="sz-mfg__h">Made in our workshop, by hand.</h2>
             <p class="sz-mfg__sub">Placeholder copy. Short intro to the manufacturing process goes here. Two to three sentences.</p>
           </div>
-          <a href="/pages/manufacturing" class="sz-mfg__more">See Manufacturing Page
+          <a href="/pages/manufacturing" class="sz-mfg__more">See our manufacturing process
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
@@ -1254,12 +1348,12 @@
             </div>
             <p>Six shoe types, each built for different activities.</p>
             <ul>
-              <li><strong><a href="/collections/low-tops">Low-Tops.</a></strong> The go-to for everyday wear and branded footwear, from synthetic leather to mesh to canvas</li>
-              <li><strong><a href="/collections/high-tops">High-Tops.</a></strong> Extra panels and more printable space for your design</li>
-              <li><strong><a href="/collections/custom-basketball">Basketball Shoes.</a></strong> Court-ready styles with cushioned midsoles and ankle support</li>
-              <li><strong><a href="/collections/boots">Boots.</a></strong> Synthetic leather that is waterproof with rubber outsoles and foam-lined interiors</li>
-              <li><strong><a href="/collections/kids">Kids Shoes.</a></strong> Toddler to early teen sizes in canvas and synthetic leather</li>
-              <li><strong><a href="/collections/sandals">Sandals.</a></strong> Slides, flip flops, and slippers built for summer and indoor comfort</li>
+              <li><strong>Low-Tops.</strong> The go-to for everyday wear and branded footwear, from synthetic leather to mesh to canvas</li>
+              <li><strong>High-Tops.</strong> Extra panels and more printable space for your design</li>
+              <li><strong>Basketball Shoes.</strong> Court-ready styles with cushioned midsoles and ankle support</li>
+              <li><strong>Boots.</strong> Synthetic leather that is waterproof with rubber outsoles and foam-lined interiors</li>
+              <li><strong>Kids Shoes.</strong> Toddler to early teen sizes in canvas and synthetic leather</li>
+              <li><strong>Sandals.</strong> Slides, flip flops, and slippers built for summer and indoor comfort</li>
             </ul>
           </div>
         </div>
