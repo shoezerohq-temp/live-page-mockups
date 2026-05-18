@@ -407,7 +407,29 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--sz-accent);
-      margin-bottom: 2px;
+      margin-bottom: 8px;
+    }
+    .step__spec dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 6px 16px;
+      margin: 0;
+    }
+    .step__spec dt {
+      font-weight: 600;
+      color: var(--sz-text);
+    }
+    .step__spec dd {
+      margin: 0;
+      color: var(--sz-text);
+    }
+    .step__spec dd.prose {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 540px) {
+      .step__spec dl { grid-template-columns: 1fr; gap: 2px 0; }
+      .step__spec dt { margin-top: 4px; }
+      .step__spec dt:first-child { margin-top: 0; }
     }
     /* Image = card surface (radius + shadow), 4:3 ratio, contained at 480px */
     .step__visual {
@@ -802,7 +824,11 @@
             <p>Our team reviews each file before production begins. The review confirms the resolution holds up at print size, the design lays out cleanly within the printable area of each panel, the color mode is RGB (which DTG processes natively), and there are no fine elements that would soften during the print pass. If the file has issues that could affect print quality, we flag them so the design can be adjusted before production starts.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Files</span>
-              Accepted formats: PNG, JPG, SVG. Minimum resolution: 300 DPI. Color mode: RGB.
+              <dl>
+                <dt>Accepted formats</dt><dd>PNG, JPG, SVG</dd>
+                <dt>Minimum resolution</dt><dd>300 DPI</dd>
+                <dt>Color mode</dt><dd>RGB</dd>
+              </dl>
             </aside>
           </div>
           <figure class="step__visual" aria-label="Shoe Zero customizer preview on a laptop screen, showing a Dunk-style low-top sneaker design with effect-mode and alternate-color thumbnails">
@@ -824,7 +850,12 @@
             <p>Our DTG printers then lay water-based ink directly into the material. On dark substrates, the white ink prints first as an underbase, then the CMYK colors (cyan, magenta, yellow, black) layer on top so they stay vibrant instead of being absorbed by the dark fabric. Printing on flat panels, instead of an already-assembled shoe, gives sharper detail, cleaner edges, and consistent coverage across every printable surface.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Print</span>
-              Pre-treatment: water-based polymer, varies by substrate. Inks: water-based. Color: CMYK plus white underbase. Flash cure: 300 to 340 F, 60 to 90 sec.
+              <dl>
+                <dt>Pre-treatment</dt><dd>water-based polymer, varies by substrate</dd>
+                <dt>Inks</dt><dd>water-based</dd>
+                <dt>Color</dt><dd>CMYK plus white underbase</dd>
+                <dt>Flash cure</dt><dd>300 to 340 F, 60 to 90 sec</dd>
+              </dl>
             </aside>
           </div>
           <figure class="step__visual" aria-label="DTG print head laying ink onto a flat panel in motion, a red-and-black design printed on white substrate">
@@ -846,7 +877,11 @@
             <p>Cutting precision matters at this stage because every panel has to align cleanly during later assembly. A cut that drifts even a few millimeters from the pattern can leave the design misaligned when the panels are stitched into the shoe.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Cut</span>
-              Method: CO2 laser, 100 to 130 W tuned per substrate. Edges: sealed and cauterized. Materials: canvas, synthetic leather, mesh.
+              <dl>
+                <dt>Method</dt><dd>CO2 laser, 100 to 130 W tuned per substrate</dd>
+                <dt>Edges</dt><dd>sealed and cauterized</dd>
+                <dt>Materials</dt><dd>canvas, synthetic leather, mesh</dd>
+              </dl>
             </aside>
           </div>
           <figure class="step__visual" aria-label="Twin CO2 laser cutter heads riding on a gantry, tracing printed shoe panel borders into a large sheet of material">
@@ -868,7 +903,11 @@
             <p>Cure temperature and dwell time are adjusted per substrate. Canvas cures hottest because cotton fibers handle higher heat. Synthetic leather cures at a lower temperature to protect its surface coating from heat damage, warping, or surface distortion. Mesh cures lowest to prevent polyester fibers from warping or melting.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Cure</span>
-              Cure range: 280 to 356 F, 15 to 90 sec. Per substrate: canvas hottest, synthetic leather mid-range, mesh lowest. Purpose: full ink bond into fibers.
+              <dl>
+                <dt>Cure range</dt><dd>280 to 356 F, 15 to 90 sec</dd>
+                <dt>Per substrate</dt><dd>canvas hottest, synthetic leather mid-range, mesh lowest</dd>
+                <dt>Purpose</dt><dd>full ink bond into fibers</dd>
+              </dl>
             </aside>
           </div>
         </div>
@@ -886,7 +925,11 @@
             <p>Once panels are cured, they're stitched into a finished shoe. The original shoe pattern guides the assembly. Outer panels go first, then tongue, then toe box. Each shoe is assembled by hand on industrial sewing machines, panel by panel. The finished upper is bonded to the sole with industrial adhesive. This process is called cemented construction, and heat sets the bond permanently.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Assembly</span>
-              Hand-assembled, machine-stitched. Pattern-matched. Sole: cemented to upper with industrial adhesive.
+              <dl>
+                <dd class="prose">Hand-assembled, machine-stitched.</dd>
+                <dd class="prose">Pattern-matched.</dd>
+                <dt>Sole</dt><dd>cemented to upper with industrial adhesive</dd>
+              </dl>
             </aside>
           </div>
           <figure class="step__visual" aria-label="Macro close-up of an industrial sewing machine needle piercing white shoe fabric, both hands guiding the panel flat against the bed">
@@ -908,7 +951,11 @@
             <p>Once applied, the shoe runs through a second cure cycle to set the topcoat permanently into the surface.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Topcoat</span>
-              Coating: water-based polyurethane-acrylic hybrid. Properties: UV, water, scratch, and abrasion resistant. Cure: 250 to 280 F, 60 to 120 sec.
+              <dl>
+                <dt>Coating</dt><dd>water-based polyurethane-acrylic hybrid</dd>
+                <dt>Properties</dt><dd>UV, water, scratch, and abrasion resistant</dd>
+                <dt>Cure</dt><dd>250 to 280 F, 60 to 120 sec</dd>
+              </dl>
             </aside>
           </div>
         </div>
@@ -927,7 +974,10 @@
             <p>Shoes that pass are laced, packed, and shipped to your address.</p>
             <aside class="step__spec">
               <span class="step__spec-label">Specs / Inspection</span>
-              Hand-checked across print, color, ink cure, edges, stitching, topcoat coverage, and pair match. Shipping: 3 to 4 weeks worldwide.
+              <dl>
+                <dd class="prose">Hand-checked across print, color, ink cure, edges, stitching, topcoat coverage, and pair match.</dd>
+                <dt>Shipping</dt><dd>3 to 4 weeks worldwide</dd>
+              </dl>
             </aside>
           </div>
           <figure class="step__visual" aria-label="Finished pair packed in a Shoe Zero shipping box, wrapped in tissue with a Thank You card on top">
